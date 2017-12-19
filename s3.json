@@ -4,7 +4,7 @@
     "description": "This app integrates with AWS S3 to perform investigative actions",
     "type": "devops",
     "product_vendor": "AWS",
-    "logo": "aws.png",
+    "logo": "awss3.png",
     "product_name": "S3",
     "product_version_regex": ".*",
     "publisher": "Phantom",
