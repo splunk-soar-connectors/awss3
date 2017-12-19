@@ -251,7 +251,7 @@
             "action": "list objects",
             "identifier": "list_objects",
             "description": "List objects in a bucket",
-            "verbose": "This action will list all objects in the given <b>bucket</b>. It will recursively list all objects in each folder in the bucket as well.<br><br>If given the <b>path</b> parameter, the action will start listing objects in the specified folder. The <b>path</b> must be a full path from the root of the <b>bucket</b>.<br><br>The <b>limit</b> parameter has a maximum value of 1000. If no <b>limit</b> is provided, it will default to 1000. If more objects than the specified <b>limit</b> exist, the action will return a <b>NextContinuationToken</b>. To get the next batch of objects, pass this token in a new action as the <b>continuation_token</b>.",
+            "verbose": "This action will list all objects in the given <b>bucket</b>. It will recursively list all objects in each folder in the bucket as well.<br><br>If given the <b>key</b> parameter, the action will start listing objects in the specified folder. The <b>key</b> must be a full path from the root of the <b>bucket</b>.<br><br>The <b>limit</b> parameter has a maximum value of 1000. If no <b>limit</b> is provided, it will default to 1000. If more objects than the specified <b>limit</b> exist, the action will return a <b>NextContinuationToken</b>. To get the next batch of objects, pass this token in a new action as the <b>continuation_token</b>.",
             "type": "investigate",
             "read_only": true,
             "parameters": {

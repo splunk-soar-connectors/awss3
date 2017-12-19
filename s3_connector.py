@@ -52,7 +52,10 @@ class AwsS3Connector(BaseConnector):
         self._state = self.load_state()
 
         config = self.get_config()
-        self._region = S3_REGION_DICT[config['region']]
+
+        self._region = S3_REGION_DICT.get(config['region'])
+        if not self._region:
+            return self.set_status(phantom.APP_ERROR, "Specified region is not valid")
 
         if S3_JSON_ACCESS_KEY in config:
             self._access_key = config.get(S3_JSON_ACCESS_KEY)
@@ -287,7 +290,10 @@ class AwsS3Connector(BaseConnector):
         outfile.close()
         os.close(file_desc)
 
-        vault_ret = Vault.add_attachment(file_path, self.get_container_id(), os.path.basename(param['key']))
+        try:
+            vault_ret = Vault.add_attachment(file_path, self.get_container_id(), os.path.basename(param['key']))
+        except Exception as e:
+            return action_result.set_status(phantom.APP_ERROR, "Could not file to vault: {0}".format(e))
 
         vault_id = vault_ret[phantom.APP_JSON_HASH]
         resp_json['vault_id'] = vault_id
