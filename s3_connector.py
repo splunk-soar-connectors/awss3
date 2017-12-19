@@ -295,6 +295,9 @@ class AwsS3Connector(BaseConnector):
         except Exception as e:
             return action_result.set_status(phantom.APP_ERROR, "Could not file to vault: {0}".format(e))
 
+        if not vault_ret.get('succeeded'):
+            return action_result.set_status(phantom.APP_ERROR, "Could not save file to vault: {0}".format(vault_ret.get('message', "Unknown Error")))
+
         vault_id = vault_ret[phantom.APP_JSON_HASH]
         resp_json['vault_id'] = vault_id
         resp_json['filename'] = os.path.basename(param['key'])
