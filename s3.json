@@ -8,7 +8,7 @@
     "product_name": "S3",
     "product_version_regex": ".*",
     "publisher": "Phantom",
-    "license": "Copyright (c) Phantom Cyber Corporation, 2017",
+    "license": "Copyright (c) Phantom Cyber Corporation, 2017-2018",
     "app_version": "1.0.1",
     "utctime_updated": "2017-12-27T19:23:35.000000Z",
     "package_name": "phantom_awss3",
@@ -300,7 +300,7 @@
                         "aws s3 bucket"
                     ],
                     "example_values": [
-                        "brian-test-s3-app"
+                        "herman-test-s3-app"
                     ]
                 },
                 {
@@ -335,7 +335,7 @@
                     "data_path": "action_result.data.*.Name",
                     "data_type": "string",
                     "example_values": [
-                        "brian-test-s3-app"
+                        "herman-test-s3-app"
                     ]
                 },
                 {
@@ -721,7 +721,7 @@
                     "data_path": "action_result.data.*.File.filename",
                     "data_type": "string",
                     "example_values": [
-                        "AA-ron_Rod-Gers.jpg"
+                        "image.jpg"
                     ]
                 },
                 {
@@ -963,7 +963,7 @@
                         "aws s3 bucket"
                     ],
                     "example_values": [
-                        "brian-test-s3-app"
+                        "herman-test-s3-app"
                     ]
                 },
                 {
@@ -973,7 +973,7 @@
                         "aws s3 key"
                     ],
                     "example_values": [
-                        "test_folder/AA-ron_Rod-Gers.jpg"
+                        "test_folder/image.jpg"
                     ]
                 },
                 {
@@ -1063,7 +1063,7 @@
                     "column_name": "vault_id",
                     "column_order": 0,
                     "example_values": [
-                        "brian-test-s3-app"
+                        "herman-test-s3-app"
                     ]
                 },
                 {
@@ -1075,7 +1075,7 @@
                     "column_name": "path",
                     "column_order": 1,
                     "example_values": [
-                        "test_folder/deeper_test_folder/Freddie.jpg"
+                        "test_folder/deeper_test_folder/abc.jpg"
                     ]
                 },
                 {
@@ -1396,7 +1396,7 @@
                         "aws s3 key"
                     ],
                     "example_values": [
-                        "kappa.png"
+                        "abc.png"
                     ]
                 },
                 {
@@ -1413,7 +1413,7 @@
                         "aws s3 bucket"
                     ],
                     "example_values": [
-                        "brian-test-s3-app"
+                        "herman-test-s3-app"
                     ]
                 },
                 {
@@ -1444,7 +1444,7 @@
                     "data_path": "action_result.parameter.metadata",
                     "data_type": "string",
                     "example_values": [
-                        "{\"Content-Language\": \"Doge\"}"
+                        "{\"Content-Language\": \"English\"}"
                     ]
                 },
                 {
