@@ -1624,29 +1624,6 @@
                     "required": true,
                     "primary": true,
                     "order": 0
-                },
-                "location": {
-                    "description": "Location to create bucket in",
-                    "data_type": "string",
-                    "required": true,
-                    "value_list": [
-                        "US East (Ohio)",
-                        "US East (N. Virginia)",
-                        "US West (N. California)",
-                        "US West (Oregon)",
-                        "Canada (Central)",
-                        "Asia Pacific (Mumbai)",
-                        "Asia Pacific (Tokyo)",
-                        "Asia Pacific (Seoul)",
-                        "Asia Pacific (Singapore)",
-                        "Asia Pacific (Sydney)",
-                        "China (Ningxia)",
-                        "EU (Frankfurt)",
-                        "EU (Ireland)",
-                        "EU (London)",
-                        "South Americia (Sao Paulo)"
-                    ],
-                    "order": 0
                 }
             },
             "output": [
@@ -1756,13 +1733,6 @@
                     "data_type": "string",
                     "example_values": [
                         "automated-bucket"
-                    ]
-                },
-                {
-                    "data_path": "action_result.parameter.location",
-                    "data_type": "string",
-                    "example_values": [
-                        "EU (Ireland)"
                     ]
                 },
                 {
