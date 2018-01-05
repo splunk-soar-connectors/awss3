@@ -1,7 +1,7 @@
 # --
 # File: s3_consts.py
 #
-# Copyright (c) Phantom Cyber Corporation, 2017
+# Copyright (c) Phantom Cyber Corporation, 2018
 #
 # This unpublished material is proprietary to Phantom Cyber.
 # All rights reserved. The methods and
@@ -15,7 +15,26 @@
 S3_JSON_ACCESS_KEY = "access_key"
 S3_JSON_SECRET_KEY = "secret_key"
 
+S3_BAD_BUCKET_MESSAGE = "The specified bucket does not exist"
+
 S3_PERMISSIONS_LIST = ["FULL_CONTROL", "WRITE", "WRITE_ACP", "READ", "READ_ACP"]
+
+S3_BUCKET_INFO_LIST = [
+        "Accelerate_Configuration",
+        "ACL",
+        "CORS",
+        "Encryption",
+        "Lifecycle_Configuration",
+        "Location",
+        "Logging",
+        "Notification_Configuration",
+        "Policy",
+        "Replication",
+        "Request_Payment",
+        "Tagging",
+        "Versioning",
+        "Website"
+    ]
 
 S3_REGION_DICT = {
         "US East (Ohio)": "us-east-1",

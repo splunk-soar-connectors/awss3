@@ -1,7 +1,7 @@
 # --
 # File: s3_connector.py
 #
-# Copyright (c) Phantom Cyber Corporation, 2017
+# Copyright (c) Phantom Cyber Corporation, 2018
 #
 # This unpublished material is proprietary to Phantom Cyber.
 # All rights reserved. The methods and
@@ -217,6 +217,121 @@ class AwsS3Connector(BaseConnector):
 
         return action_result.set_status(phantom.APP_SUCCESS)
 
+    def _handle_get_bucket(self, param):
+
+        self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
+        action_result = self.add_action_result(ActionResult(dict(param)))
+
+        if not self._create_client(action_result):
+            return action_result.get_status()
+
+        result_json = {}
+        summary = action_result.set_summary({})
+
+        for endpoint in S3_BUCKET_INFO_LIST:
+
+            found = True
+
+            ret_val, resp_json = self._make_boto_call(action_result, 'get_bucket_{0}'.format(endpoint.lower()), Bucket=param['bucket'])
+
+            if (phantom.is_fail(ret_val)):
+                if S3_BAD_BUCKET_MESSAGE in action_result.get_message():
+                    return ret_val
+                else:
+                    resp_json = {'Message': action_result.get_message()}
+                    found = False
+
+            if len(resp_json) == 1 and 'ResponseMetadata' in resp_json:
+                resp_json = {'Message': '{0} does not appear to be configured for this bucket'.format(endpoint.replace('_', ' '))}
+                found = False
+
+            result_json[endpoint.replace('_', '')] = resp_json
+            summary['{0}_found'.format(endpoint.lower())] = found
+
+        action_result.add_data(result_json)
+
+        return action_result.set_status(phantom.APP_SUCCESS, "Successfully retrieved bucket info")
+
+    def _handle_create_bucket(self, param):
+
+        self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
+        action_result = self.add_action_result(ActionResult(dict(param)))
+
+        if not self._create_client(action_result):
+            return action_result.get_status()
+
+        location = {'LocationConstraint': S3_REGION_DICT[self.get_config()['region']]}
+
+        ret_val, resp_json = self._make_boto_call(action_result, 'create_bucket', Bucket=param['bucket'], CreateBucketConfiguration=location)
+
+        if (phantom.is_fail(ret_val)):
+            return ret_val
+
+        action_result.add_data(resp_json)
+
+        return action_result.set_status(phantom.APP_SUCCESS, "Successfully retrieved bucket info")
+
+    def _handle_update_bucket(self, param):
+
+        self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
+        action_result = self.add_action_result(ActionResult(dict(param)))
+
+        if not self._create_client(action_result):
+            return action_result.get_status()
+
+        if 'tags' in param:
+
+            ret_val, tag_dicts = self._get_tag_dicts(action_result, param['tags'])
+
+            if (phantom.is_fail(ret_val)):
+                return ret_val
+
+            ret_val, resp_json = self._make_boto_call(action_result, 'put_bucket_tagging', Bucket=param['bucket'], Tagging={'TagSet': tag_dicts})
+
+            if (phantom.is_fail(ret_val)):
+                return ret_val
+
+            action_result.add_data(resp_json)
+
+        if 'grants' in param:
+
+            if 'owner' not in param:
+                return action_result.set_status(phantom.APP_ERROR, "No owner provided with grants parameter")
+
+            ret_val, grant_dict = self._get_grant_dict(action_result, param['grants'], param['owner'])
+
+            if (phantom.is_fail(ret_val)):
+                return ret_val
+
+            ret_val, resp_json = self._make_boto_call(action_result, 'put_bucket_acl', Bucket=param['bucket'], AccessControlPolicy=grant_dict)
+
+            if (phantom.is_fail(ret_val)):
+                return ret_val
+
+            action_result.add_data(resp_json)
+
+        if 'encryption' in param:
+
+            if param['encryption'] == 'AES256':
+                encrypt_config = {"SSEAlgorithm": "AES256"}
+
+            elif param['encryption'] == 'AWS:KMS':
+
+                if 'kms_key' not in param:
+                    return action_result.set_status(phantom.APP_ERROR, "Encryption set to AWS:KMS, but no KMS Key provided.")
+
+                encrypt_config = {"SSEAlgorithm": "aws:kms", "KMSMasterKeyID": param["kms_key"]}
+
+            ret_val, resp_json = self._make_boto_call(action_result, 'put_bucket_encryption',
+                    Bucket=param['bucket'], ServerSideEncryptionConfiguration={"Rules": [{"ApplyServerSideEncryptionByDefault": encrypt_config}]})
+
+            if (phantom.is_fail(ret_val)):
+                return ret_val
+
+            action_result.add_data(resp_json)
+
+        return action_result.set_status(phantom.APP_SUCCESS, "Successfully updated bucket")
+
     def _handle_list_objects(self, param):
 
         self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
@@ -274,39 +389,41 @@ class AwsS3Connector(BaseConnector):
 
         result_json["ACL"] = resp_json
 
-        ret_val, resp_json = self._make_boto_call(action_result, 'get_object', Bucket=param['bucket'], Key=param['key'])
+        if param['download_file']:
 
-        if (phantom.is_fail(ret_val)):
-            return ret_val
+            ret_val, resp_json = self._make_boto_call(action_result, 'get_object', Bucket=param['bucket'], Key=param['key'])
 
-        try:
-            file_data = resp_json.pop('Body').read()
-        except:
-            return action_result.set_status(phantom.APP_ERROR, "Could not retrieve object body from boto response")
+            if (phantom.is_fail(ret_val)):
+                return ret_val
 
-        file_desc, file_path = tempfile.mkstemp(dir='/vault/tmp/')
-        outfile = open(file_path, 'w')
-        outfile.write(file_data)
-        outfile.close()
-        os.close(file_desc)
+            try:
+                file_data = resp_json.pop('Body').read()
+            except:
+                return action_result.set_status(phantom.APP_ERROR, "Could not retrieve object body from boto response")
 
-        try:
-            vault_ret = Vault.add_attachment(file_path, self.get_container_id(), os.path.basename(param['key']))
-        except Exception as e:
-            return action_result.set_status(phantom.APP_ERROR, "Could not file to vault: {0}".format(e))
+            file_desc, file_path = tempfile.mkstemp(dir='/vault/tmp/')
+            outfile = open(file_path, 'w')
+            outfile.write(file_data)
+            outfile.close()
+            os.close(file_desc)
 
-        if not vault_ret.get('succeeded'):
-            return action_result.set_status(phantom.APP_ERROR, "Could not save file to vault: {0}".format(vault_ret.get('message', "Unknown Error")))
+            try:
+                vault_ret = Vault.add_attachment(file_path, self.get_container_id(), os.path.basename(param['key']))
+            except Exception as e:
+                return action_result.set_status(phantom.APP_ERROR, "Could not file to vault: {0}".format(e))
 
-        vault_id = vault_ret[phantom.APP_JSON_HASH]
-        resp_json['vault_id'] = vault_id
-        resp_json['filename'] = os.path.basename(param['key'])
-        result_json["File"] = resp_json
+            if not vault_ret.get('succeeded'):
+                return action_result.set_status(phantom.APP_ERROR, "Could not save file to vault: {0}".format(vault_ret.get('message', "Unknown Error")))
+
+            vault_id = vault_ret[phantom.APP_JSON_HASH]
+            resp_json['vault_id'] = vault_id
+            resp_json['filename'] = os.path.basename(param['key'])
+            result_json["File"] = resp_json
+            action_result.set_summary({"created_vault_id": vault_id})
 
         action_result.add_data(result_json)
-        action_result.set_summary({"created_vault_id": vault_id})
 
-        return action_result.set_status(phantom.APP_SUCCESS, "File successfully added to vault")
+        return action_result.set_status(phantom.APP_SUCCESS, "Successfully retrieved object info")
 
     def _handle_update_object(self, param):
 
@@ -410,19 +527,20 @@ class AwsS3Connector(BaseConnector):
 
         if action_id == 'test_connectivity':
             ret_val = self._handle_test_connectivity(param)
-
         elif action_id == 'list_buckets':
             ret_val = self._handle_list_buckets(param)
-
+        elif action_id == 'get_bucket':
+            ret_val = self._handle_get_bucket(param)
+        elif action_id == 'update_bucket':
+            ret_val = self._handle_update_bucket(param)
+        elif action_id == 'create_bucket':
+            ret_val = self._handle_create_bucket(param)
         elif action_id == 'list_objects':
             ret_val = self._handle_list_objects(param)
-
         elif action_id == 'get_object':
             ret_val = self._handle_get_object(param)
-
         elif action_id == 'update_object':
             ret_val = self._handle_update_object(param)
-
         elif action_id == 'post_data':
             ret_val = self._handle_post_data(param)
 
