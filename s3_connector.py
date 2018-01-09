@@ -312,18 +312,23 @@ class AwsS3Connector(BaseConnector):
 
         if 'encryption' in param:
 
-            if param['encryption'] == 'AES256':
-                encrypt_config = {"SSEAlgorithm": "AES256"}
+            if param['encryption'] == 'NONE':
+                ret_val, resp_json = self._make_boto_call(action_result, 'delete_bucket_encryption', Bucket=param['bucket'])
 
-            elif param['encryption'] == 'AWS:KMS':
+            else:
 
-                if 'kms_key' not in param:
-                    return action_result.set_status(phantom.APP_ERROR, "Encryption set to AWS:KMS, but no KMS Key provided.")
+                if param['encryption'] == 'AES256':
+                    encrypt_config = {"SSEAlgorithm": "AES256"}
 
-                encrypt_config = {"SSEAlgorithm": "aws:kms", "KMSMasterKeyID": param["kms_key"]}
+                elif param['encryption'] == 'AWS:KMS':
 
-            ret_val, resp_json = self._make_boto_call(action_result, 'put_bucket_encryption',
-                    Bucket=param['bucket'], ServerSideEncryptionConfiguration={"Rules": [{"ApplyServerSideEncryptionByDefault": encrypt_config}]})
+                    if 'kms_key' not in param:
+                        return action_result.set_status(phantom.APP_ERROR, "Encryption set to AWS:KMS, but no KMS Key provided.")
+
+                    encrypt_config = {"SSEAlgorithm": "aws:kms", "KMSMasterKeyID": param["kms_key"]}
+
+                ret_val, resp_json = self._make_boto_call(action_result, 'put_bucket_encryption',
+                        Bucket=param['bucket'], ServerSideEncryptionConfiguration={"Rules": [{"ApplyServerSideEncryptionByDefault": encrypt_config}]})
 
             if (phantom.is_fail(ret_val)):
                 return ret_val
