@@ -5,7 +5,7 @@
     "type": "devops",
     "product_vendor": "AWS",
     "logo": "logo_awss3.svg",
-    "logo_dark": "logo_awss3.svg",
+    "logo_dark": "logo_awss3_dark.svg",
     "product_name": "S3",
     "product_version_regex": ".*",
     "publisher": "Phantom",
