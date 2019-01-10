@@ -9,12 +9,12 @@
     "product_name": "S3",
     "product_version_regex": ".*",
     "publisher": "Phantom",
-    "license": "Copyright (c) Phantom Cyber Corporation, 2018",
+    "license": "Copyright (c) 2018-2019 Splunk Inc.",
     "app_version": "1.0.10",
     "utctime_updated": "2018-12-20T03:03:29.000000Z",
     "package_name": "phantom_awss3",
     "main_module": "s3_connector.pyc",
-    "min_phantom_version": "3.0.251",
+    "min_phantom_version": "4.0.1068",
     "app_wizard_version": "1.0.0",
     "pip_dependencies": {
         "wheel": [
