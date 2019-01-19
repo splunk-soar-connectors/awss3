@@ -1614,7 +1614,7 @@
             "action": "create bucket",
             "identifier": "create_bucket",
             "description": "Create a bucket",
-            "verbose": "The bucket will be created in the region specified in the asset configuration.",
+            "verbose": "The bucket will be created in the region specified in the asset configuration. The bucket name provided has to be unique and it should not be already used in the AWS S3 globally.",
             "type": "generic",
             "read_only": false,
             "parameters": {
@@ -1763,7 +1763,7 @@
             "action": "update bucket",
             "identifier": "update_bucket",
             "description": "Update a bucket",
-            "verbose": "The <b>tags</b> parameter takes a JSON dictionary containing the tags that will be given to the specified <b>bucket</b>. The dictionary should have the format:<br><br><pre>{<br>    &quot;tag1_key&quot;: &quot;tag1_value&quot;,<br>    &quot;tag2_key&quot;: &quot;tag2_value&quot;<br>    ...<br>}</pre><br>The <b>grants</b> parameter takes a dictionary where each key is a canonical user ID and each value is one of the following permissions:<ul><li>FULL_CONTROL</li><li>WRITE</li><li>WRITE_ACP</li><li>READ</li><li>READ_ACP</li></ul>An example JSON object would be:<br><br><pre>{<br>    &quot;111a11a11aa1111111aa11aaa1111a111a1aa111111a1a1a11aa11aa11a11aa1&quot;: &quot;FULL_CONTROL&quot;,<br>    &quot;222b22b22bb2222222bb22bbb2222b222b2bb222222b2b2b22bb22bb22b22bb2&quot;: &quot;READ&quot;<br>}</pre><br>The <b>owner</b> parameter takes the canonical ID of an AWS user. This parameter must be provided if the <b>grants</b> parameter is included (even if there is no desire to change the owner; in this case, just provide the ID of the current owner of the bucket).<br><br>WARNING: Calling this action will replace the buckets's current tags and permissions with the tags and permission supplied to this action. To avoid overwriting the buckets's present data, first run <b>get bucket</b> to get the current tag and permission dictionaries, then add new tags and grants to those dictionaries before calling this action.",
+            "verbose": "The <b>tags</b> parameter takes a JSON dictionary containing the tags that will be given to the specified <b>bucket</b>. The dictionary should have the format:<br><br><pre>{<br>    &quot;tag1_key&quot;: &quot;tag1_value&quot;,<br>    &quot;tag2_key&quot;: &quot;tag2_value&quot;<br>    ...<br>}</pre><br>The <b>grants</b> parameter takes a dictionary where each key is a canonical user ID and each value is one of the following permissions:<ul><li>FULL_CONTROL</li><li>WRITE</li><li>WRITE_ACP</li><li>READ</li><li>READ_ACP</li></ul>An example JSON object would be:<br><br><pre>{<br>    &quot;111a11a11aa1111111aa11aaa1111a111a1aa111111a1a1a11aa11aa11a11aa1&quot;: &quot;FULL_CONTROL&quot;,<br>    &quot;222b22b22bb2222222bb22bbb2222b222b2bb222222b2b2b22bb22bb22b22bb2&quot;: &quot;READ&quot;<br>}</pre><br>The <b>owner</b> parameter takes the canonical ID of an AWS user. This parameter must be provided if the <b>grants</b> parameter is included (even if there is no desire to change the owner; in this case, just provide the ID of the current owner of the bucket).<br><br>WARNING: Calling this action will replace the bucket's current tags and permissions with the tags and permission supplied to this action. To avoid overwriting the bucket's present data, first run <b>get bucket</b> to get the current tag and permission dictionaries, then add new tags and grants to those dictionaries before calling this action.",
             "type": "generic",
             "read_only": false,
             "parameters": {
@@ -2303,7 +2303,7 @@
                 "download_file": {
                     "description": "Download File",
                     "data_type": "boolean",
-                    "required": true,
+                    "default": false,
                     "order": 2
                 }
             },

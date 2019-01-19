@@ -390,7 +390,7 @@ class AwsS3Connector(BaseConnector):
 
         result_json["ACL"] = resp_json
 
-        if param['download_file']:
+        if param.get('download_file'):
 
             ret_val, resp_json = self._make_boto_call(action_result, 'get_object', Bucket=param['bucket'], Key=param['key'])
 
