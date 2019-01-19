@@ -109,24 +109,6 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.Owner.DisplayName",
-                    "data_type": "string",
-                    "example_values": [
-                        "herman"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Owner.ID",
-                    "data_type": "string",
-                    "example_values": [
-                        "042b3oe6d5faa5cfe9d016645ce14be41295ed6j94c988c6af6550f439e3f444"
-                    ],
-                    "contains": [
-                        "aws canonical ID",
-                        "sha256"
-                    ]
-                },
-                {
                     "data_path": "action_result.data.*.Buckets.*.CreationDate",
                     "data_type": "string",
                     "column_name": "Created",
@@ -145,38 +127,35 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.ResponseMetadata.HostId",
+                    "data_path": "action_result.data.*.Owner.DisplayName",
                     "data_type": "string",
                     "example_values": [
-                        "6Y10uFMWGRF9mu1P94EVq9YpbFFkSxGEGU9ppx6hBVRiaaEANjyS2zuZoM5tt95QYOve9j0l6r4="
+                        "herman"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.ResponseMetadata.RetryAttempts",
-                    "data_type": "numeric",
-                    "example_values": [
-                        0
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ResponseMetadata.HTTPStatusCode",
-                    "data_type": "numeric",
-                    "example_values": [
-                        200
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ResponseMetadata.RequestId",
+                    "data_path": "action_result.data.*.Owner.ID",
                     "data_type": "string",
                     "example_values": [
-                        "DE264B470D5AD443"
+                        "042b3oe6d5faa5cfe9d016645ce14be41295ed6j94c988c6af6550f439e3f444"
+                    ],
+                    "contains": [
+                        "aws canonical ID",
+                        "sha256"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.x-amz-id-2",
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.content-type",
                     "data_type": "string",
                     "example_values": [
-                        "6Y10uFMWGRF9mu1P94EVq9YpbFFkSxGEGU9ppx6hBVRiaaEANjyS2zuZoM5tt95QYOve9j0l6r4="
+                        "application/xml"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.date",
+                    "data_type": "string",
+                    "example_values": [
+                        "Tue, 12 Dec 2017 21:40:22 GMT"
                     ]
                 },
                 {
@@ -194,6 +173,13 @@
                     ]
                 },
                 {
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.x-amz-id-2",
+                    "data_type": "string",
+                    "example_values": [
+                        "6Y10uFMWGRF9mu1P94EVq9YpbFFkSxGEGU9ppx6hBVRiaaEANjyS2zuZoM5tt95QYOve9j0l6r4="
+                    ]
+                },
+                {
                     "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.x-amz-request-id",
                     "data_type": "string",
                     "example_values": [
@@ -201,24 +187,31 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.date",
-                    "data_type": "string",
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPStatusCode",
+                    "data_type": "numeric",
                     "example_values": [
-                        "Tue, 12 Dec 2017 21:40:22 GMT"
+                        200
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.content-type",
+                    "data_path": "action_result.data.*.ResponseMetadata.HostId",
                     "data_type": "string",
                     "example_values": [
-                        "application/xml"
+                        "6Y10uFMWGRF9mu1P94EVq9YpbFFkSxGEGU9ppx6hBVRiaaEANjyS2zuZoM5tt95QYOve9j0l6r4="
                     ]
                 },
                 {
-                    "data_path": "action_result.message",
+                    "data_path": "action_result.data.*.ResponseMetadata.RequestId",
                     "data_type": "string",
                     "example_values": [
-                        "Num buckets: 4"
+                        "DE264B470D5AD443"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.RetryAttempts",
+                    "data_type": "numeric",
+                    "example_values": [
+                        0
                     ]
                 },
                 {
@@ -226,6 +219,13 @@
                     "data_type": "numeric",
                     "example_values": [
                         4
+                    ]
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string",
+                    "example_values": [
+                        "Num buckets: 4"
                     ]
                 },
                 {
@@ -275,388 +275,50 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.Website.IndexDocument.Suffix",
+                    "data_path": "action_result.parameter.bucket",
                     "data_type": "string",
-                    "example_values": [
-                        "host.html"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Website.ErrorDocument.Key",
-                    "data_type": "string",
-                    "example_values": [
-                        "error.html"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Website.ResponseMetadata.HostId",
-                    "data_type": "string",
-                    "example_values": [
-                        "73eXrr6SyRHY4R0ED3bwG7yve1R3Oh+mYOqryPrRaoBBqyERwGev67o0S2rPJeHE5wNpi76vixg="
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Website.ResponseMetadata.RetryAttempts",
-                    "data_type": "numeric",
-                    "example_values": [
-                        0
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Website.ResponseMetadata.HTTPStatusCode",
-                    "data_type": "numeric",
-                    "example_values": [
-                        200
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Website.ResponseMetadata.RequestId",
-                    "data_type": "string",
-                    "example_values": [
-                        "DC1EDDAEAA519ADD"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Website.ResponseMetadata.HTTPHeaders.x-amz-id-2",
-                    "data_type": "string",
-                    "example_values": [
-                        "73eXrr6SyRHY4R0ED3bwG7yve1R3Oh+mYOqryPrRaoBBqyERwGev67o0S2rPJeHE5wNpi76vixg="
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Website.ResponseMetadata.HTTPHeaders.server",
-                    "data_type": "string",
-                    "example_values": [
-                        "AmazonS3"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Website.ResponseMetadata.HTTPHeaders.transfer-encoding",
-                    "data_type": "string",
-                    "example_values": [
-                        "chunked"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Website.ResponseMetadata.HTTPHeaders.x-amz-request-id",
-                    "data_type": "string",
-                    "example_values": [
-                        "DC1EDDAEAA519ADD"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Website.ResponseMetadata.HTTPHeaders.date",
-                    "data_type": "string",
-                    "example_values": [
-                        "Thu, 04 Jan 2018 00:18:59 GMT"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Website.ResponseMetadata.HTTPHeaders.content-type",
-                    "data_type": "string",
-                    "example_values": [
-                        "application/xml"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Tagging.TagSet.*.Key",
-                    "data_type": "string",
-                    "example_values": [
-                        "A Tag"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Tagging.TagSet.*.Value",
-                    "data_type": "string",
-                    "example_values": [
-                        "Just to tag"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Tagging.ResponseMetadata.HostId",
-                    "data_type": "string",
-                    "example_values": [
-                        "wdu+mB75tYS8r9qaZvI+BD3OQixeOliVvs41hF/s8hUEu9MRiZmNKk7s/Gfpw94C2i7hMiS5CPM="
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Tagging.ResponseMetadata.RetryAttempts",
-                    "data_type": "numeric",
-                    "example_values": [
-                        0
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Tagging.ResponseMetadata.HTTPStatusCode",
-                    "data_type": "numeric",
-                    "example_values": [
-                        200
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Tagging.ResponseMetadata.RequestId",
-                    "data_type": "string",
-                    "example_values": [
-                        "AF6A1E6B709EA88A"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Tagging.ResponseMetadata.HTTPHeaders.date",
-                    "data_type": "string",
-                    "example_values": [
-                        "Thu, 04 Jan 2018 00:18:59 GMT"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Tagging.ResponseMetadata.HTTPHeaders.x-amz-id-2",
-                    "data_type": "string",
-                    "example_values": [
-                        "wdu+mB75tYS8r9qaZvI+BD3OQixeOliVvs41hF/s8hUEu9MRiZmNKk7s/Gfpw94C2i7hMiS5CPM="
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Tagging.ResponseMetadata.HTTPHeaders.transfer-encoding",
-                    "data_type": "string",
-                    "example_values": [
-                        "chunked"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Tagging.ResponseMetadata.HTTPHeaders.x-amz-request-id",
-                    "data_type": "string",
-                    "example_values": [
-                        "AF6A1E6B709EA88A"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Tagging.ResponseMetadata.HTTPHeaders.server",
-                    "data_type": "string",
-                    "example_values": [
-                        "AmazonS3"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Logging.LoggingEnabled.TargetPrefix",
-                    "data_type": "string",
-                    "example_values": [
-                        ""
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Logging.LoggingEnabled.TargetBucket",
-                    "data_type": "string",
+                    "column_name": "Name",
+                    "column_order": 0,
+                    "contains": [
+                        "aws s3 bucket"
+                    ],
                     "example_values": [
                         "herman-test-s3-app"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.Logging.ResponseMetadata.HostId",
+                    "data_path": "action_result.data.*.ACL.Grants.*.Grantee.DisplayName",
                     "data_type": "string",
                     "example_values": [
-                        "SGyUaKSZu5Hdjlv2ZnFK93ylMkS7kfMxiZ+ifIe0dmGHfbRq0qsDLepIRJ90J9gpjTP5VejExcE="
+                        "herman"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.Logging.ResponseMetadata.RetryAttempts",
-                    "data_type": "numeric",
-                    "example_values": [
-                        0
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Logging.ResponseMetadata.HTTPStatusCode",
-                    "data_type": "numeric",
-                    "example_values": [
-                        200
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Logging.ResponseMetadata.RequestId",
+                    "data_path": "action_result.data.*.ACL.Grants.*.Grantee.ID",
                     "data_type": "string",
                     "example_values": [
-                        "F175D7AA0B2FADEF"
+                        "042b3oe6d5faa5cfe9d016645ce14be41295ed6j94c988c6af6550f439e3f444"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.Logging.ResponseMetadata.HTTPHeaders.x-amz-id-2",
+                    "data_path": "action_result.data.*.ACL.Grants.*.Grantee.Type",
                     "data_type": "string",
                     "example_values": [
-                        "SGyUaKSZu5Hdjlv2ZnFK93ylMkS7kfMxiZ+ifIe0dmGHfbRq0qsDLepIRJ90J9gpjTP5VejExcE="
+                        "CanonicalUser"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.Logging.ResponseMetadata.HTTPHeaders.server",
+                    "data_path": "action_result.data.*.ACL.Grants.*.Grantee.URI",
                     "data_type": "string",
                     "example_values": [
-                        "AmazonS3"
+                        "http://acs.amazonaws.com/groups/s3/LogDelivery"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.Logging.ResponseMetadata.HTTPHeaders.transfer-encoding",
+                    "data_path": "action_result.data.*.ACL.Grants.*.Permission",
                     "data_type": "string",
                     "example_values": [
-                        "chunked"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Logging.ResponseMetadata.HTTPHeaders.x-amz-request-id",
-                    "data_type": "string",
-                    "example_values": [
-                        "F175D7AA0B2FADEF"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Logging.ResponseMetadata.HTTPHeaders.date",
-                    "data_type": "string",
-                    "example_values": [
-                        "Thu, 04 Jan 2018 00:18:59 GMT"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Logging.ResponseMetadata.HTTPHeaders.content-type",
-                    "data_type": "string",
-                    "example_values": [
-                        "application/xml"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.AccelerateConfiguration.Status",
-                    "data_type": "string",
-                    "example_values": [
-                        "Enabled"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.AccelerateConfiguration.ResponseMetadata.HostId",
-                    "data_type": "string",
-                    "example_values": [
-                        "R6sl3E4MCVoudKZtNHj2gtCFkU1Sm12st2U2xyfEBj4tvjqrqXL3uo88EyrcDn5qZLjzu2B1YD0="
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.AccelerateConfiguration.ResponseMetadata.RetryAttempts",
-                    "data_type": "numeric",
-                    "example_values": [
-                        0
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.AccelerateConfiguration.ResponseMetadata.HTTPStatusCode",
-                    "data_type": "numeric",
-                    "example_values": [
-                        200
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.AccelerateConfiguration.ResponseMetadata.RequestId",
-                    "data_type": "string",
-                    "example_values": [
-                        "7CC77C9375FA19D7"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.AccelerateConfiguration.ResponseMetadata.HTTPHeaders.date",
-                    "data_type": "string",
-                    "example_values": [
-                        "Thu, 04 Jan 2018 00:18:58 GMT"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.AccelerateConfiguration.ResponseMetadata.HTTPHeaders.x-amz-id-2",
-                    "data_type": "string",
-                    "example_values": [
-                        "R6sl3E4MCVoudKZtNHj2gtCFkU1Sm12st2U2xyfEBj4tvjqrqXL3uo88EyrcDn5qZLjzu2B1YD0="
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.AccelerateConfiguration.ResponseMetadata.HTTPHeaders.transfer-encoding",
-                    "data_type": "string",
-                    "example_values": [
-                        "chunked"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.AccelerateConfiguration.ResponseMetadata.HTTPHeaders.x-amz-request-id",
-                    "data_type": "string",
-                    "example_values": [
-                        "7CC77C9375FA19D7"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.AccelerateConfiguration.ResponseMetadata.HTTPHeaders.server",
-                    "data_type": "string",
-                    "example_values": [
-                        "AmazonS3"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Encryption.ResponseMetadata.HostId",
-                    "data_type": "string",
-                    "example_values": [
-                        "88lWjF7Nc6u9SZKgAnm8/XzRl/t+Pp5huR9dMDJPt+X5q8XWG+cuyi+LUNoLeinJ3ZFRO1+9jwE="
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Encryption.ResponseMetadata.RetryAttempts",
-                    "data_type": "numeric",
-                    "example_values": [
-                        0
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Encryption.ResponseMetadata.HTTPStatusCode",
-                    "data_type": "numeric",
-                    "example_values": [
-                        200
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Encryption.ResponseMetadata.RequestId",
-                    "data_type": "string",
-                    "example_values": [
-                        "E2F41A6CA939A2EA"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Encryption.ResponseMetadata.HTTPHeaders.date",
-                    "data_type": "string",
-                    "example_values": [
-                        "Thu, 04 Jan 2018 00:18:59 GMT"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Encryption.ResponseMetadata.HTTPHeaders.x-amz-id-2",
-                    "data_type": "string",
-                    "example_values": [
-                        "88lWjF7Nc6u9SZKgAnm8/XzRl/t+Pp5huR9dMDJPt+X5q8XWG+cuyi+LUNoLeinJ3ZFRO1+9jwE="
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Encryption.ResponseMetadata.HTTPHeaders.transfer-encoding",
-                    "data_type": "string",
-                    "example_values": [
-                        "chunked"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Encryption.ResponseMetadata.HTTPHeaders.x-amz-request-id",
-                    "data_type": "string",
-                    "example_values": [
-                        "E2F41A6CA939A2EA"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Encryption.ResponseMetadata.HTTPHeaders.server",
-                    "data_type": "string",
-                    "example_values": [
-                        "AmazonS3"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Encryption.ServerSideEncryptionConfiguration.Rules.*.ApplyServerSideEncryptionByDefault.SSEAlgorithm",
-                    "data_type": "string",
-                    "example_values": [
-                        "AES256"
+                        "FULL_CONTROL"
                     ]
                 },
                 {
@@ -679,73 +341,17 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.ACL.Grants.*.Grantee.Type",
+                    "data_path": "action_result.data.*.ACL.ResponseMetadata.HTTPHeaders.content-type",
                     "data_type": "string",
                     "example_values": [
-                        "CanonicalUser"
+                        "application/xml"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.ACL.Grants.*.Grantee.DisplayName",
+                    "data_path": "action_result.data.*.ACL.ResponseMetadata.HTTPHeaders.date",
                     "data_type": "string",
                     "example_values": [
-                        "herman"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ACL.Grants.*.Grantee.ID",
-                    "data_type": "string",
-                    "example_values": [
-                        "042b3oe6d5faa5cfe9d016645ce14be41295ed6j94c988c6af6550f439e3f444"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ACL.Grants.*.Permission",
-                    "data_type": "string",
-                    "example_values": [
-                        "FULL_CONTROL"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ACL.Grants.*.Grantee.URI",
-                    "data_type": "string",
-                    "example_values": [
-                        "http://acs.amazonaws.com/groups/s3/LogDelivery"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ACL.ResponseMetadata.HostId",
-                    "data_type": "string",
-                    "example_values": [
-                        "dVMKBJp6MBOXFeuly8O8SqLkq+lXnEbl+KMvx+LK7EyGpPSm88mUD+juN/JIb4/17votLkWEo5k="
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ACL.ResponseMetadata.RetryAttempts",
-                    "data_type": "numeric",
-                    "example_values": [
-                        0
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ACL.ResponseMetadata.HTTPStatusCode",
-                    "data_type": "numeric",
-                    "example_values": [
-                        200
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ACL.ResponseMetadata.RequestId",
-                    "data_type": "string",
-                    "example_values": [
-                        "400B6B0D1EB90D9B"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ACL.ResponseMetadata.HTTPHeaders.x-amz-id-2",
-                    "data_type": "string",
-                    "example_values": [
-                        "dVMKBJp6MBOXFeuly8O8SqLkq+lXnEbl+KMvx+LK7EyGpPSm88mUD+juN/JIb4/17votLkWEo5k="
+                        "Thu, 04 Jan 2018 00:18:58 GMT"
                     ]
                 },
                 {
@@ -763,6 +369,13 @@
                     ]
                 },
                 {
+                    "data_path": "action_result.data.*.ACL.ResponseMetadata.HTTPHeaders.x-amz-id-2",
+                    "data_type": "string",
+                    "example_values": [
+                        "dVMKBJp6MBOXFeuly8O8SqLkq+lXnEbl+KMvx+LK7EyGpPSm88mUD+juN/JIb4/17votLkWEo5k="
+                    ]
+                },
+                {
                     "data_path": "action_result.data.*.ACL.ResponseMetadata.HTTPHeaders.x-amz-request-id",
                     "data_type": "string",
                     "example_values": [
@@ -770,285 +383,101 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.ACL.ResponseMetadata.HTTPHeaders.date",
+                    "data_path": "action_result.data.*.ACL.ResponseMetadata.HTTPStatusCode",
+                    "data_type": "numeric",
+                    "example_values": [
+                        200
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ACL.ResponseMetadata.HostId",
+                    "data_type": "string",
+                    "example_values": [
+                        "dVMKBJp6MBOXFeuly8O8SqLkq+lXnEbl+KMvx+LK7EyGpPSm88mUD+juN/JIb4/17votLkWEo5k="
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ACL.ResponseMetadata.RequestId",
+                    "data_type": "string",
+                    "example_values": [
+                        "400B6B0D1EB90D9B"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ACL.ResponseMetadata.RetryAttempts",
+                    "data_type": "numeric",
+                    "example_values": [
+                        0
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.AccelerateConfiguration.ResponseMetadata.HTTPHeaders.date",
                     "data_type": "string",
                     "example_values": [
                         "Thu, 04 Jan 2018 00:18:58 GMT"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.ACL.ResponseMetadata.HTTPHeaders.content-type",
+                    "data_path": "action_result.data.*.AccelerateConfiguration.ResponseMetadata.HTTPHeaders.server",
                     "data_type": "string",
                     "example_values": [
-                        "application/xml"
+                        "AmazonS3"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.Replication.ReplicationConfiguration.Rules.*.Status",
+                    "data_path": "action_result.data.*.AccelerateConfiguration.ResponseMetadata.HTTPHeaders.transfer-encoding",
+                    "data_type": "string",
+                    "example_values": [
+                        "chunked"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.AccelerateConfiguration.ResponseMetadata.HTTPHeaders.x-amz-id-2",
+                    "data_type": "string",
+                    "example_values": [
+                        "R6sl3E4MCVoudKZtNHj2gtCFkU1Sm12st2U2xyfEBj4tvjqrqXL3uo88EyrcDn5qZLjzu2B1YD0="
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.AccelerateConfiguration.ResponseMetadata.HTTPHeaders.x-amz-request-id",
+                    "data_type": "string",
+                    "example_values": [
+                        "7CC77C9375FA19D7"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.AccelerateConfiguration.ResponseMetadata.HTTPStatusCode",
+                    "data_type": "numeric",
+                    "example_values": [
+                        200
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.AccelerateConfiguration.ResponseMetadata.HostId",
+                    "data_type": "string",
+                    "example_values": [
+                        "R6sl3E4MCVoudKZtNHj2gtCFkU1Sm12st2U2xyfEBj4tvjqrqXL3uo88EyrcDn5qZLjzu2B1YD0="
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.AccelerateConfiguration.ResponseMetadata.RequestId",
+                    "data_type": "string",
+                    "example_values": [
+                        "7CC77C9375FA19D7"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.AccelerateConfiguration.ResponseMetadata.RetryAttempts",
+                    "data_type": "numeric",
+                    "example_values": [
+                        0
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.AccelerateConfiguration.Status",
                     "data_type": "string",
                     "example_values": [
                         "Enabled"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Replication.ReplicationConfiguration.Rules.*.Prefix",
-                    "data_type": "string",
-                    "example_values": [
-                        ""
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Replication.ReplicationConfiguration.Rules.*.Destination.Bucket",
-                    "data_type": "string",
-                    "example_values": [
-                        "arn:aws:s3:::herman-rep-bucket"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Replication.ReplicationConfiguration.Rules.*.ID",
-                    "data_type": "string",
-                    "example_values": [
-                        "ODgzNWQyYTYtODhjNC00NWM4LWJkNWMtMDRjZTUxNDRiM2Iz"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Replication.ReplicationConfiguration.Role",
-                    "data_type": "string",
-                    "example_values": [
-                        "arn:aws:iam::157568067690:role/service-role/s3crr_role_for_herman-test-s3-app_to_herman-rep-bucket"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Replication.ResponseMetadata.HostId",
-                    "data_type": "string",
-                    "example_values": [
-                        "VetpF5OhOs7qbLEZl2C9oby4KoU4HLL/+pmwEnnIphoC0qVCajcgloD5D1KClbAuslA+KnwTvZs="
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Replication.ResponseMetadata.RetryAttempts",
-                    "data_type": "numeric",
-                    "example_values": [
-                        0
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Replication.ResponseMetadata.HTTPStatusCode",
-                    "data_type": "numeric",
-                    "example_values": [
-                        200
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Replication.ResponseMetadata.RequestId",
-                    "data_type": "string",
-                    "example_values": [
-                        "B657CA18ACC804A2"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Replication.ResponseMetadata.HTTPHeaders.date",
-                    "data_type": "string",
-                    "example_values": [
-                        "Thu, 04 Jan 2018 00:18:59 GMT"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Replication.ResponseMetadata.HTTPHeaders.x-amz-id-2",
-                    "data_type": "string",
-                    "example_values": [
-                        "VetpF5OhOs7qbLEZl2C9oby4KoU4HLL/+pmwEnnIphoC0qVCajcgloD5D1KClbAuslA+KnwTvZs="
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Replication.ResponseMetadata.HTTPHeaders.transfer-encoding",
-                    "data_type": "string",
-                    "example_values": [
-                        "chunked"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Replication.ResponseMetadata.HTTPHeaders.x-amz-request-id",
-                    "data_type": "string",
-                    "example_values": [
-                        "B657CA18ACC804A2"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Replication.ResponseMetadata.HTTPHeaders.server",
-                    "data_type": "string",
-                    "example_values": [
-                        "AmazonS3"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.LifecycleConfiguration.Rules.*.Filter.Prefix",
-                    "data_type": "string",
-                    "example_values": [
-                        ""
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.LifecycleConfiguration.Rules.*.Status",
-                    "data_type": "string",
-                    "example_values": [
-                        "Enabled"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.LifecycleConfiguration.Rules.*.NoncurrentVersionExpiration.NoncurrentDays",
-                    "data_type": "numeric",
-                    "example_values": [
-                        365
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.LifecycleConfiguration.Rules.*.ID",
-                    "data_type": "string",
-                    "example_values": [
-                        "Test Rule"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.LifecycleConfiguration.ResponseMetadata.HostId",
-                    "data_type": "string",
-                    "example_values": [
-                        "wEO4b0tAeTUv8XlRM2oHp40WpBQtmjjRcYIoMMY2ebf2EAbl4mW0kd0gsKuxSKqHLEOjNvAUnJI="
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.LifecycleConfiguration.ResponseMetadata.RetryAttempts",
-                    "data_type": "numeric",
-                    "example_values": [
-                        0
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.LifecycleConfiguration.ResponseMetadata.HTTPStatusCode",
-                    "data_type": "numeric",
-                    "example_values": [
-                        200
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.LifecycleConfiguration.ResponseMetadata.RequestId",
-                    "data_type": "string",
-                    "example_values": [
-                        "EFEC0AADFC1BAA99"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.LifecycleConfiguration.ResponseMetadata.HTTPHeaders.date",
-                    "data_type": "string",
-                    "example_values": [
-                        "Thu, 04 Jan 2018 00:18:59 GMT"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.LifecycleConfiguration.ResponseMetadata.HTTPHeaders.x-amz-id-2",
-                    "data_type": "string",
-                    "example_values": [
-                        "wEO4b0tAeTUv8XlRM2oHp40WpBQtmjjRcYIoMMY2ebf2EAbl4mW0kd0gsKuxSKqHLEOjNvAUnJI="
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.LifecycleConfiguration.ResponseMetadata.HTTPHeaders.transfer-encoding",
-                    "data_type": "string",
-                    "example_values": [
-                        "chunked"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.LifecycleConfiguration.ResponseMetadata.HTTPHeaders.x-amz-request-id",
-                    "data_type": "string",
-                    "example_values": [
-                        "EFEC0AADFC1BAA99"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.LifecycleConfiguration.ResponseMetadata.HTTPHeaders.server",
-                    "data_type": "string",
-                    "example_values": [
-                        "AmazonS3"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Location.ResponseMetadata.HostId",
-                    "data_type": "string",
-                    "example_values": [
-                        "efUmLHB5XHT43yX1hqt+0UTnJI4W+exTikxVScJleEw3D8apdpVk1/QLDV4rEVNHbosaGoulve0="
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Location.ResponseMetadata.RetryAttempts",
-                    "data_type": "numeric",
-                    "example_values": [
-                        0
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Location.ResponseMetadata.HTTPStatusCode",
-                    "data_type": "numeric",
-                    "example_values": [
-                        200
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Location.ResponseMetadata.RequestId",
-                    "data_type": "string",
-                    "example_values": [
-                        "974B5B65D55DD88A"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Location.ResponseMetadata.HTTPHeaders.x-amz-id-2",
-                    "data_type": "string",
-                    "example_values": [
-                        "efUmLHB5XHT43yX1hqt+0UTnJI4W+exTikxVScJleEw3D8apdpVk1/QLDV4rEVNHbosaGoulve0="
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Location.ResponseMetadata.HTTPHeaders.server",
-                    "data_type": "string",
-                    "example_values": [
-                        "AmazonS3"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Location.ResponseMetadata.HTTPHeaders.transfer-encoding",
-                    "data_type": "string",
-                    "example_values": [
-                        "chunked"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Location.ResponseMetadata.HTTPHeaders.x-amz-request-id",
-                    "data_type": "string",
-                    "example_values": [
-                        "974B5B65D55DD88A"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Location.ResponseMetadata.HTTPHeaders.date",
-                    "data_type": "string",
-                    "example_values": [
-                        "Thu, 04 Jan 2018 00:18:59 GMT"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Location.ResponseMetadata.HTTPHeaders.content-type",
-                    "data_type": "string",
-                    "example_values": [
-                        "application/xml"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Location.LocationConstraint",
-                    "data_type": "string",
-                    "column_name": "Location",
-                    "column_order": 2,
-                    "example_values": [
-                        "us-west-1"
                     ]
                 },
                 {
@@ -1056,13 +485,6 @@
                     "data_type": "string",
                     "example_values": [
                         "Authorization"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.CORS.CORSRules.*.MaxAgeSeconds",
-                    "data_type": "numeric",
-                    "example_values": [
-                        3000
                     ]
                 },
                 {
@@ -1080,31 +502,10 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.CORS.ResponseMetadata.HostId",
-                    "data_type": "string",
-                    "example_values": [
-                        "PobDFB96nb4du4tci/k/JhWRhQ7u7qlKiPTBz5zYhoXLtYiHZrElMv76dnn84ztEhYuDJfKF0jY="
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.CORS.ResponseMetadata.RetryAttempts",
+                    "data_path": "action_result.data.*.CORS.CORSRules.*.MaxAgeSeconds",
                     "data_type": "numeric",
                     "example_values": [
-                        0
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.CORS.ResponseMetadata.HTTPStatusCode",
-                    "data_type": "numeric",
-                    "example_values": [
-                        200
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.CORS.ResponseMetadata.RequestId",
-                    "data_type": "string",
-                    "example_values": [
-                        "93C96F053B042568"
+                        3000
                     ]
                 },
                 {
@@ -1115,10 +516,10 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.CORS.ResponseMetadata.HTTPHeaders.x-amz-id-2",
+                    "data_path": "action_result.data.*.CORS.ResponseMetadata.HTTPHeaders.server",
                     "data_type": "string",
                     "example_values": [
-                        "PobDFB96nb4du4tci/k/JhWRhQ7u7qlKiPTBz5zYhoXLtYiHZrElMv76dnn84ztEhYuDJfKF0jY="
+                        "AmazonS3"
                     ]
                 },
                 {
@@ -1129,6 +530,13 @@
                     ]
                 },
                 {
+                    "data_path": "action_result.data.*.CORS.ResponseMetadata.HTTPHeaders.x-amz-id-2",
+                    "data_type": "string",
+                    "example_values": [
+                        "PobDFB96nb4du4tci/k/JhWRhQ7u7qlKiPTBz5zYhoXLtYiHZrElMv76dnn84ztEhYuDJfKF0jY="
+                    ]
+                },
+                {
                     "data_path": "action_result.data.*.CORS.ResponseMetadata.HTTPHeaders.x-amz-request-id",
                     "data_type": "string",
                     "example_values": [
@@ -1136,171 +544,355 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.CORS.ResponseMetadata.HTTPHeaders.server",
-                    "data_type": "string",
-                    "example_values": [
-                        "AmazonS3"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Policy.Policy",
-                    "data_type": "string",
-                    "example_values": [
-                        "{\"Version\":\"2012-10-17\",\"Id\":\"S3-Console-Auto-Gen-Policy-1515018655847\",\"Statement\":[{\"Sid\":\"S3PolicyStmt-DO-NOT-MODIFY-1515018655847\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"s3.amazonaws.com\"},\"Action\":\"s3:PutObject\",\"Resource\":\"arn:aws:s3:::herman-test-s3-app/*\",\"Condition\":{\"StringEquals\":{\"aws:SourceAccount\":\"157568067690\",\"s3:x-amz-acl\":\"bucket-owner-full-control\"},\"ArnLike\":{\"aws:SourceArn\":\"arn:aws:s3:::herman-test-s3-app\"}}}]}"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Policy.ResponseMetadata.HostId",
-                    "data_type": "string",
-                    "example_values": [
-                        "eY6Ak2rAXwNc5kYXBuF4hr0ZDcaaE7lg0jLGlIuVvDTkemzt6aaDfIOYVlTmApZrR87xmSnfTMg="
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Policy.ResponseMetadata.RetryAttempts",
-                    "data_type": "numeric",
-                    "example_values": [
-                        0
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Policy.ResponseMetadata.HTTPStatusCode",
+                    "data_path": "action_result.data.*.CORS.ResponseMetadata.HTTPStatusCode",
                     "data_type": "numeric",
                     "example_values": [
                         200
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.Policy.ResponseMetadata.RequestId",
+                    "data_path": "action_result.data.*.CORS.ResponseMetadata.HostId",
                     "data_type": "string",
                     "example_values": [
-                        "224AD418821025F9"
+                        "PobDFB96nb4du4tci/k/JhWRhQ7u7qlKiPTBz5zYhoXLtYiHZrElMv76dnn84ztEhYuDJfKF0jY="
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.Policy.ResponseMetadata.HTTPHeaders.content-length",
+                    "data_path": "action_result.data.*.CORS.ResponseMetadata.RequestId",
                     "data_type": "string",
                     "example_values": [
-                        "437"
+                        "93C96F053B042568"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.Policy.ResponseMetadata.HTTPHeaders.x-amz-id-2",
-                    "data_type": "string",
-                    "example_values": [
-                        "eY6Ak2rAXwNc5kYXBuF4hr0ZDcaaE7lg0jLGlIuVvDTkemzt6aaDfIOYVlTmApZrR87xmSnfTMg="
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Policy.ResponseMetadata.HTTPHeaders.server",
-                    "data_type": "string",
-                    "example_values": [
-                        "AmazonS3"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Policy.ResponseMetadata.HTTPHeaders.x-amz-request-id",
-                    "data_type": "string",
-                    "example_values": [
-                        "224AD418821025F9"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Policy.ResponseMetadata.HTTPHeaders.date",
-                    "data_type": "string",
-                    "example_values": [
-                        "Thu, 04 Jan 2018 00:18:59 GMT"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Policy.ResponseMetadata.HTTPHeaders.content-type",
-                    "data_type": "string",
-                    "example_values": [
-                        "application/json"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.RequestPayment.Payer",
-                    "data_type": "string",
-                    "example_values": [
-                        "BucketOwner"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.RequestPayment.ResponseMetadata.HostId",
-                    "data_type": "string",
-                    "example_values": [
-                        "BJFQ9lc8CXosHwpNY2VFcvrGTp+fVzu+5yANomNE4YKz8LFeVtFO2SZkwCRVrfKrCWqOLuCb4Rs="
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.RequestPayment.ResponseMetadata.RetryAttempts",
+                    "data_path": "action_result.data.*.CORS.ResponseMetadata.RetryAttempts",
                     "data_type": "numeric",
                     "example_values": [
                         0
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.RequestPayment.ResponseMetadata.HTTPStatusCode",
-                    "data_type": "numeric",
-                    "example_values": [
-                        200
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.RequestPayment.ResponseMetadata.RequestId",
-                    "data_type": "string",
-                    "example_values": [
-                        "E46C030279C07CD2"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.RequestPayment.ResponseMetadata.HTTPHeaders.date",
+                    "data_path": "action_result.data.*.Encryption.ResponseMetadata.HTTPHeaders.date",
                     "data_type": "string",
                     "example_values": [
                         "Thu, 04 Jan 2018 00:18:59 GMT"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.RequestPayment.ResponseMetadata.HTTPHeaders.x-amz-id-2",
+                    "data_path": "action_result.data.*.Encryption.ResponseMetadata.HTTPHeaders.server",
                     "data_type": "string",
                     "example_values": [
-                        "BJFQ9lc8CXosHwpNY2VFcvrGTp+fVzu+5yANomNE4YKz8LFeVtFO2SZkwCRVrfKrCWqOLuCb4Rs="
+                        "AmazonS3"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.RequestPayment.ResponseMetadata.HTTPHeaders.transfer-encoding",
+                    "data_path": "action_result.data.*.Encryption.ResponseMetadata.HTTPHeaders.transfer-encoding",
                     "data_type": "string",
                     "example_values": [
                         "chunked"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.RequestPayment.ResponseMetadata.HTTPHeaders.x-amz-request-id",
+                    "data_path": "action_result.data.*.Encryption.ResponseMetadata.HTTPHeaders.x-amz-id-2",
                     "data_type": "string",
                     "example_values": [
-                        "E46C030279C07CD2"
+                        "88lWjF7Nc6u9SZKgAnm8/XzRl/t+Pp5huR9dMDJPt+X5q8XWG+cuyi+LUNoLeinJ3ZFRO1+9jwE="
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.RequestPayment.ResponseMetadata.HTTPHeaders.server",
+                    "data_path": "action_result.data.*.Encryption.ResponseMetadata.HTTPHeaders.x-amz-request-id",
+                    "data_type": "string",
+                    "example_values": [
+                        "E2F41A6CA939A2EA"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Encryption.ResponseMetadata.HTTPStatusCode",
+                    "data_type": "numeric",
+                    "example_values": [
+                        200
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Encryption.ResponseMetadata.HostId",
+                    "data_type": "string",
+                    "example_values": [
+                        "88lWjF7Nc6u9SZKgAnm8/XzRl/t+Pp5huR9dMDJPt+X5q8XWG+cuyi+LUNoLeinJ3ZFRO1+9jwE="
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Encryption.ResponseMetadata.RequestId",
+                    "data_type": "string",
+                    "example_values": [
+                        "E2F41A6CA939A2EA"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Encryption.ResponseMetadata.RetryAttempts",
+                    "data_type": "numeric",
+                    "example_values": [
+                        0
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Encryption.ServerSideEncryptionConfiguration.Rules.*.ApplyServerSideEncryptionByDefault.SSEAlgorithm",
+                    "data_type": "string",
+                    "example_values": [
+                        "AES256"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.LifecycleConfiguration.ResponseMetadata.HTTPHeaders.date",
+                    "data_type": "string",
+                    "example_values": [
+                        "Thu, 04 Jan 2018 00:18:59 GMT"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.LifecycleConfiguration.ResponseMetadata.HTTPHeaders.server",
                     "data_type": "string",
                     "example_values": [
                         "AmazonS3"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.NotificationConfiguration.LambdaFunctionConfigurations.*.LambdaFunctionArn",
+                    "data_path": "action_result.data.*.LifecycleConfiguration.ResponseMetadata.HTTPHeaders.transfer-encoding",
                     "data_type": "string",
                     "example_values": [
-                        "arn:aws:lambda:us-west-1:157568067690:function:TestFunction"
+                        "chunked"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.NotificationConfiguration.LambdaFunctionConfigurations.*.Id",
+                    "data_path": "action_result.data.*.LifecycleConfiguration.ResponseMetadata.HTTPHeaders.x-amz-id-2",
                     "data_type": "string",
                     "example_values": [
-                        "SendToLambda"
+                        "wEO4b0tAeTUv8XlRM2oHp40WpBQtmjjRcYIoMMY2ebf2EAbl4mW0kd0gsKuxSKqHLEOjNvAUnJI="
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.LifecycleConfiguration.ResponseMetadata.HTTPHeaders.x-amz-request-id",
+                    "data_type": "string",
+                    "example_values": [
+                        "EFEC0AADFC1BAA99"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.LifecycleConfiguration.ResponseMetadata.HTTPStatusCode",
+                    "data_type": "numeric",
+                    "example_values": [
+                        200
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.LifecycleConfiguration.ResponseMetadata.HostId",
+                    "data_type": "string",
+                    "example_values": [
+                        "wEO4b0tAeTUv8XlRM2oHp40WpBQtmjjRcYIoMMY2ebf2EAbl4mW0kd0gsKuxSKqHLEOjNvAUnJI="
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.LifecycleConfiguration.ResponseMetadata.RequestId",
+                    "data_type": "string",
+                    "example_values": [
+                        "EFEC0AADFC1BAA99"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.LifecycleConfiguration.ResponseMetadata.RetryAttempts",
+                    "data_type": "numeric",
+                    "example_values": [
+                        0
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.LifecycleConfiguration.Rules.*.Filter.Prefix",
+                    "data_type": "string",
+                    "example_values": [
+                        ""
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.LifecycleConfiguration.Rules.*.ID",
+                    "data_type": "string",
+                    "example_values": [
+                        "Test Rule"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.LifecycleConfiguration.Rules.*.NoncurrentVersionExpiration.NoncurrentDays",
+                    "data_type": "numeric",
+                    "example_values": [
+                        365
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.LifecycleConfiguration.Rules.*.Status",
+                    "data_type": "string",
+                    "example_values": [
+                        "Enabled"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Location.LocationConstraint",
+                    "data_type": "string",
+                    "column_name": "Location",
+                    "column_order": 2,
+                    "example_values": [
+                        "us-west-1"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Location.ResponseMetadata.HTTPHeaders.content-type",
+                    "data_type": "string",
+                    "example_values": [
+                        "application/xml"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Location.ResponseMetadata.HTTPHeaders.date",
+                    "data_type": "string",
+                    "example_values": [
+                        "Thu, 04 Jan 2018 00:18:59 GMT"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Location.ResponseMetadata.HTTPHeaders.server",
+                    "data_type": "string",
+                    "example_values": [
+                        "AmazonS3"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Location.ResponseMetadata.HTTPHeaders.transfer-encoding",
+                    "data_type": "string",
+                    "example_values": [
+                        "chunked"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Location.ResponseMetadata.HTTPHeaders.x-amz-id-2",
+                    "data_type": "string",
+                    "example_values": [
+                        "efUmLHB5XHT43yX1hqt+0UTnJI4W+exTikxVScJleEw3D8apdpVk1/QLDV4rEVNHbosaGoulve0="
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Location.ResponseMetadata.HTTPHeaders.x-amz-request-id",
+                    "data_type": "string",
+                    "example_values": [
+                        "974B5B65D55DD88A"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Location.ResponseMetadata.HTTPStatusCode",
+                    "data_type": "numeric",
+                    "example_values": [
+                        200
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Location.ResponseMetadata.HostId",
+                    "data_type": "string",
+                    "example_values": [
+                        "efUmLHB5XHT43yX1hqt+0UTnJI4W+exTikxVScJleEw3D8apdpVk1/QLDV4rEVNHbosaGoulve0="
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Location.ResponseMetadata.RequestId",
+                    "data_type": "string",
+                    "example_values": [
+                        "974B5B65D55DD88A"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Location.ResponseMetadata.RetryAttempts",
+                    "data_type": "numeric",
+                    "example_values": [
+                        0
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Logging.LoggingEnabled.TargetBucket",
+                    "data_type": "string",
+                    "example_values": [
+                        "herman-test-s3-app"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Logging.LoggingEnabled.TargetPrefix",
+                    "data_type": "string",
+                    "example_values": [
+                        ""
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Logging.ResponseMetadata.HTTPHeaders.content-type",
+                    "data_type": "string",
+                    "example_values": [
+                        "application/xml"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Logging.ResponseMetadata.HTTPHeaders.date",
+                    "data_type": "string",
+                    "example_values": [
+                        "Thu, 04 Jan 2018 00:18:59 GMT"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Logging.ResponseMetadata.HTTPHeaders.server",
+                    "data_type": "string",
+                    "example_values": [
+                        "AmazonS3"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Logging.ResponseMetadata.HTTPHeaders.transfer-encoding",
+                    "data_type": "string",
+                    "example_values": [
+                        "chunked"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Logging.ResponseMetadata.HTTPHeaders.x-amz-id-2",
+                    "data_type": "string",
+                    "example_values": [
+                        "SGyUaKSZu5Hdjlv2ZnFK93ylMkS7kfMxiZ+ifIe0dmGHfbRq0qsDLepIRJ90J9gpjTP5VejExcE="
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Logging.ResponseMetadata.HTTPHeaders.x-amz-request-id",
+                    "data_type": "string",
+                    "example_values": [
+                        "F175D7AA0B2FADEF"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Logging.ResponseMetadata.HTTPStatusCode",
+                    "data_type": "numeric",
+                    "example_values": [
+                        200
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Logging.ResponseMetadata.HostId",
+                    "data_type": "string",
+                    "example_values": [
+                        "SGyUaKSZu5Hdjlv2ZnFK93ylMkS7kfMxiZ+ifIe0dmGHfbRq0qsDLepIRJ90J9gpjTP5VejExcE="
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Logging.ResponseMetadata.RequestId",
+                    "data_type": "string",
+                    "example_values": [
+                        "F175D7AA0B2FADEF"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Logging.ResponseMetadata.RetryAttempts",
+                    "data_type": "numeric",
+                    "example_values": [
+                        0
                     ]
                 },
                 {
@@ -1311,31 +903,17 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.NotificationConfiguration.ResponseMetadata.HostId",
+                    "data_path": "action_result.data.*.NotificationConfiguration.LambdaFunctionConfigurations.*.Id",
                     "data_type": "string",
                     "example_values": [
-                        "2+pdHq+fCGQoOpCxJQm8dEKEezWKW5cf9sKxGMZRfmuGkHY/D2B4WhP+Wh+V/nqlzgTUoLDtGgE="
+                        "SendToLambda"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.NotificationConfiguration.ResponseMetadata.RetryAttempts",
-                    "data_type": "numeric",
-                    "example_values": [
-                        0
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.NotificationConfiguration.ResponseMetadata.HTTPStatusCode",
-                    "data_type": "numeric",
-                    "example_values": [
-                        200
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.NotificationConfiguration.ResponseMetadata.RequestId",
+                    "data_path": "action_result.data.*.NotificationConfiguration.LambdaFunctionConfigurations.*.LambdaFunctionArn",
                     "data_type": "string",
                     "example_values": [
-                        "05FC1183F2D73562"
+                        "arn:aws:lambda:us-west-1:157568067690:function:TestFunction"
                     ]
                 },
                 {
@@ -1346,10 +924,10 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.NotificationConfiguration.ResponseMetadata.HTTPHeaders.x-amz-id-2",
+                    "data_path": "action_result.data.*.NotificationConfiguration.ResponseMetadata.HTTPHeaders.server",
                     "data_type": "string",
                     "example_values": [
-                        "2+pdHq+fCGQoOpCxJQm8dEKEezWKW5cf9sKxGMZRfmuGkHY/D2B4WhP+Wh+V/nqlzgTUoLDtGgE="
+                        "AmazonS3"
                     ]
                 },
                 {
@@ -1360,6 +938,13 @@
                     ]
                 },
                 {
+                    "data_path": "action_result.data.*.NotificationConfiguration.ResponseMetadata.HTTPHeaders.x-amz-id-2",
+                    "data_type": "string",
+                    "example_values": [
+                        "2+pdHq+fCGQoOpCxJQm8dEKEezWKW5cf9sKxGMZRfmuGkHY/D2B4WhP+Wh+V/nqlzgTUoLDtGgE="
+                    ]
+                },
+                {
                     "data_path": "action_result.data.*.NotificationConfiguration.ResponseMetadata.HTTPHeaders.x-amz-request-id",
                     "data_type": "string",
                     "example_values": [
@@ -1367,10 +952,416 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.NotificationConfiguration.ResponseMetadata.HTTPHeaders.server",
+                    "data_path": "action_result.data.*.NotificationConfiguration.ResponseMetadata.HTTPStatusCode",
+                    "data_type": "numeric",
+                    "example_values": [
+                        200
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.NotificationConfiguration.ResponseMetadata.HostId",
+                    "data_type": "string",
+                    "example_values": [
+                        "2+pdHq+fCGQoOpCxJQm8dEKEezWKW5cf9sKxGMZRfmuGkHY/D2B4WhP+Wh+V/nqlzgTUoLDtGgE="
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.NotificationConfiguration.ResponseMetadata.RequestId",
+                    "data_type": "string",
+                    "example_values": [
+                        "05FC1183F2D73562"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.NotificationConfiguration.ResponseMetadata.RetryAttempts",
+                    "data_type": "numeric",
+                    "example_values": [
+                        0
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Policy.Policy",
+                    "data_type": "string",
+                    "example_values": [
+                        "{\"Version\":\"2012-10-17\",\"Id\":\"S3-Console-Auto-Gen-Policy-1515018655847\",\"Statement\":[{\"Sid\":\"S3PolicyStmt-DO-NOT-MODIFY-1515018655847\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"s3.amazonaws.com\"},\"Action\":\"s3:PutObject\",\"Resource\":\"arn:aws:s3:::herman-test-s3-app/*\",\"Condition\":{\"StringEquals\":{\"aws:SourceAccount\":\"157568067690\",\"s3:x-amz-acl\":\"bucket-owner-full-control\"},\"ArnLike\":{\"aws:SourceArn\":\"arn:aws:s3:::herman-test-s3-app\"}}}]}"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Policy.ResponseMetadata.HTTPHeaders.content-length",
+                    "data_type": "string",
+                    "example_values": [
+                        "437"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Policy.ResponseMetadata.HTTPHeaders.content-type",
+                    "data_type": "string",
+                    "example_values": [
+                        "application/json"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Policy.ResponseMetadata.HTTPHeaders.date",
+                    "data_type": "string",
+                    "example_values": [
+                        "Thu, 04 Jan 2018 00:18:59 GMT"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Policy.ResponseMetadata.HTTPHeaders.server",
                     "data_type": "string",
                     "example_values": [
                         "AmazonS3"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Policy.ResponseMetadata.HTTPHeaders.x-amz-id-2",
+                    "data_type": "string",
+                    "example_values": [
+                        "eY6Ak2rAXwNc5kYXBuF4hr0ZDcaaE7lg0jLGlIuVvDTkemzt6aaDfIOYVlTmApZrR87xmSnfTMg="
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Policy.ResponseMetadata.HTTPHeaders.x-amz-request-id",
+                    "data_type": "string",
+                    "example_values": [
+                        "224AD418821025F9"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Policy.ResponseMetadata.HTTPStatusCode",
+                    "data_type": "numeric",
+                    "example_values": [
+                        200
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Policy.ResponseMetadata.HostId",
+                    "data_type": "string",
+                    "example_values": [
+                        "eY6Ak2rAXwNc5kYXBuF4hr0ZDcaaE7lg0jLGlIuVvDTkemzt6aaDfIOYVlTmApZrR87xmSnfTMg="
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Policy.ResponseMetadata.RequestId",
+                    "data_type": "string",
+                    "example_values": [
+                        "224AD418821025F9"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Policy.ResponseMetadata.RetryAttempts",
+                    "data_type": "numeric",
+                    "example_values": [
+                        0
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Replication.ReplicationConfiguration.Role",
+                    "data_type": "string",
+                    "example_values": [
+                        "arn:aws:iam::157568067690:role/service-role/s3crr_role_for_herman-test-s3-app_to_herman-rep-bucket"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Replication.ReplicationConfiguration.Rules.*.Destination.Bucket",
+                    "data_type": "string",
+                    "example_values": [
+                        "arn:aws:s3:::herman-rep-bucket"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Replication.ReplicationConfiguration.Rules.*.ID",
+                    "data_type": "string",
+                    "example_values": [
+                        "ODgzNWQyYTYtODhjNC00NWM4LWJkNWMtMDRjZTUxNDRiM2Iz"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Replication.ReplicationConfiguration.Rules.*.Prefix",
+                    "data_type": "string",
+                    "example_values": [
+                        ""
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Replication.ReplicationConfiguration.Rules.*.Status",
+                    "data_type": "string",
+                    "example_values": [
+                        "Enabled"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Replication.ResponseMetadata.HTTPHeaders.date",
+                    "data_type": "string",
+                    "example_values": [
+                        "Thu, 04 Jan 2018 00:18:59 GMT"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Replication.ResponseMetadata.HTTPHeaders.server",
+                    "data_type": "string",
+                    "example_values": [
+                        "AmazonS3"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Replication.ResponseMetadata.HTTPHeaders.transfer-encoding",
+                    "data_type": "string",
+                    "example_values": [
+                        "chunked"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Replication.ResponseMetadata.HTTPHeaders.x-amz-id-2",
+                    "data_type": "string",
+                    "example_values": [
+                        "VetpF5OhOs7qbLEZl2C9oby4KoU4HLL/+pmwEnnIphoC0qVCajcgloD5D1KClbAuslA+KnwTvZs="
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Replication.ResponseMetadata.HTTPHeaders.x-amz-request-id",
+                    "data_type": "string",
+                    "example_values": [
+                        "B657CA18ACC804A2"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Replication.ResponseMetadata.HTTPStatusCode",
+                    "data_type": "numeric",
+                    "example_values": [
+                        200
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Replication.ResponseMetadata.HostId",
+                    "data_type": "string",
+                    "example_values": [
+                        "VetpF5OhOs7qbLEZl2C9oby4KoU4HLL/+pmwEnnIphoC0qVCajcgloD5D1KClbAuslA+KnwTvZs="
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Replication.ResponseMetadata.RequestId",
+                    "data_type": "string",
+                    "example_values": [
+                        "B657CA18ACC804A2"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Replication.ResponseMetadata.RetryAttempts",
+                    "data_type": "numeric",
+                    "example_values": [
+                        0
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.RequestPayment.Payer",
+                    "data_type": "string",
+                    "example_values": [
+                        "BucketOwner"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.RequestPayment.ResponseMetadata.HTTPHeaders.date",
+                    "data_type": "string",
+                    "example_values": [
+                        "Thu, 04 Jan 2018 00:18:59 GMT"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.RequestPayment.ResponseMetadata.HTTPHeaders.server",
+                    "data_type": "string",
+                    "example_values": [
+                        "AmazonS3"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.RequestPayment.ResponseMetadata.HTTPHeaders.transfer-encoding",
+                    "data_type": "string",
+                    "example_values": [
+                        "chunked"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.RequestPayment.ResponseMetadata.HTTPHeaders.x-amz-id-2",
+                    "data_type": "string",
+                    "example_values": [
+                        "BJFQ9lc8CXosHwpNY2VFcvrGTp+fVzu+5yANomNE4YKz8LFeVtFO2SZkwCRVrfKrCWqOLuCb4Rs="
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.RequestPayment.ResponseMetadata.HTTPHeaders.x-amz-request-id",
+                    "data_type": "string",
+                    "example_values": [
+                        "E46C030279C07CD2"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.RequestPayment.ResponseMetadata.HTTPStatusCode",
+                    "data_type": "numeric",
+                    "example_values": [
+                        200
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.RequestPayment.ResponseMetadata.HostId",
+                    "data_type": "string",
+                    "example_values": [
+                        "BJFQ9lc8CXosHwpNY2VFcvrGTp+fVzu+5yANomNE4YKz8LFeVtFO2SZkwCRVrfKrCWqOLuCb4Rs="
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.RequestPayment.ResponseMetadata.RequestId",
+                    "data_type": "string",
+                    "example_values": [
+                        "E46C030279C07CD2"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.RequestPayment.ResponseMetadata.RetryAttempts",
+                    "data_type": "numeric",
+                    "example_values": [
+                        0
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Tagging.ResponseMetadata.HTTPHeaders.date",
+                    "data_type": "string",
+                    "example_values": [
+                        "Thu, 04 Jan 2018 00:18:59 GMT"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Tagging.ResponseMetadata.HTTPHeaders.server",
+                    "data_type": "string",
+                    "example_values": [
+                        "AmazonS3"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Tagging.ResponseMetadata.HTTPHeaders.transfer-encoding",
+                    "data_type": "string",
+                    "example_values": [
+                        "chunked"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Tagging.ResponseMetadata.HTTPHeaders.x-amz-id-2",
+                    "data_type": "string",
+                    "example_values": [
+                        "wdu+mB75tYS8r9qaZvI+BD3OQixeOliVvs41hF/s8hUEu9MRiZmNKk7s/Gfpw94C2i7hMiS5CPM="
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Tagging.ResponseMetadata.HTTPHeaders.x-amz-request-id",
+                    "data_type": "string",
+                    "example_values": [
+                        "AF6A1E6B709EA88A"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Tagging.ResponseMetadata.HTTPStatusCode",
+                    "data_type": "numeric",
+                    "example_values": [
+                        200
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Tagging.ResponseMetadata.HostId",
+                    "data_type": "string",
+                    "example_values": [
+                        "wdu+mB75tYS8r9qaZvI+BD3OQixeOliVvs41hF/s8hUEu9MRiZmNKk7s/Gfpw94C2i7hMiS5CPM="
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Tagging.ResponseMetadata.RequestId",
+                    "data_type": "string",
+                    "example_values": [
+                        "AF6A1E6B709EA88A"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Tagging.ResponseMetadata.RetryAttempts",
+                    "data_type": "numeric",
+                    "example_values": [
+                        0
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Tagging.TagSet.*.Key",
+                    "data_type": "string",
+                    "example_values": [
+                        "A Tag"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Tagging.TagSet.*.Value",
+                    "data_type": "string",
+                    "example_values": [
+                        "Just to tag"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Versioning.ResponseMetadata.HTTPHeaders.date",
+                    "data_type": "string",
+                    "example_values": [
+                        "Thu, 04 Jan 2018 00:18:59 GMT"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Versioning.ResponseMetadata.HTTPHeaders.server",
+                    "data_type": "string",
+                    "example_values": [
+                        "AmazonS3"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Versioning.ResponseMetadata.HTTPHeaders.transfer-encoding",
+                    "data_type": "string",
+                    "example_values": [
+                        "chunked"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Versioning.ResponseMetadata.HTTPHeaders.x-amz-id-2",
+                    "data_type": "string",
+                    "example_values": [
+                        "3D4B9A81VlnFLQWB1mb7FgGXI8pBpI9ZeXOkky1KwD9K56YthaEHB57rzQMsOLgauxIpdDsgEbE="
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Versioning.ResponseMetadata.HTTPHeaders.x-amz-request-id",
+                    "data_type": "string",
+                    "example_values": [
+                        "7EBE0E5D70258A40"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Versioning.ResponseMetadata.HTTPStatusCode",
+                    "data_type": "numeric",
+                    "example_values": [
+                        200
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Versioning.ResponseMetadata.HostId",
+                    "data_type": "string",
+                    "example_values": [
+                        "3D4B9A81VlnFLQWB1mb7FgGXI8pBpI9ZeXOkky1KwD9K56YthaEHB57rzQMsOLgauxIpdDsgEbE="
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Versioning.ResponseMetadata.RequestId",
+                    "data_type": "string",
+                    "example_values": [
+                        "7EBE0E5D70258A40"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Versioning.ResponseMetadata.RetryAttempts",
+                    "data_type": "numeric",
+                    "example_values": [
+                        0
                     ]
                 },
                 {
@@ -1383,127 +1374,99 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.Versioning.ResponseMetadata.HostId",
+                    "data_path": "action_result.data.*.Website.ErrorDocument.Key",
                     "data_type": "string",
                     "example_values": [
-                        "3D4B9A81VlnFLQWB1mb7FgGXI8pBpI9ZeXOkky1KwD9K56YthaEHB57rzQMsOLgauxIpdDsgEbE="
+                        "error.html"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.Versioning.ResponseMetadata.RetryAttempts",
-                    "data_type": "numeric",
-                    "example_values": [
-                        0
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Versioning.ResponseMetadata.HTTPStatusCode",
-                    "data_type": "numeric",
-                    "example_values": [
-                        200
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Versioning.ResponseMetadata.RequestId",
+                    "data_path": "action_result.data.*.Website.IndexDocument.Suffix",
                     "data_type": "string",
                     "example_values": [
-                        "7EBE0E5D70258A40"
+                        "host.html"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.Versioning.ResponseMetadata.HTTPHeaders.date",
+                    "data_path": "action_result.data.*.Website.ResponseMetadata.HTTPHeaders.content-type",
+                    "data_type": "string",
+                    "example_values": [
+                        "application/xml"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Website.ResponseMetadata.HTTPHeaders.date",
                     "data_type": "string",
                     "example_values": [
                         "Thu, 04 Jan 2018 00:18:59 GMT"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.Versioning.ResponseMetadata.HTTPHeaders.x-amz-id-2",
-                    "data_type": "string",
-                    "example_values": [
-                        "3D4B9A81VlnFLQWB1mb7FgGXI8pBpI9ZeXOkky1KwD9K56YthaEHB57rzQMsOLgauxIpdDsgEbE="
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Versioning.ResponseMetadata.HTTPHeaders.transfer-encoding",
-                    "data_type": "string",
-                    "example_values": [
-                        "chunked"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Versioning.ResponseMetadata.HTTPHeaders.x-amz-request-id",
-                    "data_type": "string",
-                    "example_values": [
-                        "7EBE0E5D70258A40"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Versioning.ResponseMetadata.HTTPHeaders.server",
+                    "data_path": "action_result.data.*.Website.ResponseMetadata.HTTPHeaders.server",
                     "data_type": "string",
                     "example_values": [
                         "AmazonS3"
                     ]
                 },
                 {
-                    "data_path": "action_result.message",
+                    "data_path": "action_result.data.*.Website.ResponseMetadata.HTTPHeaders.transfer-encoding",
                     "data_type": "string",
                     "example_values": [
-                        "Successfully retrieved bucket info"
+                        "chunked"
                     ]
                 },
                 {
-                    "data_path": "action_result.parameter.bucket",
+                    "data_path": "action_result.data.*.Website.ResponseMetadata.HTTPHeaders.x-amz-id-2",
                     "data_type": "string",
-                    "column_name": "Name",
-                    "column_order": 0,
-                    "contains": [
-                        "aws s3 bucket"
-                    ],
                     "example_values": [
-                        "herman-test-s3-app"
+                        "73eXrr6SyRHY4R0ED3bwG7yve1R3Oh+mYOqryPrRaoBBqyERwGev67o0S2rPJeHE5wNpi76vixg="
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Website.ResponseMetadata.HTTPHeaders.x-amz-request-id",
+                    "data_type": "string",
+                    "example_values": [
+                        "DC1EDDAEAA519ADD"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Website.ResponseMetadata.HTTPStatusCode",
+                    "data_type": "numeric",
+                    "example_values": [
+                        200
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Website.ResponseMetadata.HostId",
+                    "data_type": "string",
+                    "example_values": [
+                        "73eXrr6SyRHY4R0ED3bwG7yve1R3Oh+mYOqryPrRaoBBqyERwGev67o0S2rPJeHE5wNpi76vixg="
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Website.ResponseMetadata.RequestId",
+                    "data_type": "string",
+                    "example_values": [
+                        "DC1EDDAEAA519ADD"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Website.ResponseMetadata.RetryAttempts",
+                    "data_type": "numeric",
+                    "example_values": [
+                        0
+                    ]
+                },
+                {
+                    "data_path": "action_result.summary.accelerate_configuration_found",
+                    "data_type": "boolean",
+                    "example_values": [
+                        true,
+                        false
                     ]
                 },
                 {
                     "data_path": "action_result.summary.acl_found",
-                    "data_type": "boolean",
-                    "example_values": [
-                        true,
-                        false
-                    ]
-                },
-                {
-                    "data_path": "action_result.summary.website_found",
-                    "data_type": "boolean",
-                    "column_name": "Website Enabled",
-                    "column_order": 9,
-                    "example_values": [
-                        true,
-                        false
-                    ]
-                },
-                {
-                    "data_path": "action_result.summary.logging_found",
-                    "data_type": "boolean",
-                    "column_name": "Logging Enabled",
-                    "column_order": 8,
-                    "example_values": [
-                        true,
-                        false
-                    ]
-                },
-                {
-                    "data_path": "action_result.summary.lifecycle_configuration_found",
-                    "data_type": "boolean",
-                    "column_name": "Lifecycle Enabled",
-                    "column_order": 9,
-                    "example_values": [
-                        true,
-                        false
-                    ]
-                },
-                {
-                    "data_path": "action_result.summary.tagging_found",
                     "data_type": "boolean",
                     "example_values": [
                         true,
@@ -1521,8 +1484,38 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.summary.versioning_found",
+                    "data_path": "action_result.summary.encryption_found",
                     "data_type": "boolean",
+                    "column_name": "Encryption Enabled",
+                    "column_order": 3,
+                    "example_values": [
+                        true,
+                        false
+                    ]
+                },
+                {
+                    "data_path": "action_result.summary.lifecycle_configuration_found",
+                    "data_type": "boolean",
+                    "column_name": "Lifecycle Enabled",
+                    "column_order": 9,
+                    "example_values": [
+                        true,
+                        false
+                    ]
+                },
+                {
+                    "data_path": "action_result.summary.location_found",
+                    "data_type": "boolean",
+                    "example_values": [
+                        true,
+                        false
+                    ]
+                },
+                {
+                    "data_path": "action_result.summary.logging_found",
+                    "data_type": "boolean",
+                    "column_name": "Logging Enabled",
+                    "column_order": 8,
                     "example_values": [
                         true,
                         false
@@ -1539,18 +1532,18 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.summary.replication_found",
+                    "data_path": "action_result.summary.policy_found",
                     "data_type": "boolean",
-                    "column_name": "Replication Enabled",
-                    "column_order": 4,
                     "example_values": [
                         true,
                         false
                     ]
                 },
                 {
-                    "data_path": "action_result.summary.policy_found",
+                    "data_path": "action_result.summary.replication_found",
                     "data_type": "boolean",
+                    "column_name": "Replication Enabled",
+                    "column_order": 4,
                     "example_values": [
                         true,
                         false
@@ -1565,7 +1558,7 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.summary.location_found",
+                    "data_path": "action_result.summary.tagging_found",
                     "data_type": "boolean",
                     "example_values": [
                         true,
@@ -1573,21 +1566,28 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.summary.encryption_found",
+                    "data_path": "action_result.summary.versioning_found",
                     "data_type": "boolean",
-                    "column_name": "Encryption Enabled",
-                    "column_order": 3,
                     "example_values": [
                         true,
                         false
                     ]
                 },
                 {
-                    "data_path": "action_result.summary.accelerate_configuration_found",
+                    "data_path": "action_result.summary.website_found",
                     "data_type": "boolean",
+                    "column_name": "Website Enabled",
+                    "column_order": 9,
                     "example_values": [
                         true,
                         false
+                    ]
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string",
+                    "example_values": [
+                        "Successfully retrieved bucket info"
                     ]
                 },
                 {
@@ -1614,7 +1614,7 @@
             "action": "create bucket",
             "identifier": "create_bucket",
             "description": "Create a bucket",
-            "verbose": "The bucket will be created in the region specified in the asset configuration.",
+            "verbose": "The bucket will be created in the region specified in the asset configuration. The bucket name provided has to be unique and it should not be already used in the AWS S3 globally.",
             "type": "generic",
             "read_only": false,
             "parameters": {
@@ -1637,6 +1637,13 @@
                     ]
                 },
                 {
+                    "data_path": "action_result.parameter.bucket",
+                    "data_type": "string",
+                    "example_values": [
+                        "automated-bucket"
+                    ]
+                },
+                {
                     "data_path": "action_result.data.*.Location",
                     "data_type": "string",
                     "example_values": [
@@ -1647,34 +1654,6 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.ResponseMetadata.HostId",
-                    "data_type": "string",
-                    "example_values": [
-                        "pi+Esw7Nc2VRmCeolShRpzN4kq2fjY4inqIXBTZ1ziI955Nvluh9K2oxN9z+dpmEotWh24K8Pc0="
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ResponseMetadata.RetryAttempts",
-                    "data_type": "numeric",
-                    "example_values": [
-                        0
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ResponseMetadata.HTTPStatusCode",
-                    "data_type": "numeric",
-                    "example_values": [
-                        200
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ResponseMetadata.RequestId",
-                    "data_type": "string",
-                    "example_values": [
-                        "6F9DC34BE8E46AA5"
-                    ]
-                },
-                {
                     "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.content-length",
                     "data_type": "string",
                     "example_values": [
@@ -1682,24 +1661,10 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.x-amz-id-2",
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.date",
                     "data_type": "string",
                     "example_values": [
-                        "pi+Esw7Nc2VRmCeolShRpzN4kq2fjY4inqIXBTZ1ziI955Nvluh9K2oxN9z+dpmEotWh24K8Pc0="
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.server",
-                    "data_type": "string",
-                    "example_values": [
-                        "AmazonS3"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.x-amz-request-id",
-                    "data_type": "string",
-                    "example_values": [
-                        "6F9DC34BE8E46AA5"
+                        "Thu, 04 Jan 2018 01:14:36 GMT"
                     ]
                 },
                 {
@@ -1713,11 +1678,57 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.date",
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.server",
                     "data_type": "string",
                     "example_values": [
-                        "Thu, 04 Jan 2018 01:14:36 GMT"
+                        "AmazonS3"
                     ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.x-amz-id-2",
+                    "data_type": "string",
+                    "example_values": [
+                        "pi+Esw7Nc2VRmCeolShRpzN4kq2fjY4inqIXBTZ1ziI955Nvluh9K2oxN9z+dpmEotWh24K8Pc0="
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.x-amz-request-id",
+                    "data_type": "string",
+                    "example_values": [
+                        "6F9DC34BE8E46AA5"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPStatusCode",
+                    "data_type": "numeric",
+                    "example_values": [
+                        200
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.HostId",
+                    "data_type": "string",
+                    "example_values": [
+                        "pi+Esw7Nc2VRmCeolShRpzN4kq2fjY4inqIXBTZ1ziI955Nvluh9K2oxN9z+dpmEotWh24K8Pc0="
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.RequestId",
+                    "data_type": "string",
+                    "example_values": [
+                        "6F9DC34BE8E46AA5"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.RetryAttempts",
+                    "data_type": "numeric",
+                    "example_values": [
+                        0
+                    ]
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
                 },
                 {
                     "data_path": "action_result.message",
@@ -1727,17 +1738,6 @@
                     "example_values": [
                         "Successfully retrieved bucket info"
                     ]
-                },
-                {
-                    "data_path": "action_result.parameter.bucket",
-                    "data_type": "string",
-                    "example_values": [
-                        "automated-bucket"
-                    ]
-                },
-                {
-                    "data_path": "action_result.summary",
-                    "data_type": "string"
                 },
                 {
                     "data_path": "summary.total_objects",
@@ -1763,7 +1763,7 @@
             "action": "update bucket",
             "identifier": "update_bucket",
             "description": "Update a bucket",
-            "verbose": "The <b>tags</b> parameter takes a JSON dictionary containing the tags that will be given to the specified <b>bucket</b>. The dictionary should have the format:<br><br><pre>{<br>    &quot;tag1_key&quot;: &quot;tag1_value&quot;,<br>    &quot;tag2_key&quot;: &quot;tag2_value&quot;<br>    ...<br>}</pre><br>The <b>grants</b> parameter takes a dictionary where each key is a canonical user ID and each value is one of the following permissions:<ul><li>FULL_CONTROL</li><li>WRITE</li><li>WRITE_ACP</li><li>READ</li><li>READ_ACP</li></ul>An example JSON object would be:<br><br><pre>{<br>    &quot;111a11a11aa1111111aa11aaa1111a111a1aa111111a1a1a11aa11aa11a11aa1&quot;: &quot;FULL_CONTROL&quot;,<br>    &quot;222b22b22bb2222222bb22bbb2222b222b2bb222222b2b2b22bb22bb22b22bb2&quot;: &quot;READ&quot;<br>}</pre><br>The <b>owner</b> parameter takes the canonical ID of an AWS user. This parameter must be provided if the <b>grants</b> parameter is included (even if there is no desire to change the owner; in this case, just provide the ID of the current owner of the bucket).<br><br>WARNING: Calling this action will replace the buckets's current tags and permissions with the tags and permission supplied to this action. To avoid overwriting the buckets's present data, first run <b>get bucket</b> to get the current tag and permission dictionaries, then add new tags and grants to those dictionaries before calling this action.",
+            "verbose": "The <b>tags</b> parameter takes a JSON dictionary containing the tags that will be given to the specified <b>bucket</b>. The dictionary should have the format:<br><br><pre>{<br>    &quot;tag1_key&quot;: &quot;tag1_value&quot;,<br>    &quot;tag2_key&quot;: &quot;tag2_value&quot;<br>    ...<br>}</pre><br>The <b>grants</b> parameter takes a dictionary where each key is a canonical user ID and each value is one of the following permissions:<ul><li>FULL_CONTROL</li><li>WRITE</li><li>WRITE_ACP</li><li>READ</li><li>READ_ACP</li></ul>An example JSON object would be:<br><br><pre>{<br>    &quot;111a11a11aa1111111aa11aaa1111a111a1aa111111a1a1a11aa11aa11a11aa1&quot;: &quot;FULL_CONTROL&quot;,<br>    &quot;222b22b22bb2222222bb22bbb2222b222b2bb222222b2b2b22bb22bb22b22bb2&quot;: &quot;READ&quot;<br>}</pre><br>The <b>owner</b> parameter takes the canonical ID of an AWS user. This parameter must be provided if the <b>grants</b> parameter is included (even if there is no desire to change the owner; in this case, just provide the ID of the current owner of the bucket).<br><br>WARNING: Calling this action will replace the bucket's current tags and permissions with the tags and permission supplied to this action. To avoid overwriting the bucket's present data, first run <b>get bucket</b> to get the current tag and permission dictionaries, then add new tags and grants to those dictionaries before calling this action.",
             "type": "generic",
             "read_only": false,
             "parameters": {
@@ -1825,31 +1825,55 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.ResponseMetadata.HostId",
+                    "data_path": "action_result.parameter.bucket",
                     "data_type": "string",
                     "example_values": [
-                        "YgV/to0Eq1A0cwfqQG2YuGW57E83UrUNprkccKSnMj2ocdWSYXxtQy+4J3NVAMY46IeyWQLgxjQ="
+                        "herman-test-s3-app"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.ResponseMetadata.RetryAttempts",
-                    "data_type": "numeric",
-                    "example_values": [
-                        0
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ResponseMetadata.HTTPStatusCode",
-                    "data_type": "numeric",
-                    "example_values": [
-                        204
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ResponseMetadata.RequestId",
+                    "data_path": "action_result.parameter.encryption",
                     "data_type": "string",
                     "example_values": [
-                        "39ACD3F305817EE3"
+                        "AWS:KMS"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.grants",
+                    "data_type": "string",
+                    "example_values": [
+                        "{\"153b1da9d5faa5cfe9d016645ce14be41295ed6j94c988c6af6550f439e3f444\": \"FULL_CONTROL\", \"617d70b19fe7594450bf60dbd5004d026f7ae739872e5a3b81ca16eb15e94df8\": \"FULL_CONTROL\"}"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.kms_key",
+                    "data_type": "string",
+                    "example_values": [
+                        "28dc6a18-f1ac-11e7-8c3f-9a214cf093ae"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.owner",
+                    "data_type": "string",
+                    "example_values": [
+                        "042b3oe6d5faa5cfe9d016645ce14be41295ed6j94c988c6af6550f439e3f444"
+                    ],
+                    "contains": [
+                        "aws canonical ID"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.tags",
+                    "data_type": "string",
+                    "example_values": [
+                        "{\"key1\": \"value1\", \"key2\": \"value2\"}"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.content-length",
+                    "data_type": "string",
+                    "example_values": [
+                        "0"
                     ]
                 },
                 {
@@ -1857,6 +1881,13 @@
                     "data_type": "string",
                     "example_values": [
                         "Fri, 05 Jan 2018 00:10:55 GMT"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.server",
+                    "data_type": "string",
+                    "example_values": [
+                        "AmazonS3"
                     ]
                 },
                 {
@@ -1874,18 +1905,36 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.server",
-                    "data_type": "string",
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPStatusCode",
+                    "data_type": "numeric",
                     "example_values": [
-                        "AmazonS3"
+                        204
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.content-length",
+                    "data_path": "action_result.data.*.ResponseMetadata.HostId",
                     "data_type": "string",
                     "example_values": [
-                        "0"
+                        "YgV/to0Eq1A0cwfqQG2YuGW57E83UrUNprkccKSnMj2ocdWSYXxtQy+4J3NVAMY46IeyWQLgxjQ="
                     ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.RequestId",
+                    "data_type": "string",
+                    "example_values": [
+                        "39ACD3F305817EE3"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.RetryAttempts",
+                    "data_type": "numeric",
+                    "example_values": [
+                        0
+                    ]
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
                 },
                 {
                     "data_path": "action_result.message",
@@ -1895,55 +1944,6 @@
                     "example_values": [
                         "Successfully retrieved bucket info"
                     ]
-                },
-                {
-                    "data_path": "action_result.parameter.kms_key",
-                    "data_type": "string",
-                    "example_values": [
-                        "28dc6a18-f1ac-11e7-8c3f-9a214cf093ae"
-                    ]
-                },
-                {
-                    "data_path": "action_result.parameter.tags",
-                    "data_type": "string",
-                    "example_values": [
-                        "{\"key1\": \"value1\", \"key2\": \"value2\"}"
-                    ]
-                },
-                {
-                    "data_path": "action_result.parameter.encryption",
-                    "data_type": "string",
-                    "example_values": [
-                        "AWS:KMS"
-                    ]
-                },
-                {
-                    "data_path": "action_result.parameter.bucket",
-                    "data_type": "string",
-                    "example_values": [
-                        "herman-test-s3-app"
-                    ]
-                },
-                {
-                    "data_path": "action_result.parameter.grants",
-                    "data_type": "string",
-                    "example_values": [
-                        "{\"153b1da9d5faa5cfe9d016645ce14be41295ed6j94c988c6af6550f439e3f444\": \"FULL_CONTROL\", \"617d70b19fe7594450bf60dbd5004d026f7ae739872e5a3b81ca16eb15e94df8\": \"FULL_CONTROL\"}"
-                    ]
-                },
-                {
-                    "data_path": "action_result.parameter.owner",
-                    "data_type": "string",
-                    "example_values": [
-                        "042b3oe6d5faa5cfe9d016645ce14be41295ed6j94c988c6af6550f439e3f444"
-                    ],
-                    "contains": [
-                        "sha256"
-                    ]
-                },
-                {
-                    "data_path": "action_result.summary",
-                    "data_type": "string"
                 },
                 {
                     "data_path": "summary.total_objects",
@@ -2012,6 +2012,13 @@
             },
             "output": [
                 {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "example_values": [
+                        "success"
+                    ]
+                },
+                {
                     "data_path": "action_result.parameter.bucket",
                     "data_type": "string",
                     "contains": [
@@ -2022,160 +2029,30 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.status",
+                    "data_path": "action_result.parameter.continuation_token",
                     "data_type": "string",
+                    "contains": [
+                        "aws s3 continuation token"
+                    ],
                     "example_values": [
-                        "success"
+                        "1gpyNT6V4At5pjvBmQhRU2D2ehqyGrZJaHJ4VLYm5udxQTTi+8xMyUg=="
                     ]
                 },
                 {
-                    "data_path": "action_result.message",
+                    "data_path": "action_result.parameter.key",
                     "data_type": "string",
-                    "example_values": [
-                        "Num objects: 2"
-                    ]
-                },
-                {
-                    "data_path": "summary.total_objects",
-                    "data_type": "numeric",
-                    "example_values": [
-                        1
-                    ]
-                },
-                {
-                    "data_path": "summary.total_objects_successful",
-                    "data_type": "numeric",
-                    "example_values": [
-                        1
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Name",
-                    "data_type": "string",
-                    "example_values": [
-                        "herman-test-s3-app"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ResponseMetadata.HostId",
-                    "data_type": "string",
-                    "example_values": [
-                        "Ys1n2EOmKqMX4Z/3VxSzsW7ZQXFgj7/AkkMZLhiliLPKahOTbKTwMzsdthkBMBoSo+blbJvnY7Y="
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ResponseMetadata.RetryAttempts",
-                    "data_type": "numeric",
-                    "example_values": [
-                        0
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ResponseMetadata.HTTPStatusCode",
-                    "data_type": "numeric",
-                    "example_values": [
-                        200
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ResponseMetadata.RequestId",
-                    "data_type": "string",
-                    "example_values": [
-                        "10B562C38DD0D76A"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.date",
-                    "data_type": "string",
-                    "example_values": [
-                        "Thu, 14 Dec 2017 00:39:10 GMT"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.x-amz-id-2",
-                    "data_type": "string",
-                    "example_values": [
-                        "Ys1n2EOmKqMX4Z/3VxSzsW7ZQXFgj7/AkkMZLhiliLPKahOTbKTwMzsdthkBMBoSo+blbJvnY7Y="
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.server",
-                    "data_type": "string",
-                    "example_values": [
-                        "AmazonS3"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.transfer-encoding",
-                    "data_type": "string",
-                    "example_values": [
-                        "chunked"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.x-amz-request-id",
-                    "data_type": "string",
-                    "example_values": [
-                        "10B562C38DD0D76A"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.x-amz-bucket-region",
-                    "data_type": "string",
-                    "example_values": [
-                        "us-west-1"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.content-type",
-                    "data_type": "string",
-                    "example_values": [
-                        "application/xml"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.StartAfter",
-                    "data_type": "string",
+                    "contains": [
+                        "aws s3 key"
+                    ],
                     "example_values": [
                         "test_folder/deeper_test_folder"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.MaxKeys",
+                    "data_path": "action_result.parameter.limit",
                     "data_type": "numeric",
                     "example_values": [
                         3
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Prefix",
-                    "data_type": "string",
-                    "example_values": [
-                        ""
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.KeyCount",
-                    "data_type": "numeric",
-                    "example_values": [
-                        2
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.IsTruncated",
-                    "data_type": "boolean",
-                    "example_values": [
-                        true,
-                        false
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Contents.*.LastModified",
-                    "data_type": "string",
-                    "column_name": "Last Modified",
-                    "column_order": 3,
-                    "example_values": [
-                        "2017-12-13 23:22:47"
                     ]
                 },
                 {
@@ -2186,21 +2063,21 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.Contents.*.StorageClass",
-                    "data_type": "string",
-                    "column_name": "Storage Class",
-                    "column_order": 1,
-                    "example_values": [
-                        "STANDARD"
-                    ]
-                },
-                {
                     "data_path": "action_result.data.*.Contents.*.Key",
                     "data_type": "string",
                     "column_name": "Key",
                     "column_order": 0,
                     "example_values": [
                         "test_folder/deeper_test_folder/"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Contents.*.LastModified",
+                    "data_type": "string",
+                    "column_name": "Last Modified",
+                    "column_order": 3,
+                    "example_values": [
+                        "2017-12-13 23:22:47"
                     ]
                 },
                 {
@@ -2233,30 +2110,132 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.parameter.key",
+                    "data_path": "action_result.data.*.Contents.*.StorageClass",
                     "data_type": "string",
-                    "contains": [
-                        "aws s3 key"
-                    ],
+                    "column_name": "Storage Class",
+                    "column_order": 1,
                     "example_values": [
-                        "test_folder/deeper_test_folder"
+                        "STANDARD"
                     ]
                 },
                 {
-                    "data_path": "action_result.parameter.limit",
+                    "data_path": "action_result.data.*.IsTruncated",
+                    "data_type": "boolean",
+                    "example_values": [
+                        true,
+                        false
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.KeyCount",
+                    "data_type": "numeric",
+                    "example_values": [
+                        2
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.MaxKeys",
                     "data_type": "numeric",
                     "example_values": [
                         3
                     ]
                 },
                 {
-                    "data_path": "action_result.parameter.continuation_token",
+                    "data_path": "action_result.data.*.Name",
                     "data_type": "string",
-                    "contains": [
-                        "aws s3 continuation token"
-                    ],
                     "example_values": [
-                        "1gpyNT6V4At5pjvBmQhRU2D2ehqyGrZJaHJ4VLYm5udxQTTi+8xMyUg=="
+                        "herman-test-s3-app"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Prefix",
+                    "data_type": "string",
+                    "example_values": [
+                        ""
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.content-type",
+                    "data_type": "string",
+                    "example_values": [
+                        "application/xml"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.date",
+                    "data_type": "string",
+                    "example_values": [
+                        "Thu, 14 Dec 2017 00:39:10 GMT"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.server",
+                    "data_type": "string",
+                    "example_values": [
+                        "AmazonS3"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.transfer-encoding",
+                    "data_type": "string",
+                    "example_values": [
+                        "chunked"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.x-amz-bucket-region",
+                    "data_type": "string",
+                    "example_values": [
+                        "us-west-1"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.x-amz-id-2",
+                    "data_type": "string",
+                    "example_values": [
+                        "Ys1n2EOmKqMX4Z/3VxSzsW7ZQXFgj7/AkkMZLhiliLPKahOTbKTwMzsdthkBMBoSo+blbJvnY7Y="
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.x-amz-request-id",
+                    "data_type": "string",
+                    "example_values": [
+                        "10B562C38DD0D76A"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPStatusCode",
+                    "data_type": "numeric",
+                    "example_values": [
+                        200
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.HostId",
+                    "data_type": "string",
+                    "example_values": [
+                        "Ys1n2EOmKqMX4Z/3VxSzsW7ZQXFgj7/AkkMZLhiliLPKahOTbKTwMzsdthkBMBoSo+blbJvnY7Y="
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.RequestId",
+                    "data_type": "string",
+                    "example_values": [
+                        "10B562C38DD0D76A"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.RetryAttempts",
+                    "data_type": "numeric",
+                    "example_values": [
+                        0
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.StartAfter",
+                    "data_type": "string",
+                    "example_values": [
+                        "test_folder/deeper_test_folder"
                     ]
                 },
                 {
@@ -2264,6 +2243,27 @@
                     "data_type": "numeric",
                     "example_values": [
                         2
+                    ]
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string",
+                    "example_values": [
+                        "Num objects: 2"
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
                     ]
                 }
             ],
@@ -2303,7 +2303,7 @@
                 "download_file": {
                     "description": "Download File",
                     "data_type": "boolean",
-                    "required": true,
+                    "default": false,
                     "order": 2
                 }
             },
@@ -2318,242 +2318,62 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.File.AcceptRanges",
+                    "data_path": "action_result.parameter.bucket",
+                    "data_type": "string",
+                    "contains": [
+                        "aws s3 bucket"
+                    ],
+                    "example_values": [
+                        "herman-test-s3-app"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.download_file",
                     "data_type": "string",
                     "example_values": [
-                        "bytes"
+                        true,
+                        false
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.File.ContentType",
+                    "data_path": "action_result.parameter.key",
+                    "data_type": "string",
+                    "contains": [
+                        "aws s3 key"
+                    ],
+                    "example_values": [
+                        "test_folder/image.jpg"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ACL.Grants.*.Grantee.DisplayName",
                     "data_type": "string",
                     "example_values": [
-                        "image/jpeg"
+                        "herman"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.File.ResponseMetadata.HostId",
+                    "data_path": "action_result.data.*.ACL.Grants.*.Grantee.ID",
                     "data_type": "string",
                     "example_values": [
-                        "0c15dTU8vBsBNhlyoKPCGGhpHJtcquJD+vDG0wiTMYVVnX6ValrTB/01iTZVwm8VYrmPBcj276E="
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.File.ResponseMetadata.RetryAttempts",
-                    "data_type": "numeric",
-                    "example_values": [
-                        0
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.File.ResponseMetadata.HTTPStatusCode",
-                    "data_type": "numeric",
-                    "example_values": [
-                        200
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.File.ResponseMetadata.RequestId",
-                    "data_type": "string",
-                    "example_values": [
-                        "8E5ADEED9D510876"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.File.ResponseMetadata.HTTPHeaders.x-amz-tagging-count",
-                    "data_type": "string",
-                    "example_values": [
-                        "2"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.File.ResponseMetadata.HTTPHeaders.content-length",
-                    "data_type": "string",
-                    "example_values": [
-                        "164461"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.File.ResponseMetadata.HTTPHeaders.x-amz-id-2",
-                    "data_type": "string",
-                    "example_values": [
-                        "0c15dTU8vBsBNhlyoKPCGGhpHJtcquJD+vDG0wiTMYVVnX6ValrTB/01iTZVwm8VYrmPBcj276E="
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.File.ResponseMetadata.HTTPHeaders.accept-ranges",
-                    "data_type": "string",
-                    "example_values": [
-                        "bytes"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.File.ResponseMetadata.HTTPHeaders.server",
-                    "data_type": "string",
-                    "example_values": [
-                        "AmazonS3"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.File.ResponseMetadata.HTTPHeaders.last-modified",
-                    "data_type": "string",
-                    "example_values": [
-                        "Wed, 13 Dec 2017 23:23:36 GMT"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.File.ResponseMetadata.HTTPHeaders.etag",
-                    "data_type": "string",
-                    "example_values": [
-                        "\"081649aeacde0097aeac161be406168d\""
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.File.ResponseMetadata.HTTPHeaders.x-amz-request-id",
-                    "data_type": "string",
-                    "example_values": [
-                        "8E5ADEED9D510876"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.File.ResponseMetadata.HTTPHeaders.date",
-                    "data_type": "string",
-                    "example_values": [
-                        "Mon, 18 Dec 2017 21:04:10 GMT"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.File.ResponseMetadata.HTTPHeaders.content-type",
-                    "data_type": "string",
-                    "example_values": [
-                        "image/jpeg"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.File.LastModified",
-                    "data_type": "string",
-                    "example_values": [
-                        "2017-12-13 23:23:36"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.File.ContentLength",
-                    "data_type": "numeric",
-                    "example_values": [
-                        164461
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.File.filename",
-                    "data_type": "string",
-                    "example_values": [
-                        "image.jpg"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.File.ETag",
-                    "data_type": "string",
-                    "example_values": [
-                        "\"081649aeacde0097aeac161be406168d\""
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.File.vault_id",
-                    "data_type": "string",
-                    "example_values": [
-                        "cde6248b8367f3a87bb6cc3dfc46fb9786200f88"
+                        "042b3oe6d5faa5cfe9d016645ce14be41295ed6j94c988c6af6550f439e3f444"
                     ],
                     "contains": [
-                        "sha1",
-                        "vault id"
+                        "sha256"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.File.TagCount",
-                    "data_type": "numeric",
-                    "example_values": [
-                        2
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.File.Metadata",
-                    "data_type": "string"
-                },
-                {
-                    "data_path": "action_result.data.*.Tagging.TagSet.*.Key",
+                    "data_path": "action_result.data.*.ACL.Grants.*.Grantee.Type",
                     "data_type": "string",
                     "example_values": [
-                        "Collorbone"
+                        "CanonicalUser"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.Tagging.TagSet.*.Value",
+                    "data_path": "action_result.data.*.ACL.Grants.*.Permission",
                     "data_type": "string",
                     "example_values": [
-                        "Intact"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Tagging.ResponseMetadata.HostId",
-                    "data_type": "string",
-                    "example_values": [
-                        "xHamNM+KJpg3EZSa6FujO8r0QfEoM0FJ4GY6Xh/l0QqkaqC18TPIzMFEJODUOOJIvKX6xO1TtRk="
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Tagging.ResponseMetadata.RetryAttempts",
-                    "data_type": "numeric",
-                    "example_values": [
-                        0
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Tagging.ResponseMetadata.HTTPStatusCode",
-                    "data_type": "numeric",
-                    "example_values": [
-                        200
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Tagging.ResponseMetadata.RequestId",
-                    "data_type": "string",
-                    "example_values": [
-                        "49CB0256C60608F4"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Tagging.ResponseMetadata.HTTPHeaders.date",
-                    "data_type": "string",
-                    "example_values": [
-                        "Mon, 18 Dec 2017 21:04:10 GMT"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Tagging.ResponseMetadata.HTTPHeaders.x-amz-id-2",
-                    "data_type": "string",
-                    "example_values": [
-                        "xHamNM+KJpg3EZSa6FujO8r0QfEoM0FJ4GY6Xh/l0QqkaqC18TPIzMFEJODUOOJIvKX6xO1TtRk="
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Tagging.ResponseMetadata.HTTPHeaders.transfer-encoding",
-                    "data_type": "string",
-                    "example_values": [
-                        "chunked"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Tagging.ResponseMetadata.HTTPHeaders.x-amz-request-id",
-                    "data_type": "string",
-                    "example_values": [
-                        "49CB0256C60608F4"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.Tagging.ResponseMetadata.HTTPHeaders.server",
-                    "data_type": "string",
-                    "example_values": [
-                        "AmazonS3"
+                        "FULL_CONTROL"
                     ]
                 },
                 {
@@ -2575,69 +2395,17 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.ACL.Grants.*.Grantee.Type",
+                    "data_path": "action_result.data.*.ACL.ResponseMetadata.HTTPHeaders.content-type",
                     "data_type": "string",
                     "example_values": [
-                        "CanonicalUser"
+                        "application/xml"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.ACL.Grants.*.Grantee.DisplayName",
+                    "data_path": "action_result.data.*.ACL.ResponseMetadata.HTTPHeaders.date",
                     "data_type": "string",
                     "example_values": [
-                        "herman"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ACL.Grants.*.Grantee.ID",
-                    "data_type": "string",
-                    "example_values": [
-                        "042b3oe6d5faa5cfe9d016645ce14be41295ed6j94c988c6af6550f439e3f444"
-                    ],
-                    "contains": [
-                        "sha256"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ACL.Grants.*.Permission",
-                    "data_type": "string",
-                    "example_values": [
-                        "FULL_CONTROL"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ACL.ResponseMetadata.HostId",
-                    "data_type": "string",
-                    "example_values": [
-                        "ebJirNknxP6Y05DqTzHTBW6ph3Dlzw8XfO7l+d9vOxVcGd0UulOLUN8EwKEQml45TKWx04iLCSk="
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ACL.ResponseMetadata.RetryAttempts",
-                    "data_type": "numeric",
-                    "example_values": [
-                        0
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ACL.ResponseMetadata.HTTPStatusCode",
-                    "data_type": "numeric",
-                    "example_values": [
-                        200
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ACL.ResponseMetadata.RequestId",
-                    "data_type": "string",
-                    "example_values": [
-                        "726A959A95F1E3FF"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ACL.ResponseMetadata.HTTPHeaders.x-amz-id-2",
-                    "data_type": "string",
-                    "example_values": [
-                        "ebJirNknxP6Y05DqTzHTBW6ph3Dlzw8XfO7l+d9vOxVcGd0UulOLUN8EwKEQml45TKWx04iLCSk="
+                        "Mon, 18 Dec 2017 21:04:10 GMT"
                     ]
                 },
                 {
@@ -2655,6 +2423,13 @@
                     ]
                 },
                 {
+                    "data_path": "action_result.data.*.ACL.ResponseMetadata.HTTPHeaders.x-amz-id-2",
+                    "data_type": "string",
+                    "example_values": [
+                        "ebJirNknxP6Y05DqTzHTBW6ph3Dlzw8XfO7l+d9vOxVcGd0UulOLUN8EwKEQml45TKWx04iLCSk="
+                    ]
+                },
+                {
                     "data_path": "action_result.data.*.ACL.ResponseMetadata.HTTPHeaders.x-amz-request-id",
                     "data_type": "string",
                     "example_values": [
@@ -2662,54 +2437,270 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.ACL.ResponseMetadata.HTTPHeaders.date",
+                    "data_path": "action_result.data.*.ACL.ResponseMetadata.HTTPStatusCode",
+                    "data_type": "numeric",
+                    "example_values": [
+                        200
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ACL.ResponseMetadata.HostId",
+                    "data_type": "string",
+                    "example_values": [
+                        "ebJirNknxP6Y05DqTzHTBW6ph3Dlzw8XfO7l+d9vOxVcGd0UulOLUN8EwKEQml45TKWx04iLCSk="
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ACL.ResponseMetadata.RequestId",
+                    "data_type": "string",
+                    "example_values": [
+                        "726A959A95F1E3FF"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ACL.ResponseMetadata.RetryAttempts",
+                    "data_type": "numeric",
+                    "example_values": [
+                        0
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.File.AcceptRanges",
+                    "data_type": "string",
+                    "example_values": [
+                        "bytes"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.File.ContentLength",
+                    "data_type": "numeric",
+                    "example_values": [
+                        164461
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.File.ContentType",
+                    "data_type": "string",
+                    "example_values": [
+                        "image/jpeg"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.File.ETag",
+                    "data_type": "string",
+                    "example_values": [
+                        "\"081649aeacde0097aeac161be406168d\""
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.File.LastModified",
+                    "data_type": "string",
+                    "example_values": [
+                        "2017-12-13 23:23:36"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.File.Metadata",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.data.*.File.ResponseMetadata.HTTPHeaders.accept-ranges",
+                    "data_type": "string",
+                    "example_values": [
+                        "bytes"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.File.ResponseMetadata.HTTPHeaders.content-length",
+                    "data_type": "string",
+                    "example_values": [
+                        "164461"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.File.ResponseMetadata.HTTPHeaders.content-type",
+                    "data_type": "string",
+                    "example_values": [
+                        "image/jpeg"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.File.ResponseMetadata.HTTPHeaders.date",
                     "data_type": "string",
                     "example_values": [
                         "Mon, 18 Dec 2017 21:04:10 GMT"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.ACL.ResponseMetadata.HTTPHeaders.content-type",
+                    "data_path": "action_result.data.*.File.ResponseMetadata.HTTPHeaders.etag",
                     "data_type": "string",
                     "example_values": [
-                        "application/xml"
+                        "\"081649aeacde0097aeac161be406168d\""
                     ]
                 },
                 {
-                    "data_path": "action_result.message",
+                    "data_path": "action_result.data.*.File.ResponseMetadata.HTTPHeaders.last-modified",
                     "data_type": "string",
-                    "column_name": "Message",
-                    "column_order": 1,
                     "example_values": [
-                        "File successfully added to vault"
+                        "Wed, 13 Dec 2017 23:23:36 GMT"
                     ]
                 },
                 {
-                    "data_path": "action_result.parameter.bucket",
+                    "data_path": "action_result.data.*.File.ResponseMetadata.HTTPHeaders.server",
                     "data_type": "string",
-                    "contains": [
-                        "aws s3 bucket"
+                    "example_values": [
+                        "AmazonS3"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.File.ResponseMetadata.HTTPHeaders.x-amz-id-2",
+                    "data_type": "string",
+                    "example_values": [
+                        "0c15dTU8vBsBNhlyoKPCGGhpHJtcquJD+vDG0wiTMYVVnX6ValrTB/01iTZVwm8VYrmPBcj276E="
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.File.ResponseMetadata.HTTPHeaders.x-amz-request-id",
+                    "data_type": "string",
+                    "example_values": [
+                        "8E5ADEED9D510876"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.File.ResponseMetadata.HTTPHeaders.x-amz-tagging-count",
+                    "data_type": "string",
+                    "example_values": [
+                        "2"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.File.ResponseMetadata.HTTPStatusCode",
+                    "data_type": "numeric",
+                    "example_values": [
+                        200
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.File.ResponseMetadata.HostId",
+                    "data_type": "string",
+                    "example_values": [
+                        "0c15dTU8vBsBNhlyoKPCGGhpHJtcquJD+vDG0wiTMYVVnX6ValrTB/01iTZVwm8VYrmPBcj276E="
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.File.ResponseMetadata.RequestId",
+                    "data_type": "string",
+                    "example_values": [
+                        "8E5ADEED9D510876"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.File.ResponseMetadata.RetryAttempts",
+                    "data_type": "numeric",
+                    "example_values": [
+                        0
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.File.TagCount",
+                    "data_type": "numeric",
+                    "example_values": [
+                        2
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.File.filename",
+                    "data_type": "string",
+                    "example_values": [
+                        "image.jpg"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.File.vault_id",
+                    "data_type": "string",
+                    "example_values": [
+                        "cde6248b8367f3a87bb6cc3dfc46fb9786200f88"
                     ],
-                    "example_values": [
-                        "herman-test-s3-app"
-                    ]
-                },
-                {
-                    "data_path": "action_result.parameter.key",
-                    "data_type": "string",
                     "contains": [
-                        "aws s3 key"
-                    ],
-                    "example_values": [
-                        "test_folder/image.jpg"
+                        "sha1",
+                        "vault id"
                     ]
                 },
                 {
-                    "data_path": "action_result.parameter.download_file",
+                    "data_path": "action_result.data.*.Tagging.ResponseMetadata.HTTPHeaders.date",
                     "data_type": "string",
                     "example_values": [
-                        true,
-                        false
+                        "Mon, 18 Dec 2017 21:04:10 GMT"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Tagging.ResponseMetadata.HTTPHeaders.server",
+                    "data_type": "string",
+                    "example_values": [
+                        "AmazonS3"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Tagging.ResponseMetadata.HTTPHeaders.transfer-encoding",
+                    "data_type": "string",
+                    "example_values": [
+                        "chunked"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Tagging.ResponseMetadata.HTTPHeaders.x-amz-id-2",
+                    "data_type": "string",
+                    "example_values": [
+                        "xHamNM+KJpg3EZSa6FujO8r0QfEoM0FJ4GY6Xh/l0QqkaqC18TPIzMFEJODUOOJIvKX6xO1TtRk="
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Tagging.ResponseMetadata.HTTPHeaders.x-amz-request-id",
+                    "data_type": "string",
+                    "example_values": [
+                        "49CB0256C60608F4"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Tagging.ResponseMetadata.HTTPStatusCode",
+                    "data_type": "numeric",
+                    "example_values": [
+                        200
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Tagging.ResponseMetadata.HostId",
+                    "data_type": "string",
+                    "example_values": [
+                        "xHamNM+KJpg3EZSa6FujO8r0QfEoM0FJ4GY6Xh/l0QqkaqC18TPIzMFEJODUOOJIvKX6xO1TtRk="
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Tagging.ResponseMetadata.RequestId",
+                    "data_type": "string",
+                    "example_values": [
+                        "49CB0256C60608F4"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Tagging.ResponseMetadata.RetryAttempts",
+                    "data_type": "numeric",
+                    "example_values": [
+                        0
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Tagging.TagSet.*.Key",
+                    "data_type": "string",
+                    "example_values": [
+                        "Collorbone"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Tagging.TagSet.*.Value",
+                    "data_type": "string",
+                    "example_values": [
+                        "Intact"
                     ]
                 },
                 {
@@ -2720,6 +2711,15 @@
                     ],
                     "contains": [
                         "sha1"
+                    ]
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string",
+                    "column_name": "Message",
+                    "column_order": 1,
+                    "example_values": [
+                        "File successfully added to vault"
                     ]
                 },
                 {
@@ -2794,6 +2794,15 @@
             },
             "output": [
                 {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "Status",
+                    "column_order": 0,
+                    "example_values": [
+                        "success"
+                    ]
+                },
+                {
                     "data_path": "action_result.parameter.bucket",
                     "data_type": "string",
                     "contains": [
@@ -2801,6 +2810,13 @@
                     ],
                     "example_values": [
                         "herman-test-s3-app"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.grants",
+                    "data_type": "string",
+                    "example_values": [
+                        "{\"153b1da9d5faa5cfe9d016645ce14be41295ed6j94c988c6af6550f439e3f444\": \"FULL_CONTROL\", \"617d70b19fe7594450bf60dbd5004d026f7ae739872e5a3b80ca16ea15e94df8\": \"FULL_CONTROL\"}"
                     ]
                 },
                 {
@@ -2814,13 +2830,88 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.status",
+                    "data_path": "action_result.parameter.owner",
                     "data_type": "string",
-                    "column_name": "Status",
-                    "column_order": 0,
                     "example_values": [
-                        "success"
+                        "042b3oe6d5faa5cfe9d016645ce14be41295ed6j94c988c6af6550f439e3f444"
+                    ],
+                    "contains": [
+                        "aws canonical ID"
                     ]
+                },
+                {
+                    "data_path": "action_result.parameter.tags",
+                    "data_type": "string",
+                    "example_values": [
+                        "{\"Adrian Gonzalez\": \"Braves Legend\", \"Chipper\": \"HoFer\"}"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.content-length",
+                    "data_type": "string",
+                    "example_values": [
+                        "0"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.date",
+                    "data_type": "string",
+                    "example_values": [
+                        "Mon, 18 Dec 2017 21:49:25 GMT"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.server",
+                    "data_type": "string",
+                    "example_values": [
+                        "AmazonS3"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.x-amz-id-2",
+                    "data_type": "string",
+                    "example_values": [
+                        "taFe2lslWgS35TL+WUaQpOG/qsCwJwcB6znO9Xu2/hZge0d4yHXuVbyDXMpwXl9806SfOC4jH2E="
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.x-amz-request-id",
+                    "data_type": "string",
+                    "example_values": [
+                        "311807E3C0FBF393"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPStatusCode",
+                    "data_type": "numeric",
+                    "example_values": [
+                        200
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.HostId",
+                    "data_type": "string",
+                    "example_values": [
+                        "taFe2lslWgS35TL+WUaQpOG/qsCwJwcB6znO9Xu2/hZge0d4yHXuVbyDXMpwXl9806SfOC4jH2E="
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.RequestId",
+                    "data_type": "string",
+                    "example_values": [
+                        "311807E3C0FBF393"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.RetryAttempts",
+                    "data_type": "numeric",
+                    "example_values": [
+                        0
+                    ]
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
                 },
                 {
                     "data_path": "action_result.message",
@@ -2844,97 +2935,6 @@
                     "example_values": [
                         1
                     ]
-                },
-                {
-                    "data_path": "action_result.data.*.ResponseMetadata.HostId",
-                    "data_type": "string",
-                    "example_values": [
-                        "taFe2lslWgS35TL+WUaQpOG/qsCwJwcB6znO9Xu2/hZge0d4yHXuVbyDXMpwXl9806SfOC4jH2E="
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ResponseMetadata.RetryAttempts",
-                    "data_type": "numeric",
-                    "example_values": [
-                        0
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ResponseMetadata.HTTPStatusCode",
-                    "data_type": "numeric",
-                    "example_values": [
-                        200
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ResponseMetadata.RequestId",
-                    "data_type": "string",
-                    "example_values": [
-                        "311807E3C0FBF393"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.date",
-                    "data_type": "string",
-                    "example_values": [
-                        "Mon, 18 Dec 2017 21:49:25 GMT"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.x-amz-id-2",
-                    "data_type": "string",
-                    "example_values": [
-                        "taFe2lslWgS35TL+WUaQpOG/qsCwJwcB6znO9Xu2/hZge0d4yHXuVbyDXMpwXl9806SfOC4jH2E="
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.content-length",
-                    "data_type": "string",
-                    "example_values": [
-                        "0"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.x-amz-request-id",
-                    "data_type": "string",
-                    "example_values": [
-                        "311807E3C0FBF393"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.server",
-                    "data_type": "string",
-                    "example_values": [
-                        "AmazonS3"
-                    ]
-                },
-                {
-                    "data_path": "action_result.parameter.tags",
-                    "data_type": "string",
-                    "example_values": [
-                        "{\"Adrian Gonzalez\": \"Braves Legend\", \"Chipper\": \"HoFer\"}"
-                    ]
-                },
-                {
-                    "data_path": "action_result.parameter.grants",
-                    "data_type": "string",
-                    "example_values": [
-                        "{\"153b1da9d5faa5cfe9d016645ce14be41295ed6j94c988c6af6550f439e3f444\": \"FULL_CONTROL\", \"617d70b19fe7594450bf60dbd5004d026f7ae739872e5a3b80ca16ea15e94df8\": \"FULL_CONTROL\"}"
-                    ]
-                },
-                {
-                    "data_path": "action_result.parameter.owner",
-                    "data_type": "string",
-                    "example_values": [
-                        "042b3oe6d5faa5cfe9d016645ce14be41295ed6j94c988c6af6550f439e3f444"
-                    ],
-                    "contains": [
-                        "sha256"
-                    ]
-                },
-                {
-                    "data_path": "action_result.summary",
-                    "data_type": "string"
                 }
             ],
             "render": {
@@ -3027,108 +3027,20 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.ETag",
+                    "data_path": "action_result.parameter.bucket",
                     "data_type": "string",
+                    "contains": [
+                        "aws s3 bucket"
+                    ],
                     "example_values": [
-                        "\"1dcdb3d256476fe8e2887c146960e580\""
+                        "herman-test-s3-app"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.ResponseMetadata.HostId",
-                    "data_type": "string",
-                    "example_values": [
-                        "Pny7k67Psa0yGvBsQGDEF7AOQXDl0N9AqocGVR08Cqw/Zku+tqrdK7SNkoVFEfJI9xpbsJUpH10="
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ResponseMetadata.RetryAttempts",
-                    "data_type": "numeric",
-                    "example_values": [
-                        0
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ResponseMetadata.HTTPStatusCode",
-                    "data_type": "numeric",
-                    "example_values": [
-                        200
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ResponseMetadata.RequestId",
-                    "data_type": "string",
-                    "example_values": [
-                        "C03C87504C56273E"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.content-length",
-                    "data_type": "string",
-                    "example_values": [
-                        "0"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.x-amz-storage-class",
-                    "data_type": "string",
-                    "example_values": [
-                        "STANDARD_IA"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.x-amz-id-2",
-                    "data_type": "string",
-                    "example_values": [
-                        "Pny7k67Psa0yGvBsQGDEF7AOQXDl0N9AqocGVR08Cqw/Zku+tqrdK7SNkoVFEfJI9xpbsJUpH10="
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.server",
-                    "data_type": "string",
-                    "example_values": [
-                        "AmazonS3"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.x-amz-request-id",
-                    "data_type": "string",
-                    "example_values": [
-                        "C03C87504C56273E"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.etag",
-                    "data_type": "string",
-                    "example_values": [
-                        "\"1dcdb3d256476fe8e2887c146960e580\""
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.date",
-                    "data_type": "string",
-                    "example_values": [
-                        "Mon, 18 Dec 2017 23:05:11 GMT"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.x-amz-server-side-encryption",
+                    "data_path": "action_result.parameter.encryption",
                     "data_type": "string",
                     "example_values": [
                         "AES256"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.ServerSideEncryption",
-                    "data_type": "string",
-                    "example_values": [
-                        "AES256"
-                    ]
-                },
-                {
-                    "data_path": "action_result.message",
-                    "data_type": "string",
-                    "example_values": [
-                        "Object successfully updated"
                     ]
                 },
                 {
@@ -3142,20 +3054,17 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.parameter.encryption",
+                    "data_path": "action_result.parameter.kms_key",
                     "data_type": "string",
                     "example_values": [
-                        "AES256"
+                        "234b9f7cd382ca2affe10176bf2c04aba6778e45"
                     ]
                 },
                 {
-                    "data_path": "action_result.parameter.bucket",
+                    "data_path": "action_result.parameter.metadata",
                     "data_type": "string",
-                    "contains": [
-                        "aws s3 bucket"
-                    ],
                     "example_values": [
-                        "herman-test-s3-app"
+                        "{\"Content-Language\": \"English\"}"
                     ]
                 },
                 {
@@ -3163,13 +3072,6 @@
                     "data_type": "string",
                     "example_values": [
                         "STANDARD_IA"
-                    ]
-                },
-                {
-                    "data_path": "action_result.parameter.kms_key",
-                    "data_type": "string",
-                    "example_values": [
-                        "234b9f7cd382ca2affe10176bf2c04aba6778e45"
                     ]
                 },
                 {
@@ -3183,15 +3085,113 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.parameter.metadata",
+                    "data_path": "action_result.data.*.ETag",
                     "data_type": "string",
                     "example_values": [
-                        "{\"Content-Language\": \"English\"}"
+                        "\"1dcdb3d256476fe8e2887c146960e580\""
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.content-length",
+                    "data_type": "string",
+                    "example_values": [
+                        "0"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.date",
+                    "data_type": "string",
+                    "example_values": [
+                        "Mon, 18 Dec 2017 23:05:11 GMT"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.etag",
+                    "data_type": "string",
+                    "example_values": [
+                        "\"1dcdb3d256476fe8e2887c146960e580\""
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.server",
+                    "data_type": "string",
+                    "example_values": [
+                        "AmazonS3"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.x-amz-id-2",
+                    "data_type": "string",
+                    "example_values": [
+                        "Pny7k67Psa0yGvBsQGDEF7AOQXDl0N9AqocGVR08Cqw/Zku+tqrdK7SNkoVFEfJI9xpbsJUpH10="
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.x-amz-request-id",
+                    "data_type": "string",
+                    "example_values": [
+                        "C03C87504C56273E"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.x-amz-server-side-encryption",
+                    "data_type": "string",
+                    "example_values": [
+                        "AES256"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.x-amz-storage-class",
+                    "data_type": "string",
+                    "example_values": [
+                        "STANDARD_IA"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPStatusCode",
+                    "data_type": "numeric",
+                    "example_values": [
+                        200
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.HostId",
+                    "data_type": "string",
+                    "example_values": [
+                        "Pny7k67Psa0yGvBsQGDEF7AOQXDl0N9AqocGVR08Cqw/Zku+tqrdK7SNkoVFEfJI9xpbsJUpH10="
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.RequestId",
+                    "data_type": "string",
+                    "example_values": [
+                        "C03C87504C56273E"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.RetryAttempts",
+                    "data_type": "numeric",
+                    "example_values": [
+                        0
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ServerSideEncryption",
+                    "data_type": "string",
+                    "example_values": [
+                        "AES256"
                     ]
                 },
                 {
                     "data_path": "action_result.summary",
                     "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string",
+                    "example_values": [
+                        "Object successfully updated"
+                    ]
                 },
                 {
                     "data_path": "summary.total_objects",
