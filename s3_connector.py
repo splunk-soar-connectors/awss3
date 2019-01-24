@@ -1,14 +1,10 @@
 # --
 # File: s3_connector.py
 #
-# Copyright (c) Phantom Cyber Corporation, 2018
+# Copyright (c) 2018-2019 Splunk Inc.
 #
-# This unpublished material is proprietary to Phantom Cyber.
-# All rights reserved. The methods and
-# techniques described herein are considered trade secrets
-# and/or confidential. Reproduction or distribution, in whole
-# or in part, is forbidden except by express written permission
-# of Phantom Cyber.
+# SPLUNK CONFIDENTIAL - Use or disclosure of this material in whole or in part
+# without a valid written license from Splunk Inc. is PROHIBITED.
 #
 # --
 
@@ -394,7 +390,7 @@ class AwsS3Connector(BaseConnector):
 
         result_json["ACL"] = resp_json
 
-        if param['download_file']:
+        if param.get('download_file'):
 
             ret_val, resp_json = self._make_boto_call(action_result, 'get_object', Bucket=param['bucket'], Key=param['key'])
 
@@ -406,16 +402,23 @@ class AwsS3Connector(BaseConnector):
             except:
                 return action_result.set_status(phantom.APP_ERROR, "Could not retrieve object body from boto response")
 
-            file_desc, file_path = tempfile.mkstemp(dir='/vault/tmp/')
-            outfile = open(file_path, 'w')
-            outfile.write(file_data)
-            outfile.close()
-            os.close(file_desc)
+            if hasattr(Vault, 'get_vault_tmp_dir'):
+                try:
+                    vault_ret = Vault.create_attachment(file_data, self.get_container_id())
+                except Exception as e:
+                    return action_result.set_status(phantom.APP_ERROR, "Could not file to vault: {0}".format(e))
 
-            try:
-                vault_ret = Vault.add_attachment(file_path, self.get_container_id(), os.path.basename(param['key']))
-            except Exception as e:
-                return action_result.set_status(phantom.APP_ERROR, "Could not file to vault: {0}".format(e))
+            else:
+                file_desc, file_path = tempfile.mkstemp(dir='/vault/tmp/')
+                outfile = open(file_path, 'w')
+                outfile.write(file_data)
+                outfile.close()
+                os.close(file_desc)
+
+                try:
+                    vault_ret = Vault.add_attachment(file_path, self.get_container_id(), os.path.basename(param['key']))
+                except Exception as e:
+                    return action_result.set_status(phantom.APP_ERROR, "Could not file to vault: {0}".format(e))
 
             if not vault_ret.get('succeeded'):
                 return action_result.set_status(phantom.APP_ERROR, "Could not save file to vault: {0}".format(vault_ret.get('message', "Unknown Error")))

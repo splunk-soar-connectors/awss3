@@ -1,4 +1,4 @@
 [submodule "wheels"]
     path = wheels
-    url = ssh://git@prod-bb-1.phantom.local:7999/per/boto3.git
+    url = git@cd.splunkdev.com:phantom-external/boto3.git
     ignore = dirty
