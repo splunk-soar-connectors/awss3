@@ -403,22 +403,20 @@ class AwsS3Connector(BaseConnector):
                 return action_result.set_status(phantom.APP_ERROR, "Could not retrieve object body from boto response")
 
             if hasattr(Vault, 'get_vault_tmp_dir'):
-                try:
-                    vault_ret = Vault.create_attachment(file_data, self.get_container_id())
-                except Exception as e:
-                    return action_result.set_status(phantom.APP_ERROR, "Could not file to vault: {0}".format(e))
-
+                vault_path = Vault.get_vault_tmp_dir()
             else:
-                file_desc, file_path = tempfile.mkstemp(dir='/vault/tmp/')
-                outfile = open(file_path, 'w')
-                outfile.write(file_data)
-                outfile.close()
-                os.close(file_desc)
+                vault_path = '/vault/tmp/'
 
-                try:
-                    vault_ret = Vault.add_attachment(file_path, self.get_container_id(), os.path.basename(param['key']))
-                except Exception as e:
-                    return action_result.set_status(phantom.APP_ERROR, "Could not file to vault: {0}".format(e))
+            file_desc, file_path = tempfile.mkstemp(dir=vault_path)
+            outfile = open(file_path, 'w')
+            outfile.write(file_data)
+            outfile.close()
+            os.close(file_desc)
+
+            try:
+                vault_ret = Vault.add_attachment(file_path, self.get_container_id(), os.path.basename(param['key']))
+            except Exception as e:
+                return action_result.set_status(phantom.APP_ERROR, "Could not file to vault: {0}".format(e))
 
             if not vault_ret.get('succeeded'):
                 return action_result.set_status(phantom.APP_ERROR, "Could not save file to vault: {0}".format(vault_ret.get('message', "Unknown Error")))
