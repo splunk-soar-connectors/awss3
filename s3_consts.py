@@ -33,8 +33,8 @@ S3_BUCKET_INFO_LIST = [
     ]
 
 S3_REGION_DICT = {
-        "US East (Ohio)": "us-east-2",
-        "US East (N. Virginia)": "us-east-1",
+        "US East (Ohio)": "us-east-1",
+        "US East (N. Virginia)": "us-east-2",
         "US West (N. California)": "us-west-1",
         "US West (Oregon)": "us-west-2",
         "Canada (Central)": "ca-central-1",
@@ -47,5 +47,7 @@ S3_REGION_DICT = {
         "EU (Frankfurt)": "eu-central-1",
         "EU (Ireland)": "eu-west-1",
         "EU (London)": "eu-west-2",
-        "South Americia (Sao Paulo)": "sa-east-1"
+        "South Americia (Sao Paulo)": "sa-east-1",
+        "US GovCloud East": "us-gov-east-1",
+        "US GovCloud West": "us-gov-west-1",
     }

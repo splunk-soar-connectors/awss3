@@ -11,7 +11,7 @@
     "publisher": "Phantom",
     "license": "Copyright (c) 2018-2019 Splunk Inc.",
     "app_version": "1.0.14",
-    "utctime_updated": "2019-03-28T18:40:57.000000Z",
+    "utctime_updated": "2019-01-19T20:09:43.000000Z",
     "package_name": "phantom_awss3",
     "main_module": "s3_connector.pyc",
     "min_phantom_version": "4.0.1068",
@@ -76,7 +76,9 @@
                 "EU (Frankfurt)",
                 "EU (Ireland)",
                 "EU (London)",
-                "South Americia (Sao Paulo)"
+                "South Americia (Sao Paulo)",
+                "US GovCloud East",
+                "US GovCloud West"
             ],
             "order": 2
         }
@@ -140,7 +142,7 @@
                         "042b3oe6d5faa5cfe9d016645ce14be41295ed6j94c988c6af6550f439e3f444"
                     ],
                     "contains": [
-                        "aws canonical ID",
+                        "aws canonical id",
                         "sha256"
                     ]
                 },
@@ -1809,7 +1811,7 @@
                     "data_type": "string",
                     "required": false,
                     "contains": [
-                        "aws canonical ID"
+                        "aws canonical id"
                     ],
                     "order": 5
                 }
@@ -1859,7 +1861,7 @@
                         "042b3oe6d5faa5cfe9d016645ce14be41295ed6j94c988c6af6550f439e3f444"
                     ],
                     "contains": [
-                        "aws canonical ID"
+                        "aws canonical id"
                     ]
                 },
                 {
@@ -2096,7 +2098,7 @@
                         "042b3oe6d5faa5cfe9d016645ce14be41295ed6j94c988c6af6550f439e3f444"
                     ],
                     "contains": [
-                        "aws canonical ID",
+                        "aws canonical id",
                         "sha256"
                     ]
                 },
@@ -2390,7 +2392,7 @@
                         "042b3oe6d5faa5cfe9d016645ce14be41295ed6j94c988c6af6550f439e3f444"
                     ],
                     "contains": [
-                        "aws canonical ID",
+                        "aws canonical id",
                         "sha256"
                     ]
                 },
@@ -2781,7 +2783,7 @@
                     "data_type": "string",
                     "required": false,
                     "contains": [
-                        "aws canonical ID"
+                        "aws canonical id"
                     ],
                     "order": 3
                 },
@@ -2836,7 +2838,7 @@
                         "042b3oe6d5faa5cfe9d016645ce14be41295ed6j94c988c6af6550f439e3f444"
                     ],
                     "contains": [
-                        "aws canonical ID"
+                        "aws canonical id"
                     ]
                 },
                 {
