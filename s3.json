@@ -16,11 +16,12 @@
     "main_module": "s3_connector.pyc",
     "min_phantom_version": "4.0.1068",
     "app_wizard_version": "1.0.0",
+    "python_version": "3",
     "pip_dependencies": {
         "wheel": [
             {
                 "module": "boto3",
-                "input_file": "wheels/boto3-1.5.8-py2.py3-none-any.whl"
+                "input_file": "wheels/boto3-1.10.31-py2.py3-none-any.whl"
             },
             {
                 "module": "s3transfer",
@@ -28,11 +29,7 @@
             },
             {
                 "module": "botocore",
-                "input_file": "wheels/botocore-1.8.22-py2.py3-none-any.whl"
-            },
-            {
-                "module": "futures",
-                "input_file": "wheels/futures-3.2.0-py2-none-any.whl"
+                "input_file": "wheels/botocore-1.13.31-py2.py3-none-any.whl"
             },
             {
                 "module": "docutils",
@@ -41,6 +38,10 @@
             {
                 "module": "jmespath",
                 "input_file": "wheels/jmespath-0.9.3-py2.py3-none-any.whl"
+            },
+            {
+                "module": "python-dateutil",
+                "input_file": "wheels/python_dateutil-2.8.1-py2.py3-none-any.whl"
             }
         ]
     },
