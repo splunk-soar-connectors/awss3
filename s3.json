@@ -9,18 +9,22 @@
     "product_name": "S3",
     "product_version_regex": ".*",
     "publisher": "Phantom",
-    "license": "Copyright (c) 2018-2019 Splunk Inc.",
-    "app_version": "1.0.15",
+    "license": "Copyright (c) 2018-2020 Splunk Inc.",
+    "app_version": "2.0.0",
     "utctime_updated": "2019-08-12T21:52:48.000000Z",
     "package_name": "phantom_awss3",
-    "main_module": "s3_connector.pyc",
-    "min_phantom_version": "4.0.1068",
+    "main_module": "s3_connector.py",
+    "min_phantom_version": "4.6.19142",
+    "latest_tested_versions": [
+        "Cloud API, February 4, 2020"
+    ],
     "app_wizard_version": "1.0.0",
+    "python_version": "3",
     "pip_dependencies": {
         "wheel": [
             {
                 "module": "boto3",
-                "input_file": "wheels/boto3-1.5.8-py2.py3-none-any.whl"
+                "input_file": "wheels/boto3-1.10.31-py2.py3-none-any.whl"
             },
             {
                 "module": "s3transfer",
@@ -28,11 +32,7 @@
             },
             {
                 "module": "botocore",
-                "input_file": "wheels/botocore-1.8.22-py2.py3-none-any.whl"
-            },
-            {
-                "module": "futures",
-                "input_file": "wheels/futures-3.2.0-py2-none-any.whl"
+                "input_file": "wheels/botocore-1.13.31-py2.py3-none-any.whl"
             },
             {
                 "module": "docutils",

@@ -1,7 +1,7 @@
 # --
 # File: s3_connector.py
 #
-# Copyright (c) 2018-2019 Splunk Inc.
+# Copyright (c) 2018-2020 Splunk Inc.
 #
 # SPLUNK CONFIDENTIAL - Use or disclosure of this material in whole or in part
 # without a valid written license from Splunk Inc. is PROHIBITED.
@@ -23,6 +23,7 @@ from botocore.config import Config
 import os
 import json
 import tempfile
+from future.utils import iteritems
 
 
 class RetVal(tuple):
@@ -116,7 +117,7 @@ class AwsS3Connector(BaseConnector):
 
         if isinstance(cur_obj, dict):
             new_dict = {}
-            for k, v in cur_obj.iteritems():
+            for k, v in iteritems(cur_obj):
                 new_dict[k] = self._sanatize_dates(v)
             return new_dict
 
@@ -153,7 +154,7 @@ class AwsS3Connector(BaseConnector):
             return RetVal(action_result.set_status(phantom.APP_ERROR, "Could not decode JSON object from given tag dictionary: {0}".format(e)))
 
         tag_dicts = []
-        for k, v in tag_dict.iteritems():
+        for k, v in iteritems(tag_dict):
             tag_dicts.append({'Key': k, 'Value': v})
 
         return RetVal(phantom.APP_SUCCESS, tag_dicts)
@@ -166,7 +167,7 @@ class AwsS3Connector(BaseConnector):
             return RetVal(action_result.set_status(phantom.APP_ERROR, "Could not decode JSON object from given grant dictionary: {0}".format(e)))
 
         grants_list = []
-        for k, v in grants.iteritems():
+        for k, v in iteritems(grants):
             if v not in S3_PERMISSIONS_LIST:
                 return RetVal(action_result.set_status(phantom.APP_ERROR, "Given permission, {0}, is invalid".format(v)))
             grants_list.append({'Grantee': {'Type': 'CanonicalUser', 'ID': k}, 'Permission': v})
@@ -408,7 +409,7 @@ class AwsS3Connector(BaseConnector):
                 vault_path = '/vault/tmp/'
 
             file_desc, file_path = tempfile.mkstemp(dir=vault_path)
-            outfile = open(file_path, 'w')
+            outfile = open(file_path, 'wb')
             outfile.write(file_data)
             outfile.close()
             os.close(file_desc)
@@ -560,7 +561,7 @@ if __name__ == '__main__':
     pudb.set_trace()
 
     if (len(sys.argv) < 2):
-        print "No test json specified as input"
+        print("No test json specified as input")
         exit(0)
 
     with open(sys.argv[1]) as f:
