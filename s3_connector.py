@@ -23,6 +23,7 @@ from botocore.config import Config
 import os
 import json
 import tempfile
+from future.utils import iteritems
 
 
 class RetVal(tuple):
@@ -116,7 +117,7 @@ class AwsS3Connector(BaseConnector):
 
         if isinstance(cur_obj, dict):
             new_dict = {}
-            for k, v in list(cur_obj.items()):
+            for k, v in iteritems(cur_obj):
                 new_dict[k] = self._sanatize_dates(v)
             return new_dict
 
@@ -153,7 +154,7 @@ class AwsS3Connector(BaseConnector):
             return RetVal(action_result.set_status(phantom.APP_ERROR, "Could not decode JSON object from given tag dictionary: {0}".format(e)))
 
         tag_dicts = []
-        for k, v in list(tag_dict.items()):
+        for k, v in iteritems(tag_dict):
             tag_dicts.append({'Key': k, 'Value': v})
 
         return RetVal(phantom.APP_SUCCESS, tag_dicts)
@@ -166,7 +167,7 @@ class AwsS3Connector(BaseConnector):
             return RetVal(action_result.set_status(phantom.APP_ERROR, "Could not decode JSON object from given grant dictionary: {0}".format(e)))
 
         grants_list = []
-        for k, v in list(grants.items()):
+        for k, v in iteritems(grants):
             if v not in S3_PERMISSIONS_LIST:
                 return RetVal(action_result.set_status(phantom.APP_ERROR, "Given permission, {0}, is invalid".format(v)))
             grants_list.append({'Grantee': {'Type': 'CanonicalUser', 'ID': k}, 'Permission': v})
