@@ -2,3 +2,6 @@
     path = wheels
     url = git@cd.splunkdev.com:phantom-external/boto3.git
     ignore = dirty
+[submodule "phawslambda"]
+	path = phawslambda
+	url = git@cd.splunkdev.com:phantom-external/phawslambda.git
