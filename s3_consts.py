@@ -47,7 +47,7 @@ S3_REGION_DICT = {
         "EU (Frankfurt)": "eu-central-1",
         "EU (Ireland)": "eu-west-1",
         "EU (London)": "eu-west-2",
-        "South Americia (Sao Paulo)": "sa-east-1",
+        "South America (Sao Paulo)": "sa-east-1",
         "US GovCloud East": "us-gov-east-1",
         "US GovCloud West": "us-gov-west-1",
     }
