@@ -8,35 +8,35 @@
     "logo_dark": "logo_awss3_dark.svg",
     "product_name": "S3",
     "product_version_regex": ".*",
-    "publisher": "Phantom",
-    "license": "Copyright (c) 2018-2019 Splunk Inc.",
-    "app_version": "1.0.12",
-    "utctime_updated": "2019-01-19T20:09:43.000000Z",
+    "publisher": "Splunk",
+    "license": "Copyright (c) 2018-2020 Splunk Inc.",
+    "app_version": "2.0.14",
+    "utctime_updated": "2020-12-23T10:45:59.000000Z",
     "package_name": "phantom_awss3",
-    "main_module": "s3_connector.pyc",
-    "min_phantom_version": "4.0.1068",
+    "main_module": "s3_connector.py",
+    "min_phantom_version": "4.9.39220",
+    "latest_tested_versions": [
+        "Cloud API, December 17, 2020"
+    ],
     "app_wizard_version": "1.0.0",
+    "python_version": "3",
     "pip_dependencies": {
         "wheel": [
             {
                 "module": "boto3",
-                "input_file": "wheels/boto3-1.5.8-py2.py3-none-any.whl"
+                "input_file": "wheels/boto3-1.10.31-py2.py3-none-any.whl"
             },
             {
                 "module": "s3transfer",
-                "input_file": "wheels/s3transfer-0.1.12-py2.py3-none-any.whl"
+                "input_file": "phawslambda/s3transfer-0.2.0-py2.py3-none-any.whl"
             },
             {
                 "module": "botocore",
-                "input_file": "wheels/botocore-1.8.22-py2.py3-none-any.whl"
-            },
-            {
-                "module": "futures",
-                "input_file": "wheels/futures-3.2.0-py2-none-any.whl"
+                "input_file": "wheels/botocore-1.13.31-py2.py3-none-any.whl"
             },
             {
                 "module": "docutils",
-                "input_file": "wheels/docutils-0.14-py2-none-any.whl"
+                "input_file": "phawslambda/docutils-0.16-py2.py3-none-any.whl"
             },
             {
                 "module": "jmespath",
@@ -58,7 +58,7 @@
             "order": 1
         },
         "region": {
-            "description": "Region",
+            "description": "Region of the S3 bucket",
             "data_type": "string",
             "required": true,
             "value_list": [
@@ -76,7 +76,9 @@
                 "EU (Frankfurt)",
                 "EU (Ireland)",
                 "EU (London)",
-                "South Americia (Sao Paulo)"
+                "South America (Sao Paulo)",
+                "US GovCloud East",
+                "US GovCloud West"
             ],
             "order": 2
         }
@@ -86,7 +88,6 @@
             "action": "test connectivity",
             "identifier": "test_connectivity",
             "description": "Validate the asset configuration for connectivity using supplied configuration",
-            "verbose": "",
             "type": "test",
             "read_only": true,
             "parameters": {},
@@ -105,7 +106,8 @@
                     "data_path": "action_result.status",
                     "data_type": "string",
                     "example_values": [
-                        "success"
+                        "success",
+                        "failed"
                     ]
                 },
                 {
@@ -130,17 +132,19 @@
                     "data_path": "action_result.data.*.Owner.DisplayName",
                     "data_type": "string",
                     "example_values": [
-                        "herman"
+                        "Display Name"
                     ]
                 },
                 {
                     "data_path": "action_result.data.*.Owner.ID",
                     "data_type": "string",
+                    "column_name": "Owner ID",
+                    "column_order": 2,
                     "example_values": [
                         "042b3oe6d5faa5cfe9d016645ce14be41295ed6j94c988c6af6550f439e3f444"
                     ],
                     "contains": [
-                        "aws canonical ID",
+                        "aws canonical id",
                         "sha256"
                     ]
                 },
@@ -271,7 +275,8 @@
                     "data_path": "action_result.status",
                     "data_type": "string",
                     "example_values": [
-                        "success"
+                        "success",
+                        "failed"
                     ]
                 },
                 {
@@ -283,14 +288,14 @@
                         "aws s3 bucket"
                     ],
                     "example_values": [
-                        "herman-test-s3-app"
+                        "bucket-test-s3-app"
                     ]
                 },
                 {
                     "data_path": "action_result.data.*.ACL.Grants.*.Grantee.DisplayName",
                     "data_type": "string",
                     "example_values": [
-                        "herman"
+                        "Display Name"
                     ]
                 },
                 {
@@ -322,12 +327,16 @@
                     ]
                 },
                 {
+                    "data_path": "action_result.data.*.ACL.Message",
+                    "data_type": "string"
+                },
+                {
                     "data_path": "action_result.data.*.ACL.Owner.DisplayName",
                     "data_type": "string",
                     "column_name": "Owner",
                     "column_order": 1,
                     "example_values": [
-                        "herman"
+                        "Display Name"
                     ]
                 },
                 {
@@ -409,6 +418,10 @@
                     "example_values": [
                         0
                     ]
+                },
+                {
+                    "data_path": "action_result.data.*.AccelerateConfiguration.Message",
+                    "data_type": "string"
                 },
                 {
                     "data_path": "action_result.data.*.AccelerateConfiguration.ResponseMetadata.HTTPHeaders.date",
@@ -509,6 +522,10 @@
                     ]
                 },
                 {
+                    "data_path": "action_result.data.*.CORS.Message",
+                    "data_type": "string"
+                },
+                {
                     "data_path": "action_result.data.*.CORS.ResponseMetadata.HTTPHeaders.date",
                     "data_type": "string",
                     "example_values": [
@@ -570,6 +587,10 @@
                     "example_values": [
                         0
                     ]
+                },
+                {
+                    "data_path": "action_result.data.*.Encryption.Message",
+                    "data_type": "string"
                 },
                 {
                     "data_path": "action_result.data.*.Encryption.ResponseMetadata.HTTPHeaders.date",
@@ -635,11 +656,19 @@
                     ]
                 },
                 {
+                    "data_path": "action_result.data.*.Encryption.ServerSideEncryptionConfiguration.Rules.*.ApplyServerSideEncryptionByDefault.KMSMasterKeyID",
+                    "data_type": "string"
+                },
+                {
                     "data_path": "action_result.data.*.Encryption.ServerSideEncryptionConfiguration.Rules.*.ApplyServerSideEncryptionByDefault.SSEAlgorithm",
                     "data_type": "string",
                     "example_values": [
                         "AES256"
                     ]
+                },
+                {
+                    "data_path": "action_result.data.*.LifecycleConfiguration.Message",
+                    "data_type": "string"
                 },
                 {
                     "data_path": "action_result.data.*.LifecycleConfiguration.ResponseMetadata.HTTPHeaders.date",
@@ -706,10 +735,7 @@
                 },
                 {
                     "data_path": "action_result.data.*.LifecycleConfiguration.Rules.*.Filter.Prefix",
-                    "data_type": "string",
-                    "example_values": [
-                        ""
-                    ]
+                    "data_type": "string"
                 },
                 {
                     "data_path": "action_result.data.*.LifecycleConfiguration.Rules.*.ID",
@@ -740,6 +766,10 @@
                     "example_values": [
                         "us-west-1"
                     ]
+                },
+                {
+                    "data_path": "action_result.data.*.Location.Message",
+                    "data_type": "string"
                 },
                 {
                     "data_path": "action_result.data.*.Location.ResponseMetadata.HTTPHeaders.content-type",
@@ -815,15 +845,16 @@
                     "data_path": "action_result.data.*.Logging.LoggingEnabled.TargetBucket",
                     "data_type": "string",
                     "example_values": [
-                        "herman-test-s3-app"
+                        "bucket-test-s3-app"
                     ]
                 },
                 {
                     "data_path": "action_result.data.*.Logging.LoggingEnabled.TargetPrefix",
-                    "data_type": "string",
-                    "example_values": [
-                        ""
-                    ]
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.data.*.Logging.Message",
+                    "data_type": "string"
                 },
                 {
                     "data_path": "action_result.data.*.Logging.ResponseMetadata.HTTPHeaders.content-type",
@@ -917,6 +948,10 @@
                     ]
                 },
                 {
+                    "data_path": "action_result.data.*.NotificationConfiguration.Message",
+                    "data_type": "string"
+                },
+                {
                     "data_path": "action_result.data.*.NotificationConfiguration.ResponseMetadata.HTTPHeaders.date",
                     "data_type": "string",
                     "example_values": [
@@ -980,10 +1015,14 @@
                     ]
                 },
                 {
+                    "data_path": "action_result.data.*.Policy.Message",
+                    "data_type": "string"
+                },
+                {
                     "data_path": "action_result.data.*.Policy.Policy",
                     "data_type": "string",
                     "example_values": [
-                        "{\"Version\":\"2012-10-17\",\"Id\":\"S3-Console-Auto-Gen-Policy-1515018655847\",\"Statement\":[{\"Sid\":\"S3PolicyStmt-DO-NOT-MODIFY-1515018655847\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"s3.amazonaws.com\"},\"Action\":\"s3:PutObject\",\"Resource\":\"arn:aws:s3:::herman-test-s3-app/*\",\"Condition\":{\"StringEquals\":{\"aws:SourceAccount\":\"157568067690\",\"s3:x-amz-acl\":\"bucket-owner-full-control\"},\"ArnLike\":{\"aws:SourceArn\":\"arn:aws:s3:::herman-test-s3-app\"}}}]}"
+                        "{\"Version\":\"2012-10-17\",\"Id\":\"S3-Console-Auto-Gen-Policy-1515018655847\",\"Statement\":[{\"Sid\":\"S3PolicyStmt-DO-NOT-MODIFY-1515018655847\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"s3.amazonaws.com\"},\"Action\":\"s3:PutObject\",\"Resource\":\"arn:aws:s3:::bucket-test-s3-app/*\",\"Condition\":{\"StringEquals\":{\"aws:SourceAccount\":\"157568067690\",\"s3:x-amz-acl\":\"bucket-owner-full-control\"},\"ArnLike\":{\"aws:SourceArn\":\"arn:aws:s3:::bucket-test-s3-app\"}}}]}"
                     ]
                 },
                 {
@@ -1057,17 +1096,21 @@
                     ]
                 },
                 {
+                    "data_path": "action_result.data.*.Replication.Message",
+                    "data_type": "string"
+                },
+                {
                     "data_path": "action_result.data.*.Replication.ReplicationConfiguration.Role",
                     "data_type": "string",
                     "example_values": [
-                        "arn:aws:iam::157568067690:role/service-role/s3crr_role_for_herman-test-s3-app_to_herman-rep-bucket"
+                        "arn:aws:iam::157568067690:role/service-role/s3crr_role_for-test-s3-app_to-rep-bucket"
                     ]
                 },
                 {
                     "data_path": "action_result.data.*.Replication.ReplicationConfiguration.Rules.*.Destination.Bucket",
                     "data_type": "string",
                     "example_values": [
-                        "arn:aws:s3:::herman-rep-bucket"
+                        "arn:aws:s3:::rep-bucket"
                     ]
                 },
                 {
@@ -1079,10 +1122,7 @@
                 },
                 {
                     "data_path": "action_result.data.*.Replication.ReplicationConfiguration.Rules.*.Prefix",
-                    "data_type": "string",
-                    "example_values": [
-                        ""
-                    ]
+                    "data_type": "string"
                 },
                 {
                     "data_path": "action_result.data.*.Replication.ReplicationConfiguration.Rules.*.Status",
@@ -1155,6 +1195,10 @@
                     ]
                 },
                 {
+                    "data_path": "action_result.data.*.RequestPayment.Message",
+                    "data_type": "string"
+                },
+                {
                     "data_path": "action_result.data.*.RequestPayment.Payer",
                     "data_type": "string",
                     "example_values": [
@@ -1223,6 +1267,10 @@
                     "example_values": [
                         0
                     ]
+                },
+                {
+                    "data_path": "action_result.data.*.Tagging.Message",
+                    "data_type": "string"
                 },
                 {
                     "data_path": "action_result.data.*.Tagging.ResponseMetadata.HTTPHeaders.date",
@@ -1300,6 +1348,10 @@
                     "example_values": [
                         "Just to tag"
                     ]
+                },
+                {
+                    "data_path": "action_result.data.*.Versioning.Message",
+                    "data_type": "string"
                 },
                 {
                     "data_path": "action_result.data.*.Versioning.ResponseMetadata.HTTPHeaders.date",
@@ -1386,6 +1438,10 @@
                     "example_values": [
                         "host.html"
                     ]
+                },
+                {
+                    "data_path": "action_result.data.*.Website.Message",
+                    "data_type": "string"
                 },
                 {
                     "data_path": "action_result.data.*.Website.ResponseMetadata.HTTPHeaders.content-type",
@@ -1577,7 +1633,7 @@
                     "data_path": "action_result.summary.website_found",
                     "data_type": "boolean",
                     "column_name": "Website Enabled",
-                    "column_order": 9,
+                    "column_order": 10,
                     "example_values": [
                         true,
                         false
@@ -1623,6 +1679,9 @@
                     "data_type": "string",
                     "required": true,
                     "primary": true,
+                    "contains": [
+                        "aws s3 bucket"
+                    ],
                     "order": 0
                 }
             },
@@ -1631,9 +1690,10 @@
                     "data_path": "action_result.status",
                     "data_type": "string",
                     "column_name": "Status",
-                    "column_order": 0,
+                    "column_order": 1,
                     "example_values": [
-                        "success"
+                        "success",
+                        "failed"
                     ]
                 },
                 {
@@ -1641,6 +1701,11 @@
                     "data_type": "string",
                     "example_values": [
                         "automated-bucket"
+                    ],
+                    "column_name": "Name",
+                    "column_order": 0,
+                    "contains": [
+                        "aws s3 bucket"
                     ]
                 },
                 {
@@ -1734,7 +1799,7 @@
                     "data_path": "action_result.message",
                     "data_type": "string",
                     "column_name": "Message",
-                    "column_order": 1,
+                    "column_order": 2,
                     "example_values": [
                         "Successfully retrieved bucket info"
                     ]
@@ -1772,18 +1837,19 @@
                     "data_type": "string",
                     "required": true,
                     "primary": true,
+                    "contains": [
+                        "aws s3 bucket"
+                    ],
                     "order": 0
                 },
                 "tags": {
                     "description": "JSON dictionary containing tags to give object",
                     "data_type": "string",
-                    "required": false,
                     "order": 1
                 },
                 "encryption": {
                     "description": "Encryption to apply to bucket",
                     "data_type": "string",
-                    "required": false,
                     "value_list": [
                         "",
                         "NONE",
@@ -1795,23 +1861,21 @@
                 "kms_key": {
                     "description": "KMS Key (Only if encryption is AWS:KMS)",
                     "data_type": "string",
-                    "required": false,
                     "order": 3
                 },
                 "grants": {
                     "description": "JSON dictionary of users and the permissions to grant them",
                     "data_type": "string",
-                    "required": false,
                     "order": 4
                 },
                 "owner": {
                     "description": "Canonical ID of new owner",
                     "data_type": "string",
-                    "required": false,
                     "contains": [
-                        "aws canonical ID"
+                        "aws canonical id"
                     ],
-                    "order": 5
+                    "order": 5,
+                    "primary": true
                 }
             },
             "output": [
@@ -1819,16 +1883,22 @@
                     "data_path": "action_result.status",
                     "data_type": "string",
                     "column_name": "Status",
-                    "column_order": 0,
+                    "column_order": 1,
                     "example_values": [
-                        "success"
+                        "success",
+                        "failed"
                     ]
                 },
                 {
                     "data_path": "action_result.parameter.bucket",
                     "data_type": "string",
+                    "column_name": "Name",
+                    "column_order": 0,
                     "example_values": [
-                        "herman-test-s3-app"
+                        "bucket-test-s3-app"
+                    ],
+                    "contains": [
+                        "aws s3 bucket"
                     ]
                 },
                 {
@@ -1855,11 +1925,13 @@
                 {
                     "data_path": "action_result.parameter.owner",
                     "data_type": "string",
+                    "column_name": "Owner ID",
+                    "column_order": 3,
                     "example_values": [
                         "042b3oe6d5faa5cfe9d016645ce14be41295ed6j94c988c6af6550f439e3f444"
                     ],
                     "contains": [
-                        "aws canonical ID"
+                        "aws canonical id"
                     ]
                 },
                 {
@@ -1940,7 +2012,7 @@
                     "data_path": "action_result.message",
                     "data_type": "string",
                     "column_name": "Message",
-                    "column_order": 1,
+                    "column_order": 2,
                     "example_values": [
                         "Successfully retrieved bucket info"
                     ]
@@ -1986,7 +2058,6 @@
                 "key": {
                     "description": "List objects under this key",
                     "data_type": "string",
-                    "required": false,
                     "primary": true,
                     "contains": [
                         "aws s3 key"
@@ -1996,13 +2067,12 @@
                 "limit": {
                     "description": "Max number of objects to list",
                     "data_type": "numeric",
-                    "required": false,
+                    "default": 1000,
                     "order": 2
                 },
                 "continuation_token": {
                     "description": "Use this parameter to get the next set of objects from a previous action",
                     "data_type": "string",
-                    "required": false,
                     "primary": true,
                     "contains": [
                         "aws s3 continuation token"
@@ -2015,17 +2085,20 @@
                     "data_path": "action_result.status",
                     "data_type": "string",
                     "example_values": [
-                        "success"
+                        "success",
+                        "failed"
                     ]
                 },
                 {
                     "data_path": "action_result.parameter.bucket",
                     "data_type": "string",
+                    "column_name": "Name",
+                    "column_order": 0,
                     "contains": [
                         "aws s3 bucket"
                     ],
                     "example_values": [
-                        "herman-test-s3-app"
+                        "bucket-test-s3-app"
                     ]
                 },
                 {
@@ -2056,23 +2129,26 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.Contents.*.ETag",
+                    "data_path": "action_result.data.*.*.Contents.*.ETag",
                     "data_type": "string",
                     "example_values": [
                         "\"d41d8cd98f00b204e9800998ecf8427e\""
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.Contents.*.Key",
+                    "data_path": "action_result.data.*.*.Contents.*.Key",
                     "data_type": "string",
                     "column_name": "Key",
-                    "column_order": 0,
+                    "column_order": 6,
+                    "contains": [
+                        "aws s3 key"
+                    ],
                     "example_values": [
                         "test_folder/deeper_test_folder/"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.Contents.*.LastModified",
+                    "data_path": "action_result.data.*.*.Contents.*.LastModified",
                     "data_type": "string",
                     "column_name": "Last Modified",
                     "column_order": 3,
@@ -2081,27 +2157,29 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.Contents.*.Owner.DisplayName",
+                    "data_path": "action_result.data.*.*.Contents.*.Owner.DisplayName",
                     "data_type": "string",
                     "column_name": "Owner",
                     "column_order": 2,
                     "example_values": [
-                        "herman"
+                        "Display Name"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.Contents.*.Owner.ID",
+                    "data_path": "action_result.data.*.*.Contents.*.Owner.ID",
                     "data_type": "string",
                     "example_values": [
                         "042b3oe6d5faa5cfe9d016645ce14be41295ed6j94c988c6af6550f439e3f444"
                     ],
+                    "column_name": "Owner ID",
+                    "column_order": 5,
                     "contains": [
-                        "aws canonical ID",
+                        "aws canonical id",
                         "sha256"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.Contents.*.Size",
+                    "data_path": "action_result.data.*.*.Contents.*.Size",
                     "data_type": "numeric",
                     "column_name": "Size",
                     "column_order": 4,
@@ -2110,7 +2188,7 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.Contents.*.StorageClass",
+                    "data_path": "action_result.data.*.*.Contents.*.StorageClass",
                     "data_type": "string",
                     "column_name": "Storage Class",
                     "column_order": 1,
@@ -2119,7 +2197,15 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.IsTruncated",
+                    "data_path": "action_result.data.*.*.ContinuationToken",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.data.*.*.EncodingType",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.data.*.*.IsTruncated",
                     "data_type": "boolean",
                     "example_values": [
                         true,
@@ -2127,112 +2213,113 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.KeyCount",
+                    "data_path": "action_result.data.*.*.KeyCount",
                     "data_type": "numeric",
                     "example_values": [
                         2
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.MaxKeys",
+                    "data_path": "action_result.data.*.*.MaxKeys",
                     "data_type": "numeric",
                     "example_values": [
                         3
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.Name",
+                    "data_path": "action_result.data.*.*.Name",
                     "data_type": "string",
                     "example_values": [
-                        "herman-test-s3-app"
+                        "bucket-test-s3-app"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.Prefix",
-                    "data_type": "string",
-                    "example_values": [
-                        ""
-                    ]
+                    "data_path": "action_result.data.*.*.NextContinuationToken",
+                    "data_type": "string"
                 },
                 {
-                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.content-type",
+                    "data_path": "action_result.data.*.*.Prefix",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.data.*.*.ResponseMetadata.HTTPHeaders.content-type",
                     "data_type": "string",
                     "example_values": [
                         "application/xml"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.date",
+                    "data_path": "action_result.data.*.*.ResponseMetadata.HTTPHeaders.date",
                     "data_type": "string",
                     "example_values": [
                         "Thu, 14 Dec 2017 00:39:10 GMT"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.server",
+                    "data_path": "action_result.data.*.*.ResponseMetadata.HTTPHeaders.server",
                     "data_type": "string",
                     "example_values": [
                         "AmazonS3"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.transfer-encoding",
+                    "data_path": "action_result.data.*.*.ResponseMetadata.HTTPHeaders.transfer-encoding",
                     "data_type": "string",
                     "example_values": [
                         "chunked"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.x-amz-bucket-region",
+                    "data_path": "action_result.data.*.*.ResponseMetadata.HTTPHeaders.x-amz-bucket-region",
                     "data_type": "string",
                     "example_values": [
                         "us-west-1"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.x-amz-id-2",
+                    "data_path": "action_result.data.*.*.ResponseMetadata.HTTPHeaders.x-amz-id-2",
                     "data_type": "string",
                     "example_values": [
                         "Ys1n2EOmKqMX4Z/3VxSzsW7ZQXFgj7/AkkMZLhiliLPKahOTbKTwMzsdthkBMBoSo+blbJvnY7Y="
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.x-amz-request-id",
+                    "data_path": "action_result.data.*.*.ResponseMetadata.HTTPHeaders.x-amz-request-id",
                     "data_type": "string",
                     "example_values": [
                         "10B562C38DD0D76A"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.ResponseMetadata.HTTPStatusCode",
+                    "data_path": "action_result.data.*.*.ResponseMetadata.HTTPStatusCode",
                     "data_type": "numeric",
                     "example_values": [
                         200
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.ResponseMetadata.HostId",
+                    "data_path": "action_result.data.*.*.ResponseMetadata.HostId",
                     "data_type": "string",
                     "example_values": [
                         "Ys1n2EOmKqMX4Z/3VxSzsW7ZQXFgj7/AkkMZLhiliLPKahOTbKTwMzsdthkBMBoSo+blbJvnY7Y="
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.ResponseMetadata.RequestId",
+                    "data_path": "action_result.data.*.*.ResponseMetadata.RequestId",
                     "data_type": "string",
                     "example_values": [
                         "10B562C38DD0D76A"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.ResponseMetadata.RetryAttempts",
+                    "data_path": "action_result.data.*.*.ResponseMetadata.RetryAttempts",
                     "data_type": "numeric",
                     "example_values": [
                         0
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.StartAfter",
+                    "data_path": "action_result.data.*.*.StartAfter",
                     "data_type": "string",
                     "example_values": [
                         "test_folder/deeper_test_folder"
@@ -2314,22 +2401,25 @@
                     "column_name": "Status",
                     "column_order": 0,
                     "example_values": [
-                        "success"
+                        "success",
+                        "failed"
                     ]
                 },
                 {
                     "data_path": "action_result.parameter.bucket",
                     "data_type": "string",
+                    "column_name": "Name",
+                    "column_order": 2,
                     "contains": [
                         "aws s3 bucket"
                     ],
                     "example_values": [
-                        "herman-test-s3-app"
+                        "bucket-test-s3-app"
                     ]
                 },
                 {
                     "data_path": "action_result.parameter.download_file",
-                    "data_type": "string",
+                    "data_type": "boolean",
                     "example_values": [
                         true,
                         false
@@ -2338,6 +2428,8 @@
                 {
                     "data_path": "action_result.parameter.key",
                     "data_type": "string",
+                    "column_name": "Key",
+                    "column_order": 4,
                     "contains": [
                         "aws s3 key"
                     ],
@@ -2349,7 +2441,7 @@
                     "data_path": "action_result.data.*.ACL.Grants.*.Grantee.DisplayName",
                     "data_type": "string",
                     "example_values": [
-                        "herman"
+                        "Display Name"
                     ]
                 },
                 {
@@ -2380,7 +2472,7 @@
                     "data_path": "action_result.data.*.ACL.Owner.DisplayName",
                     "data_type": "string",
                     "example_values": [
-                        "herman"
+                        "Display Name"
                     ]
                 },
                 {
@@ -2389,8 +2481,10 @@
                     "example_values": [
                         "042b3oe6d5faa5cfe9d016645ce14be41295ed6j94c988c6af6550f439e3f444"
                     ],
+                    "column_name": "Owner ID",
+                    "column_order": 5,
                     "contains": [
-                        "aws canonical ID",
+                        "aws canonical id",
                         "sha256"
                     ]
                 },
@@ -2435,6 +2529,10 @@
                     "example_values": [
                         "726A959A95F1E3FF"
                     ]
+                },
+                {
+                    "data_path": "action_result.data.*.ACL.ResponseMetadata.HTTPHeaders.x-amz-version-id",
+                    "data_type": "string"
                 },
                 {
                     "data_path": "action_result.data.*.ACL.ResponseMetadata.HTTPStatusCode",
@@ -2567,11 +2665,23 @@
                     ]
                 },
                 {
+                    "data_path": "action_result.data.*.File.ResponseMetadata.HTTPHeaders.x-amz-server-side-encryption",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.data.*.File.ResponseMetadata.HTTPHeaders.x-amz-server-side-encryption-aws-kms-key-id",
+                    "data_type": "string"
+                },
+                {
                     "data_path": "action_result.data.*.File.ResponseMetadata.HTTPHeaders.x-amz-tagging-count",
                     "data_type": "string",
                     "example_values": [
                         "2"
                     ]
+                },
+                {
+                    "data_path": "action_result.data.*.File.ResponseMetadata.HTTPHeaders.x-amz-version-id",
+                    "data_type": "string"
                 },
                 {
                     "data_path": "action_result.data.*.File.ResponseMetadata.HTTPStatusCode",
@@ -2602,11 +2712,23 @@
                     ]
                 },
                 {
+                    "data_path": "action_result.data.*.File.SSEKMSKeyId",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.data.*.File.ServerSideEncryption",
+                    "data_type": "string"
+                },
+                {
                     "data_path": "action_result.data.*.File.TagCount",
                     "data_type": "numeric",
                     "example_values": [
                         2
                     ]
+                },
+                {
+                    "data_path": "action_result.data.*.File.VersionId",
+                    "data_type": "string"
                 },
                 {
                     "data_path": "action_result.data.*.File.filename",
@@ -2621,6 +2743,8 @@
                     "example_values": [
                         "cde6248b8367f3a87bb6cc3dfc46fb9786200f88"
                     ],
+                    "column_name": "Vault ID",
+                    "column_order": 6,
                     "contains": [
                         "sha1",
                         "vault id"
@@ -2660,6 +2784,10 @@
                     "example_values": [
                         "49CB0256C60608F4"
                     ]
+                },
+                {
+                    "data_path": "action_result.data.*.Tagging.ResponseMetadata.HTTPHeaders.x-amz-version-id",
+                    "data_type": "string"
                 },
                 {
                     "data_path": "action_result.data.*.Tagging.ResponseMetadata.HTTPStatusCode",
@@ -2702,6 +2830,10 @@
                     "example_values": [
                         "Intact"
                     ]
+                },
+                {
+                    "data_path": "action_result.data.*.Tagging.VersionId",
+                    "data_type": "string"
                 },
                 {
                     "data_path": "action_result.summary.created_vault_id",
@@ -2751,7 +2883,7 @@
             "read_only": false,
             "parameters": {
                 "bucket": {
-                    "description": "Vault ID of file to upload",
+                    "description": "Name of the bucket",
                     "data_type": "string",
                     "required": true,
                     "primary": true,
@@ -2773,22 +2905,20 @@
                 "grants": {
                     "description": "JSON dictionary of users and the permissions to grant them",
                     "data_type": "string",
-                    "required": false,
                     "order": 2
                 },
                 "owner": {
                     "description": "Canonical ID of new owner",
                     "data_type": "string",
-                    "required": false,
                     "contains": [
-                        "aws canonical ID"
+                        "aws canonical id"
                     ],
-                    "order": 3
+                    "order": 3,
+                    "primary": true
                 },
                 "tags": {
                     "description": "JSON dictionary containing tags to give object",
                     "data_type": "string",
-                    "required": false,
                     "order": 4
                 }
             },
@@ -2799,17 +2929,20 @@
                     "column_name": "Status",
                     "column_order": 0,
                     "example_values": [
-                        "success"
+                        "success",
+                        "failed"
                     ]
                 },
                 {
                     "data_path": "action_result.parameter.bucket",
                     "data_type": "string",
+                    "column_name": "Name",
+                    "column_order": 2,
                     "contains": [
                         "aws s3 bucket"
                     ],
                     "example_values": [
-                        "herman-test-s3-app"
+                        "bucket-test-s3-app"
                     ]
                 },
                 {
@@ -2822,6 +2955,8 @@
                 {
                     "data_path": "action_result.parameter.key",
                     "data_type": "string",
+                    "column_name": "Key",
+                    "column_order": 4,
                     "contains": [
                         "aws s3 key"
                     ],
@@ -2835,8 +2970,10 @@
                     "example_values": [
                         "042b3oe6d5faa5cfe9d016645ce14be41295ed6j94c988c6af6550f439e3f444"
                     ],
+                    "column_name": "Owner ID",
+                    "column_order": 5,
                     "contains": [
-                        "aws canonical ID"
+                        "aws canonical id"
                     ]
                 },
                 {
@@ -2882,6 +3019,10 @@
                     ]
                 },
                 {
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.x-amz-version-id",
+                    "data_type": "string"
+                },
+                {
                     "data_path": "action_result.data.*.ResponseMetadata.HTTPStatusCode",
                     "data_type": "numeric",
                     "example_values": [
@@ -2908,6 +3049,10 @@
                     "example_values": [
                         0
                     ]
+                },
+                {
+                    "data_path": "action_result.data.*.VersionId",
+                    "data_type": "string"
                 },
                 {
                     "data_path": "action_result.summary",
@@ -2946,6 +3091,7 @@
             "action": "create object",
             "identifier": "post_data",
             "description": "Create an object",
+            "verbose": "<p>For this action we need to provide the file extension in the 'key' field to make it work properly e.g.My_file.txt, My_image.png.</p>",
             "type": "generic",
             "read_only": false,
             "parameters": {
@@ -3006,13 +3152,11 @@
                 "kms_key": {
                     "description": "KMS Key (Only if encryption is AWS:KMS)",
                     "data_type": "string",
-                    "required": false,
                     "order": 5
                 },
                 "metadata": {
                     "description": "JSON dictionary containing metadata to give object",
                     "data_type": "string",
-                    "required": false,
                     "order": 6
                 }
             },
@@ -3023,17 +3167,20 @@
                     "column_name": "Status",
                     "column_order": 0,
                     "example_values": [
-                        "success"
+                        "success",
+                        "failed"
                     ]
                 },
                 {
                     "data_path": "action_result.parameter.bucket",
                     "data_type": "string",
+                    "column_name": "Name",
+                    "column_order": 1,
                     "contains": [
                         "aws s3 bucket"
                     ],
                     "example_values": [
-                        "herman-test-s3-app"
+                        "bucket-test-s3-app"
                     ]
                 },
                 {
@@ -3046,6 +3193,8 @@
                 {
                     "data_path": "action_result.parameter.key",
                     "data_type": "string",
+                    "column_name": "Key",
+                    "column_order": 2,
                     "contains": [
                         "aws s3 key"
                     ],
@@ -3077,6 +3226,8 @@
                 {
                     "data_path": "action_result.parameter.vault_id",
                     "data_type": "string",
+                    "column_name": "Vault ID",
+                    "column_order": 3,
                     "example_values": [
                         "306b9e7cd363cb2fdfc11176bc2f04ede7358f00"
                     ],
@@ -3141,11 +3292,19 @@
                     ]
                 },
                 {
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.x-amz-server-side-encryption-aws-kms-key-id",
+                    "data_type": "string"
+                },
+                {
                     "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.x-amz-storage-class",
                     "data_type": "string",
                     "example_values": [
                         "STANDARD_IA"
                     ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.x-amz-version-id",
+                    "data_type": "string"
                 },
                 {
                     "data_path": "action_result.data.*.ResponseMetadata.HTTPStatusCode",
@@ -3176,11 +3335,19 @@
                     ]
                 },
                 {
+                    "data_path": "action_result.data.*.SSEKMSKeyId",
+                    "data_type": "string"
+                },
+                {
                     "data_path": "action_result.data.*.ServerSideEncryption",
                     "data_type": "string",
                     "example_values": [
                         "AES256"
                     ]
+                },
+                {
+                    "data_path": "action_result.data.*.VersionId",
+                    "data_type": "string"
                 },
                 {
                     "data_path": "action_result.summary",
