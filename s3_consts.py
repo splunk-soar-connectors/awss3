@@ -1,7 +1,7 @@
 # --
 # File: s3_consts.py
 #
-# Copyright (c) 2018-2019 Splunk Inc.
+# Copyright (c) 2018-2020 Splunk Inc.
 #
 # SPLUNK CONFIDENTIAL - Use or disclosure of this material in whole or in part
 # without a valid written license from Splunk Inc. is PROHIBITED.
@@ -47,5 +47,18 @@ S3_REGION_DICT = {
         "EU (Frankfurt)": "eu-central-1",
         "EU (Ireland)": "eu-west-1",
         "EU (London)": "eu-west-2",
-        "South Americia (Sao Paulo)": "sa-east-1"
+        "South America (Sao Paulo)": "sa-east-1",
+        "US GovCloud East": "us-gov-east-1",
+        "US GovCloud West": "us-gov-west-1",
     }
+
+# This value is set by trial and error by quering AWS
+S3_ERR_INVALID_PARAM = "Please provide non-zero positive integer in {param}"
+S3_ERR_CODE_UNAVAILABLE = "Error code unavailable"
+S3_ERR_MESSAGE_UNAVAILABLE = "Error message unavailable. Please check the asset configuration and|or action parameters."
+S3_UNICODE_DAMMIT_TYPE_ERROR_MESSAGE = "Error occurred while connecting to the AWS server. Please check the asset configuration and|or the action parameters."
+S3_BUCKET_LIMIT = 1000
+
+# Integer Validation Keys
+S3_LIMIT = "'limit' action parameter"
+S3_VALIDATE_INTEGER = "Please provide a valid integer value in the {param}"
