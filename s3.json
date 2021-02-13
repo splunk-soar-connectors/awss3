@@ -28,7 +28,7 @@
             },
             {
                 "module": "s3transfer",
-                "input_file": "phawslambda/s3transfer-0.2.0-py2.py3-none-any.whl"
+                "input_file": "wheels/s3transfer-0.3.3-py2.py3-none-any.whl"
             },
             {
                 "module": "botocore",
@@ -36,7 +36,7 @@
             },
             {
                 "module": "docutils",
-                "input_file": "phawslambda/docutils-0.16-py2.py3-none-any.whl"
+                "input_file": "wheels/docutils-0.16-py2.py3-none-any.whl"
             },
             {
                 "module": "jmespath",
