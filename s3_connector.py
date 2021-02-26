@@ -1,7 +1,7 @@
 # --
 # File: s3_connector.py
 #
-# Copyright (c) 2018-2020 Splunk Inc.
+# Copyright (c) 2018-2021 Splunk Inc.
 #
 # SPLUNK CONFIDENTIAL - Use or disclosure of this material in whole or in part
 # without a valid written license from Splunk Inc. is PROHIBITED.
@@ -17,7 +17,7 @@ from phantom.vault import Vault
 
 # Usage of the consts file is recommended
 from s3_consts import *
-from boto3 import client
+from boto3 import client, Session
 from datetime import datetime
 from botocore.config import Config
 from bs4 import UnicodeDammit
@@ -26,6 +26,7 @@ import os
 import json
 import tempfile
 import six
+import ast
 import sys
 
 
@@ -45,6 +46,7 @@ class AwsS3Connector(BaseConnector):
         self._region = None
         self._access_key = None
         self._secret_key = None
+        self._session_token = None
         self._proxy = None
 
     def initialize(self):
@@ -63,17 +65,28 @@ class AwsS3Connector(BaseConnector):
         if not self._region:
             return self.set_status(phantom.APP_ERROR, "Specified region is not valid")
 
-        if S3_JSON_ACCESS_KEY in config:
-            self._access_key = config.get(S3_JSON_ACCESS_KEY)
-        if S3_JSON_SECRET_KEY in config:
-            self._secret_key = config.get(S3_JSON_SECRET_KEY)
-
         self._proxy = {}
         env_vars = config.get('_reserved_environment_variables', {})
         if 'HTTP_PROXY' in env_vars:
             self._proxy['http'] = env_vars['HTTP_PROXY']['value']
         if 'HTTPS_PROXY' in env_vars:
             self._proxy['https'] = env_vars['HTTPS_PROXY']['value']
+
+        if config.get('use_role'):
+            credentials = self._handle_get_ec2_role()
+            if not credentials:
+                return self.set_status(phantom.APP_ERROR, "Failed to get EC2 role credentials")
+            self._access_key = credentials.access_key
+            self._secret_key = credentials.secret_key
+            self._session_token = credentials.token
+
+            return phantom.APP_SUCCESS
+
+        self._access_key = config.get(S3_JSON_ACCESS_KEY)
+        self._secret_key = config.get(S3_JSON_SECRET_KEY)
+
+        if not (self._access_key and self._secret_key):
+            return self.set_status(phantom.APP_ERROR, S3_BAD_ASSET_CONFIG_MSG)
 
         return phantom.APP_SUCCESS
 
@@ -82,6 +95,12 @@ class AwsS3Connector(BaseConnector):
         # Save the state, this data is saved accross actions and app upgrades
         self.save_state(self._state)
         return phantom.APP_SUCCESS
+
+    def _handle_get_ec2_role(self):
+
+        session = Session(region_name=self._region)
+        credentials = session.get_credentials()
+        return credentials
 
     def _handle_py_ver_compat_for_input_str(self, input_str, always_encode=False):
         """
@@ -148,11 +167,25 @@ class AwsS3Connector(BaseConnector):
 
         return phantom.APP_SUCCESS, parameter
 
-    def _create_client(self, action_result):
+    def _create_client(self, action_result, param=None):
 
         boto_config = None
         if self._proxy:
             boto_config = Config(proxies=self._proxy)
+
+        # Try getting and using temporary assume role credentials from parameters
+        temp_credentials = dict()
+        if param and 'credentials' in param:
+            try:
+                temp_credentials = ast.literal_eval(param['credentials'])
+                self._access_key = temp_credentials.get('AccessKeyId', '')
+                self._secret_key = temp_credentials.get('SecretAccessKey', '')
+                self._session_token = temp_credentials.get('SessionToken', '')
+
+                self.save_progress("Using temporary assume role credentials for action")
+            except Exception as e:
+                return action_result.set_status(phantom.APP_ERROR,
+                                                "Failed to get temporary credentials:{0}".format(e))
 
         try:
 
@@ -165,6 +198,7 @@ class AwsS3Connector(BaseConnector):
                         region_name=self._region,
                         aws_access_key_id=self._access_key,
                         aws_secret_access_key=self._secret_key,
+                        aws_session_token=self._session_token,
                         config=boto_config)
 
             else:
@@ -262,7 +296,7 @@ class AwsS3Connector(BaseConnector):
         self.save_progress("Querying S3 to check credentials")
         action_result = self.add_action_result(ActionResult(dict(param)))
 
-        if not self._create_client(action_result):
+        if not self._create_client(action_result, param):
             return action_result.get_status()
 
         ret_val, _ = self._make_boto_call(action_result, 'list_buckets')
@@ -279,7 +313,7 @@ class AwsS3Connector(BaseConnector):
         self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
         action_result = self.add_action_result(ActionResult(dict(param)))
 
-        if not self._create_client(action_result):
+        if not self._create_client(action_result, param):
             return action_result.get_status()
 
         ret_val, resp_json = self._make_boto_call(action_result, 'list_buckets')
@@ -297,7 +331,7 @@ class AwsS3Connector(BaseConnector):
         self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
         action_result = self.add_action_result(ActionResult(dict(param)))
 
-        if not self._create_client(action_result):
+        if not self._create_client(action_result, param):
             return action_result.get_status()
 
         result_json = {}
@@ -340,7 +374,7 @@ class AwsS3Connector(BaseConnector):
         self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
         action_result = self.add_action_result(ActionResult(dict(param)))
 
-        if not self._create_client(action_result):
+        if not self._create_client(action_result, param):
             return action_result.get_status()
 
         location = {'LocationConstraint': S3_REGION_DICT[self.get_config()['region']]}
@@ -359,7 +393,7 @@ class AwsS3Connector(BaseConnector):
         self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
         action_result = self.add_action_result(ActionResult(dict(param)))
 
-        if not self._create_client(action_result):
+        if not self._create_client(action_result, param):
             return action_result.get_status()
 
         is_tags = False
@@ -439,7 +473,7 @@ class AwsS3Connector(BaseConnector):
         if phantom.is_fail(ret_val):
             return action_result.get_status()
 
-        if not self._create_client(action_result):
+        if not self._create_client(action_result, param):
             return action_result.get_status()
 
         nextContinuationToken = ''
@@ -496,7 +530,7 @@ class AwsS3Connector(BaseConnector):
         self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
         action_result = self.add_action_result(ActionResult(dict(param)))
 
-        if not self._create_client(action_result):
+        if not self._create_client(action_result, param):
             return action_result.get_status()
 
         ret_val, resp_json = self._make_boto_call(action_result, 'get_object_tagging', Bucket=param['bucket'], Key=param['key'])
@@ -560,7 +594,7 @@ class AwsS3Connector(BaseConnector):
         self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
         action_result = self.add_action_result(ActionResult(dict(param)))
 
-        if not self._create_client(action_result):
+        if not self._create_client(action_result, param):
             return action_result.get_status()
 
         is_tags = False
@@ -607,7 +641,7 @@ class AwsS3Connector(BaseConnector):
         self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
         action_result = self.add_action_result(ActionResult(dict(param)))
 
-        if not self._create_client(action_result):
+        if not self._create_client(action_result, param):
             return action_result.get_status()
 
         vault_id = param['vault_id']

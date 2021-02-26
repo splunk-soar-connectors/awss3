@@ -1,7 +1,7 @@
 # --
 # File: s3_consts.py
 #
-# Copyright (c) 2018-2020 Splunk Inc.
+# Copyright (c) 2018-2021 Splunk Inc.
 #
 # SPLUNK CONFIDENTIAL - Use or disclosure of this material in whole or in part
 # without a valid written license from Splunk Inc. is PROHIBITED.
@@ -62,3 +62,4 @@ S3_BUCKET_LIMIT = 1000
 # Integer Validation Keys
 S3_LIMIT = "'limit' action parameter"
 S3_VALIDATE_INTEGER = "Please provide a valid integer value in the {param}"
+S3_BAD_ASSET_CONFIG_MSG = "Please provide access keys or select assume role check box in asset configuration"
