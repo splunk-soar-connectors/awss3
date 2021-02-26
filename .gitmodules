@@ -1,3 +1,6 @@
 [submodule "phawslambda"]
 	path = phawslambda
 	url = git@cd.splunkdev.com:phantom-external/phawslambda.git
+[submodule "wheels"]
+	path = wheels
+	url = git@cd.splunkdev.com:phantom-external/boto3.git
