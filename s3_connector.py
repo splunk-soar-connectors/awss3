@@ -463,6 +463,23 @@ class AwsS3Connector(BaseConnector):
             return action_result.set_status(phantom.APP_SUCCESS, "Successfully updated bucket")
         return action_result.set_status(phantom.APP_ERROR, "Please provide at least one of these parameters: 'tags', 'grants', 'encryption'")
 
+    def _handle_delete_bucket(self, param):
+
+        self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
+        action_result = self.add_action_result(ActionResult(dict(param)))
+
+        if not self._create_client(action_result, param):
+            return action_result.get_status()
+
+        ret_val, resp_json = self._make_boto_call(action_result, 'delete_bucket', Bucket=param['bucket'])
+
+        if (phantom.is_fail(ret_val)):
+            return ret_val
+
+        action_result.add_data(resp_json)
+
+        return action_result.set_status(phantom.APP_SUCCESS, "Successfully deleted bucket")
+
     def _handle_list_objects(self, param):
 
         self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
@@ -718,6 +735,8 @@ class AwsS3Connector(BaseConnector):
             ret_val = self._handle_update_bucket(param)
         elif action_id == 'create_bucket':
             ret_val = self._handle_create_bucket(param)
+        elif action_id == 'delete_bucket':
+            ret_val = self._handle_delete_bucket(param)
         elif action_id == 'list_objects':
             ret_val = self._handle_list_objects(param)
         elif action_id == 'get_object':
