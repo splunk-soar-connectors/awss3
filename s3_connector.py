@@ -301,7 +301,7 @@ class AwsS3Connector(BaseConnector):
 
         ret_val, _ = self._make_boto_call(action_result, 'list_buckets')
 
-        if (phantom.is_fail(ret_val)):
+        if phantom.is_fail(ret_val):
             self.save_progress("Test Connectivity Failed")
             return ret_val
 
@@ -318,7 +318,7 @@ class AwsS3Connector(BaseConnector):
 
         ret_val, resp_json = self._make_boto_call(action_result, 'list_buckets')
 
-        if (phantom.is_fail(ret_val)):
+        if phantom.is_fail(ret_val):
             return ret_val
 
         action_result.add_data(resp_json)
@@ -343,7 +343,7 @@ class AwsS3Connector(BaseConnector):
 
             ret_val, resp_json = self._make_boto_call(action_result, 'get_bucket_{0}'.format(endpoint.lower()), Bucket=param['bucket'])
 
-            if (phantom.is_fail(ret_val)):
+            if phantom.is_fail(ret_val):
                 if S3_BAD_BUCKET_MESSAGE in action_result.get_message():
                     return ret_val
                 else:
@@ -381,7 +381,7 @@ class AwsS3Connector(BaseConnector):
 
         ret_val, resp_json = self._make_boto_call(action_result, 'create_bucket', Bucket=param['bucket'], CreateBucketConfiguration=location)
 
-        if (phantom.is_fail(ret_val)):
+        if phantom.is_fail(ret_val):
             return ret_val
 
         action_result.add_data(resp_json)
@@ -404,12 +404,12 @@ class AwsS3Connector(BaseConnector):
             is_tags = True
             ret_val, tag_dicts = self._get_tag_dicts(action_result, param['tags'])
 
-            if (phantom.is_fail(ret_val)):
+            if phantom.is_fail(ret_val):
                 return ret_val
 
             ret_val, resp_json = self._make_boto_call(action_result, 'put_bucket_tagging', Bucket=param['bucket'], Tagging={'TagSet': tag_dicts})
 
-            if (phantom.is_fail(ret_val)):
+            if phantom.is_fail(ret_val):
                 return ret_val
 
             action_result.add_data(resp_json)
@@ -422,12 +422,12 @@ class AwsS3Connector(BaseConnector):
 
             ret_val, grant_dict = self._get_grant_dict(action_result, param['grants'], param['owner'])
 
-            if (phantom.is_fail(ret_val)):
+            if phantom.is_fail(ret_val):
                 return ret_val
 
             ret_val, resp_json = self._make_boto_call(action_result, 'put_bucket_acl', Bucket=param['bucket'], AccessControlPolicy=grant_dict)
 
-            if (phantom.is_fail(ret_val)):
+            if phantom.is_fail(ret_val):
                 return ret_val
 
             action_result.add_data(resp_json)
@@ -454,7 +454,7 @@ class AwsS3Connector(BaseConnector):
                 ret_val, resp_json = self._make_boto_call(action_result, 'put_bucket_encryption',
                         Bucket=param['bucket'], ServerSideEncryptionConfiguration={"Rules": [{"ApplyServerSideEncryptionByDefault": encrypt_config}]})
 
-            if (phantom.is_fail(ret_val)):
+            if phantom.is_fail(ret_val):
                 return ret_val
 
             action_result.add_data(resp_json)
@@ -473,7 +473,7 @@ class AwsS3Connector(BaseConnector):
 
         ret_val, resp_json = self._make_boto_call(action_result, 'delete_bucket', Bucket=param['bucket'])
 
-        if (phantom.is_fail(ret_val)):
+        if phantom.is_fail(ret_val):
             return ret_val
 
         action_result.add_data(resp_json)
@@ -525,7 +525,7 @@ class AwsS3Connector(BaseConnector):
                         MaxKeys=current_limit,
                         FetchOwner=True)
 
-            if (phantom.is_fail(ret_val)):
+            if phantom.is_fail(ret_val):
                 return ret_val
 
             result_list.append(resp_json)
@@ -552,14 +552,14 @@ class AwsS3Connector(BaseConnector):
 
         ret_val, resp_json = self._make_boto_call(action_result, 'get_object_tagging', Bucket=param['bucket'], Key=param['key'])
 
-        if (phantom.is_fail(ret_val)):
+        if phantom.is_fail(ret_val):
             return ret_val
 
         result_json = {"Tagging": resp_json}
 
         ret_val, resp_json = self._make_boto_call(action_result, 'get_object_acl', Bucket=param['bucket'], Key=param['key'])
 
-        if (phantom.is_fail(ret_val)):
+        if phantom.is_fail(ret_val):
             return ret_val
 
         result_json["ACL"] = resp_json
@@ -568,7 +568,7 @@ class AwsS3Connector(BaseConnector):
 
             ret_val, resp_json = self._make_boto_call(action_result, 'get_object', Bucket=param['bucket'], Key=param['key'])
 
-            if (phantom.is_fail(ret_val)):
+            if phantom.is_fail(ret_val):
                 return ret_val
 
             try:
@@ -621,12 +621,12 @@ class AwsS3Connector(BaseConnector):
             is_tags = True
             ret_val, tag_dicts = self._get_tag_dicts(action_result, param['tags'])
 
-            if (phantom.is_fail(ret_val)):
+            if phantom.is_fail(ret_val):
                 return ret_val
 
             ret_val, resp_json = self._make_boto_call(action_result, 'put_object_tagging', Bucket=param['bucket'], Key=param['key'], Tagging={'TagSet': tag_dicts})
 
-            if (phantom.is_fail(ret_val)):
+            if phantom.is_fail(ret_val):
                 return ret_val
 
             action_result.add_data(resp_json)
@@ -639,12 +639,12 @@ class AwsS3Connector(BaseConnector):
 
             ret_val, grant_dict = self._get_grant_dict(action_result, param['grants'], param['owner'])
 
-            if (phantom.is_fail(ret_val)):
+            if phantom.is_fail(ret_val):
                 return ret_val
 
             ret_val, resp_json = self._make_boto_call(action_result, 'put_object_acl', Bucket=param['bucket'], Key=param['key'], AccessControlPolicy=grant_dict)
 
-            if (phantom.is_fail(ret_val)):
+            if phantom.is_fail(ret_val):
                 return ret_val
 
             action_result.add_data(resp_json)
@@ -652,6 +652,23 @@ class AwsS3Connector(BaseConnector):
         if is_tags or is_grants:
             return action_result.set_status(phantom.APP_SUCCESS, "Object successfully updated")
         return action_result.set_status(phantom.APP_ERROR, "Please provide at least one of these parameters: 'tags', 'grants'")
+
+    def _handle_delete_object(self, param):
+
+        self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
+        action_result = self.add_action_result(ActionResult(dict(param)))
+
+        if not self._create_client(action_result, param):
+            return action_result.get_status()
+
+        ret_val, resp_json = self._make_boto_call(action_result, 'delete_object', Bucket=param['bucket'], Key=param['key'])
+
+        if phantom.is_fail(ret_val):
+            return ret_val
+
+        action_result.add_data(resp_json)
+
+        return action_result.set_status(phantom.APP_SUCCESS, "Successfully deleted object")
 
     def _handle_post_data(self, param):
 
@@ -709,7 +726,7 @@ class AwsS3Connector(BaseConnector):
 
         ret_val, resp_json = self._make_boto_call(action_result, 'put_object', **kwargs)
 
-        if (phantom.is_fail(ret_val)):
+        if phantom.is_fail(ret_val):
             return ret_val
 
         action_result.add_data(resp_json)
@@ -743,6 +760,8 @@ class AwsS3Connector(BaseConnector):
             ret_val = self._handle_get_object(param)
         elif action_id == 'update_object':
             ret_val = self._handle_update_object(param)
+        elif action_id == 'delete_object':
+            ret_val = self._handle_delete_object(param)
         elif action_id == 'post_data':
             ret_val = self._handle_post_data(param)
 
