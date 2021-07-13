@@ -1866,7 +1866,7 @@
                     "column_name": "Message",
                     "column_order": 2,
                     "example_values": [
-                        "Successfully retrieved bucket info"
+                        "Successfully created a bucket"
                     ]
                 },
                 {

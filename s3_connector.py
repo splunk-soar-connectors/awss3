@@ -386,7 +386,7 @@ class AwsS3Connector(BaseConnector):
 
         action_result.add_data(resp_json)
 
-        return action_result.set_status(phantom.APP_SUCCESS, "Successfully retrieved bucket info")
+        return action_result.set_status(phantom.APP_SUCCESS, "Successfully created a bucket")
 
     def _handle_update_bucket(self, param):
 
