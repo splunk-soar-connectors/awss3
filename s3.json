@@ -138,21 +138,21 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.Buckets.*.CreationDate",
-                    "data_type": "string",
-                    "column_name": "Created",
-                    "column_order": 1,
-                    "example_values": [
-                        "2017-09-13 21:33:57"
-                    ]
-                },
-                {
                     "data_path": "action_result.data.*.Buckets.*.Name",
                     "data_type": "string",
                     "column_name": "Name",
                     "column_order": 0,
                     "example_values": [
                         "aws-athena-query-results-157568067690-us-west-2"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Buckets.*.CreationDate",
+                    "data_type": "string",
+                    "column_name": "Created",
+                    "column_order": 1,
+                    "example_values": [
+                        "2017-09-13 21:33:57"
                     ]
                 },
                 {
@@ -814,6 +814,16 @@
                     ]
                 },
                 {
+                    "data_path": "action_result.summary.encryption_found",
+                    "data_type": "boolean",
+                    "column_name": "Encryption Enabled",
+                    "column_order": 3,
+                    "example_values": [
+                        true,
+                        false
+                    ]
+                },
+                {
                     "data_path": "action_result.data.*.Location.Message",
                     "data_type": "string"
                 },
@@ -1463,6 +1473,26 @@
                     ]
                 },
                 {
+                    "data_path": "action_result.summary.replication_found",
+                    "data_type": "boolean",
+                    "column_name": "Replication Enabled",
+                    "column_order": 4,
+                    "example_values": [
+                        true,
+                        false
+                    ]
+                },
+                {
+                    "data_path": "action_result.summary.notification_configuration_found",
+                    "data_type": "boolean",
+                    "column_name": "Notification Enabled",
+                    "column_order": 5,
+                    "example_values": [
+                        true,
+                        false
+                    ]
+                },
+                {
                     "data_path": "action_result.data.*.Versioning.Status",
                     "data_type": "string",
                     "column_name": "Versioning Status",
@@ -1586,10 +1616,10 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.summary.encryption_found",
+                    "data_path": "action_result.summary.logging_found",
                     "data_type": "boolean",
-                    "column_name": "Encryption Enabled",
-                    "column_order": 3,
+                    "column_name": "Logging Enabled",
+                    "column_order": 8,
                     "example_values": [
                         true,
                         false
@@ -1614,38 +1644,8 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.summary.logging_found",
-                    "data_type": "boolean",
-                    "column_name": "Logging Enabled",
-                    "column_order": 8,
-                    "example_values": [
-                        true,
-                        false
-                    ]
-                },
-                {
-                    "data_path": "action_result.summary.notification_configuration_found",
-                    "data_type": "boolean",
-                    "column_name": "Notification Enabled",
-                    "column_order": 5,
-                    "example_values": [
-                        true,
-                        false
-                    ]
-                },
-                {
                     "data_path": "action_result.summary.policy_found",
                     "data_type": "boolean",
-                    "example_values": [
-                        true,
-                        false
-                    ]
-                },
-                {
-                    "data_path": "action_result.summary.replication_found",
-                    "data_type": "boolean",
-                    "column_name": "Replication Enabled",
-                    "column_order": 4,
                     "example_values": [
                         true,
                         false
@@ -1742,16 +1742,6 @@
             },
             "output": [
                 {
-                    "data_path": "action_result.status",
-                    "data_type": "string",
-                    "column_name": "Status",
-                    "column_order": 1,
-                    "example_values": [
-                        "success",
-                        "failed"
-                    ]
-                },
-                {
                     "data_path": "action_result.parameter.bucket",
                     "data_type": "string",
                     "example_values": [
@@ -1761,6 +1751,16 @@
                     "column_order": 0,
                     "contains": [
                         "aws s3 bucket"
+                    ]
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "Status",
+                    "column_order": 1,
+                    "example_values": [
+                        "success",
+                        "failed"
                     ]
                 },
                 {
@@ -1954,16 +1954,6 @@
             },
             "output": [
                 {
-                    "data_path": "action_result.status",
-                    "data_type": "string",
-                    "column_name": "Status",
-                    "column_order": 1,
-                    "example_values": [
-                        "success",
-                        "failed"
-                    ]
-                },
-                {
                     "data_path": "action_result.parameter.bucket",
                     "data_type": "string",
                     "column_name": "Name",
@@ -1973,6 +1963,16 @@
                     ],
                     "contains": [
                         "aws s3 bucket"
+                    ]
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "Status",
+                    "column_order": 1,
+                    "example_values": [
+                        "success",
+                        "failed"
                     ]
                 },
                 {
@@ -1994,6 +1994,15 @@
                     "data_type": "string",
                     "example_values": [
                         "28dc6a18-f1ac-11e7-8c3f-9a214cf093ae"
+                    ]
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string",
+                    "column_name": "Message",
+                    "column_order": 2,
+                    "example_values": [
+                        "Successfully retrieved bucket info"
                     ]
                 },
                 {
@@ -2093,15 +2102,6 @@
                     "data_type": "string"
                 },
                 {
-                    "data_path": "action_result.message",
-                    "data_type": "string",
-                    "column_name": "Message",
-                    "column_order": 2,
-                    "example_values": [
-                        "Successfully retrieved bucket info"
-                    ]
-                },
-                {
                     "data_path": "summary.total_objects",
                     "data_type": "numeric",
                     "example_values": [
@@ -2151,16 +2151,6 @@
             },
             "output": [
                 {
-                    "data_path": "action_result.status",
-                    "data_type": "string",
-                    "column_name": "Status",
-                    "column_order": 1,
-                    "example_values": [
-                        "success",
-                        "failed"
-                    ]
-                },
-                {
                     "data_path": "action_result.parameter.bucket",
                     "data_type": "string",
                     "example_values": [
@@ -2170,6 +2160,16 @@
                     "column_order": 0,
                     "contains": [
                         "aws s3 bucket"
+                    ]
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "Status",
+                    "column_order": 1,
+                    "example_values": [
+                        "success",
+                        "failed"
                     ]
                 },
                 {
@@ -2397,15 +2397,21 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.*.Contents.*.Key",
+                    "data_path": "action_result.data.*.*.Contents.*.StorageClass",
                     "data_type": "string",
-                    "column_name": "Key",
-                    "column_order": 6,
-                    "contains": [
-                        "aws s3 key"
-                    ],
+                    "column_name": "Storage Class",
+                    "column_order": 1,
                     "example_values": [
-                        "test_folder/deeper_test_folder/"
+                        "STANDARD"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.*.Contents.*.Owner.DisplayName",
+                    "data_type": "string",
+                    "column_name": "Owner",
+                    "column_order": 2,
+                    "example_values": [
+                        "Display Name"
                     ]
                 },
                 {
@@ -2418,12 +2424,12 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.*.Contents.*.Owner.DisplayName",
-                    "data_type": "string",
-                    "column_name": "Owner",
-                    "column_order": 2,
+                    "data_path": "action_result.data.*.*.Contents.*.Size",
+                    "data_type": "numeric",
+                    "column_name": "Size",
+                    "column_order": 4,
                     "example_values": [
-                        "Display Name"
+                        0
                     ]
                 },
                 {
@@ -2440,21 +2446,15 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.*.Contents.*.Size",
-                    "data_type": "numeric",
-                    "column_name": "Size",
-                    "column_order": 4,
-                    "example_values": [
-                        0
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.*.Contents.*.StorageClass",
+                    "data_path": "action_result.data.*.*.Contents.*.Key",
                     "data_type": "string",
-                    "column_name": "Storage Class",
-                    "column_order": 1,
+                    "column_name": "Key",
+                    "column_order": 6,
+                    "contains": [
+                        "aws s3 key"
+                    ],
                     "example_values": [
-                        "STANDARD"
+                        "test_folder/deeper_test_folder/"
                     ]
                 },
                 {
@@ -2676,6 +2676,15 @@
                     ]
                 },
                 {
+                    "data_path": "action_result.message",
+                    "data_type": "string",
+                    "column_name": "Message",
+                    "column_order": 1,
+                    "example_values": [
+                        "File successfully added to vault"
+                    ]
+                },
+                {
                     "data_path": "action_result.parameter.bucket",
                     "data_type": "string",
                     "column_name": "Name",
@@ -2699,7 +2708,7 @@
                     "data_path": "action_result.parameter.key",
                     "data_type": "string",
                     "column_name": "Key",
-                    "column_order": 4,
+                    "column_order": 3,
                     "contains": [
                         "aws s3 key"
                     ],
@@ -2762,7 +2771,7 @@
                         "042b3oe6d5faa5cfe9d016645ce14be41295ed6j94c988c6af6550f439e3f444"
                     ],
                     "column_name": "Owner ID",
-                    "column_order": 5,
+                    "column_order": 4,
                     "contains": [
                         "aws canonical id",
                         "sha256"
@@ -3024,7 +3033,7 @@
                         "cde6248b8367f3a87bb6cc3dfc46fb9786200f88"
                     ],
                     "column_name": "Vault ID",
-                    "column_order": 6,
+                    "column_order": 5,
                     "contains": [
                         "sha1",
                         "vault id"
@@ -3126,15 +3135,6 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.message",
-                    "data_type": "string",
-                    "column_name": "Message",
-                    "column_order": 1,
-                    "example_values": [
-                        "File successfully added to vault"
-                    ]
-                },
-                {
                     "data_path": "summary.total_objects",
                     "data_type": "numeric",
                     "example_values": [
@@ -3223,6 +3223,15 @@
                     ]
                 },
                 {
+                    "data_path": "action_result.message",
+                    "data_type": "string",
+                    "column_name": "Message",
+                    "column_order": 1,
+                    "example_values": [
+                        "Object successfully updated"
+                    ]
+                },
+                {
                     "data_path": "action_result.parameter.bucket",
                     "data_type": "string",
                     "column_name": "Name",
@@ -3245,7 +3254,7 @@
                     "data_path": "action_result.parameter.key",
                     "data_type": "string",
                     "column_name": "Key",
-                    "column_order": 4,
+                    "column_order": 3,
                     "contains": [
                         "aws s3 key"
                     ],
@@ -3260,7 +3269,7 @@
                         "042b3oe6d5faa5cfe9d016645ce14be41295ed6j94c988c6af6550f439e3f444"
                     ],
                     "column_name": "Owner ID",
-                    "column_order": 5,
+                    "column_order": 4,
                     "contains": [
                         "aws canonical id"
                     ]
@@ -3356,15 +3365,6 @@
                 {
                     "data_path": "action_result.summary",
                     "data_type": "string"
-                },
-                {
-                    "data_path": "action_result.message",
-                    "data_type": "string",
-                    "column_name": "Message",
-                    "column_order": 1,
-                    "example_values": [
-                        "Object successfully updated"
-                    ]
                 },
                 {
                     "data_path": "summary.total_objects",
@@ -3738,16 +3738,6 @@
             },
             "output": [
                 {
-                    "data_path": "action_result.status",
-                    "data_type": "string",
-                    "column_name": "Status",
-                    "column_order": 1,
-                    "example_values": [
-                        "success",
-                        "failed"
-                    ]
-                },
-                {
                     "data_path": "action_result.parameter.bucket",
                     "data_type": "string",
                     "example_values": [
@@ -3757,6 +3747,16 @@
                     "column_order": 0,
                     "contains": [
                         "aws s3 bucket"
+                    ]
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "Status",
+                    "column_order": 1,
+                    "example_values": [
+                        "success",
+                        "failed"
                     ]
                 },
                 {

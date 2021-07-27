@@ -177,7 +177,7 @@ class AwsS3Connector(BaseConnector):
         temp_credentials = dict()
         if param and 'credentials' in param:
             try:
-                temp_credentials = ast.literal_eval(param['credentials'])
+                temp_credentials = ast.literal_eval(param.get('credentials'))
                 self._access_key = temp_credentials.get('AccessKeyId', '')
                 self._secret_key = temp_credentials.get('SecretAccessKey', '')
                 self._session_token = temp_credentials.get('SessionToken', '')
@@ -341,7 +341,7 @@ class AwsS3Connector(BaseConnector):
 
             found = True
 
-            ret_val, resp_json = self._make_boto_call(action_result, 'get_bucket_{0}'.format(endpoint.lower()), Bucket=param['bucket'])
+            ret_val, resp_json = self._make_boto_call(action_result, 'get_bucket_{0}'.format(endpoint.lower()), Bucket=param.get('bucket'))
 
             if phantom.is_fail(ret_val):
                 if S3_BAD_BUCKET_MESSAGE in action_result.get_message():
@@ -379,7 +379,7 @@ class AwsS3Connector(BaseConnector):
 
         location = {'LocationConstraint': S3_REGION_DICT[self.get_config()['region']]}
 
-        ret_val, resp_json = self._make_boto_call(action_result, 'create_bucket', Bucket=param['bucket'], CreateBucketConfiguration=location)
+        ret_val, resp_json = self._make_boto_call(action_result, 'create_bucket', Bucket=param.get('bucket'), CreateBucketConfiguration=location)
 
         if phantom.is_fail(ret_val):
             return ret_val
@@ -402,12 +402,12 @@ class AwsS3Connector(BaseConnector):
         if 'tags' in param:
 
             is_tags = True
-            ret_val, tag_dicts = self._get_tag_dicts(action_result, param['tags'])
+            ret_val, tag_dicts = self._get_tag_dicts(action_result, param.get('tags'))
 
             if phantom.is_fail(ret_val):
                 return ret_val
 
-            ret_val, resp_json = self._make_boto_call(action_result, 'put_bucket_tagging', Bucket=param['bucket'], Tagging={'TagSet': tag_dicts})
+            ret_val, resp_json = self._make_boto_call(action_result, 'put_bucket_tagging', Bucket=param.get('bucket'), Tagging={'TagSet': tag_dicts})
 
             if phantom.is_fail(ret_val):
                 return ret_val
@@ -420,12 +420,12 @@ class AwsS3Connector(BaseConnector):
             if 'owner' not in param:
                 return action_result.set_status(phantom.APP_ERROR, "No owner provided with grants parameter")
 
-            ret_val, grant_dict = self._get_grant_dict(action_result, param['grants'], param['owner'])
+            ret_val, grant_dict = self._get_grant_dict(action_result, param.get('grants'), param.get('owner'))
 
             if phantom.is_fail(ret_val):
                 return ret_val
 
-            ret_val, resp_json = self._make_boto_call(action_result, 'put_bucket_acl', Bucket=param['bucket'], AccessControlPolicy=grant_dict)
+            ret_val, resp_json = self._make_boto_call(action_result, 'put_bucket_acl', Bucket=param.get('bucket'), AccessControlPolicy=grant_dict)
 
             if phantom.is_fail(ret_val):
                 return ret_val
@@ -435,24 +435,24 @@ class AwsS3Connector(BaseConnector):
         if 'encryption' in param:
 
             is_encryption = True
-            if param['encryption'] == 'NONE':
-                ret_val, resp_json = self._make_boto_call(action_result, 'delete_bucket_encryption', Bucket=param['bucket'])
+            if param.get('encryption') == 'NONE':
+                ret_val, resp_json = self._make_boto_call(action_result, 'delete_bucket_encryption', Bucket=param.get('bucket'))
 
             else:
 
-                if param['encryption'] == 'AES256':
+                if param.get('encryption') == 'AES256':
                     encrypt_config = {"SSEAlgorithm": "AES256"}
 
-                elif param['encryption'] == 'AWS:KMS':
+                elif param.get('encryption') == 'AWS:KMS':
                     if 'kms_key' not in param:
                         return action_result.set_status(phantom.APP_ERROR, "Encryption set to AWS:KMS, but no KMS Key provided.")
-                    encrypt_config = {"SSEAlgorithm": "aws:kms", "KMSMasterKeyID": param["kms_key"]}
+                    encrypt_config = {"SSEAlgorithm": "aws:kms", "KMSMasterKeyID": param.get('kms_key')}
 
                 else:
                     return action_result.set_status(phantom.APP_ERROR, "Invalid encryption parameter")
 
                 ret_val, resp_json = self._make_boto_call(action_result, 'put_bucket_encryption',
-                        Bucket=param['bucket'], ServerSideEncryptionConfiguration={"Rules": [{"ApplyServerSideEncryptionByDefault": encrypt_config}]})
+                        Bucket=param.get('bucket'), ServerSideEncryptionConfiguration={"Rules": [{"ApplyServerSideEncryptionByDefault": encrypt_config}]})
 
             if phantom.is_fail(ret_val):
                 return ret_val
@@ -471,7 +471,7 @@ class AwsS3Connector(BaseConnector):
         if not self._create_client(action_result, param):
             return action_result.get_status()
 
-        ret_val, resp_json = self._make_boto_call(action_result, 'delete_bucket', Bucket=param['bucket'])
+        ret_val, resp_json = self._make_boto_call(action_result, 'delete_bucket', Bucket=param.get('bucket'))
 
         if phantom.is_fail(ret_val):
             return ret_val
@@ -495,7 +495,7 @@ class AwsS3Connector(BaseConnector):
 
         nextContinuationToken = ''
         if 'continuation_token' in param:
-            nextContinuationToken = param['continuation_token']
+            nextContinuationToken = param.get('continuation_token')
 
         num_objects = 0
         result_list = []
@@ -511,7 +511,7 @@ class AwsS3Connector(BaseConnector):
                 ret_val, resp_json = self._make_boto_call(
                         action_result,
                         'list_objects_v2',
-                        Bucket=param['bucket'],
+                        Bucket=param.get('bucket'),
                         StartAfter=param.get('key', ''),
                         ContinuationToken=nextContinuationToken,
                         MaxKeys=current_limit,
@@ -520,7 +520,7 @@ class AwsS3Connector(BaseConnector):
                 ret_val, resp_json = self._make_boto_call(
                         action_result,
                         'list_objects_v2',
-                        Bucket=param['bucket'],
+                        Bucket=param.get('bucket'),
                         StartAfter=param.get('key', ''),
                         MaxKeys=current_limit,
                         FetchOwner=True)
@@ -550,14 +550,14 @@ class AwsS3Connector(BaseConnector):
         if not self._create_client(action_result, param):
             return action_result.get_status()
 
-        ret_val, resp_json = self._make_boto_call(action_result, 'get_object_tagging', Bucket=param['bucket'], Key=param['key'])
+        ret_val, resp_json = self._make_boto_call(action_result, 'get_object_tagging', Bucket=param.get('bucket'), Key=param.get('key'))
 
         if phantom.is_fail(ret_val):
             return ret_val
 
         result_json = {"Tagging": resp_json}
 
-        ret_val, resp_json = self._make_boto_call(action_result, 'get_object_acl', Bucket=param['bucket'], Key=param['key'])
+        ret_val, resp_json = self._make_boto_call(action_result, 'get_object_acl', Bucket=param.get('bucket'), Key=param.get('key'))
 
         if phantom.is_fail(ret_val):
             return ret_val
@@ -566,7 +566,7 @@ class AwsS3Connector(BaseConnector):
 
         if param.get('download_file'):
 
-            ret_val, resp_json = self._make_boto_call(action_result, 'get_object', Bucket=param['bucket'], Key=param['key'])
+            ret_val, resp_json = self._make_boto_call(action_result, 'get_object', Bucket=param.get('bucket'), Key=param.get('key'))
 
             if phantom.is_fail(ret_val):
                 return ret_val
@@ -588,7 +588,7 @@ class AwsS3Connector(BaseConnector):
             os.close(file_desc)
 
             try:
-                vault_ret = Vault.add_attachment(file_path, self.get_container_id(), os.path.basename(param['key']))
+                vault_ret = Vault.add_attachment(file_path, self.get_container_id(), os.path.basename(param.get('key')))
             except Exception as e:
                 error_msg = self._get_error_message_from_exception(e)
                 return action_result.set_status(phantom.APP_ERROR, "Could not save file to vault: {0}".format(error_msg))
@@ -598,7 +598,7 @@ class AwsS3Connector(BaseConnector):
 
             vault_id = vault_ret[phantom.APP_JSON_HASH]
             resp_json['vault_id'] = vault_id
-            resp_json['filename'] = os.path.basename(param['key'])
+            resp_json['filename'] = os.path.basename(param.get('key'))
             result_json["File"] = resp_json
             action_result.set_summary({"created_vault_id": vault_id})
 
@@ -619,12 +619,12 @@ class AwsS3Connector(BaseConnector):
         if 'tags' in param:
 
             is_tags = True
-            ret_val, tag_dicts = self._get_tag_dicts(action_result, param['tags'])
+            ret_val, tag_dicts = self._get_tag_dicts(action_result, param.get('tags'))
 
             if phantom.is_fail(ret_val):
                 return ret_val
 
-            ret_val, resp_json = self._make_boto_call(action_result, 'put_object_tagging', Bucket=param['bucket'], Key=param['key'], Tagging={'TagSet': tag_dicts})
+            ret_val, resp_json = self._make_boto_call(action_result, 'put_object_tagging', Bucket=param.get('bucket'), Key=param.get('key'), Tagging={'TagSet': tag_dicts})
 
             if phantom.is_fail(ret_val):
                 return ret_val
@@ -637,12 +637,12 @@ class AwsS3Connector(BaseConnector):
             if 'owner' not in param:
                 return action_result.set_status(phantom.APP_ERROR, "No owner provided with grants parameter")
 
-            ret_val, grant_dict = self._get_grant_dict(action_result, param['grants'], param['owner'])
+            ret_val, grant_dict = self._get_grant_dict(action_result, param.get('grants'), param.get('owner'))
 
             if phantom.is_fail(ret_val):
                 return ret_val
 
-            ret_val, resp_json = self._make_boto_call(action_result, 'put_object_acl', Bucket=param['bucket'], Key=param['key'], AccessControlPolicy=grant_dict)
+            ret_val, resp_json = self._make_boto_call(action_result, 'put_object_acl', Bucket=param.get('bucket'), Key=param.get('key'), AccessControlPolicy=grant_dict)
 
             if phantom.is_fail(ret_val):
                 return ret_val
@@ -661,7 +661,7 @@ class AwsS3Connector(BaseConnector):
         if not self._create_client(action_result, param):
             return action_result.get_status()
 
-        ret_val, resp_json = self._make_boto_call(action_result, 'delete_object', Bucket=param['bucket'], Key=param['key'])
+        ret_val, resp_json = self._make_boto_call(action_result, 'delete_object', Bucket=param.get('bucket'), Key=param.get('key'))
 
         if phantom.is_fail(ret_val):
             return ret_val
@@ -678,7 +678,7 @@ class AwsS3Connector(BaseConnector):
         if not self._create_client(action_result, param):
             return action_result.get_status()
 
-        vault_id = param['vault_id']
+        vault_id = param.get('vault_id')
 
         try:
             _, _, file_info = phantom_rules.vault_info(vault_id=vault_id)
@@ -692,22 +692,22 @@ class AwsS3Connector(BaseConnector):
         upfile = open(file_path, 'rb')
         kwargs = {
                     'Body': upfile,
-                    'Bucket': param['bucket'],
-                    'Key': param['key'],
-                    'StorageClass': param['storage_class']
+                    'Bucket': param.get('bucket'),
+                    'Key': param.get('key'),
+                    'StorageClass': param.get('storage_class')
                  }
 
         if 'metadata' in param:
 
             try:
-                meta_dict = json.loads(param['metadata'])
+                meta_dict = json.loads(param.get('metadata'))
             except Exception as e:
                 error_msg = self._get_error_message_from_exception(e)
                 return action_result.set_status(phantom.APP_ERROR, "Could not load JSON object from given metadata: {0}".format(error_msg))
 
             kwargs['Metadata'] = meta_dict
 
-        encryption = param['encryption']
+        encryption = param.get('encryption')
 
         if 'kms_key' in param and encryption != 'AWS:KMS':
             return action_result.set_status(phantom.APP_ERROR, "KMS key has been provided but encryption not set as AWS:KMS")
@@ -719,7 +719,7 @@ class AwsS3Connector(BaseConnector):
             if 'kms_key' not in param:
                 return action_result.set_status(phantom.APP_ERROR, "Encryption set to KMS, but no KMS Key has been provided")
             kwargs['ServerSideEncryption'] = 'aws:kms'
-            kwargs['SSEKMSKeyId'] = param['kms_key']
+            kwargs['SSEKMSKeyId'] = param.get('kms_key')
 
         elif encryption != 'NONE':
             return action_result.set_status(phantom.APP_ERROR, "Invalid encryption parameter")
