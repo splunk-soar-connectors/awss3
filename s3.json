@@ -40,7 +40,11 @@
             },
             {
                 "module": "jmespath",
-                "input_file": "wheels/jmespath-0.9.3-py2.py3-none-any.whl"
+                "input_file": "wheels/jmespath-0.10.0-py2.py3-none-any.whl"
+            },
+            {
+                "module": "urllib3",
+                "input_file": "wheels/urllib3-1.26.6-py2.py3-none-any.whl"
             }
         ]
     },
