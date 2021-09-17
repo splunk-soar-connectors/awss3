@@ -10,13 +10,13 @@
     "product_version_regex": ".*",
     "publisher": "Splunk",
     "license": "Copyright (c) 2018-2021 Splunk Inc.",
-    "app_version": "2.3.8",
-    "utctime_updated": "2021-07-28T01:10:59.000000Z",
+    "app_version": "2.4.3",
+    "utctime_updated": "2021-09-17T00:01:30.000000Z",
     "package_name": "phantom_awss3",
     "main_module": "s3_connector.py",
     "min_phantom_version": "4.9.39220",
     "latest_tested_versions": [
-        "Cloud API, December 17, 2020"
+        "Cloud API, September 13, 2021"
     ],
     "app_wizard_version": "1.0.0",
     "python_version": "3",
@@ -40,7 +40,11 @@
             },
             {
                 "module": "jmespath",
-                "input_file": "wheels/jmespath-0.9.3-py2.py3-none-any.whl"
+                "input_file": "wheels/jmespath-0.10.0-py2.py3-none-any.whl"
+            },
+            {
+                "module": "urllib3",
+                "input_file": "wheels/urllib3-1.26.6-py2.py3-none-any.whl"
             }
         ]
     },
