@@ -60,7 +60,8 @@ S3_REGION_DICT = {
 S3_ERR_INVALID_PARAM = "Please provide non-zero positive integer in {param}"
 S3_ERR_CODE_UNAVAILABLE = "Error code unavailable"
 S3_ERR_MESSAGE_UNAVAILABLE = "Error message unavailable. Please check the asset configuration and|or action parameters."
-S3_UNICODE_DAMMIT_TYPE_ERROR_MESSAGE = "Error occurred while connecting to the AWS server. Please check the asset configuration and|or the action parameters."
+S3_UNICODE_DAMMIT_TYPE_ERROR_MESSAGE = "Error occurred while connecting to the AWS server. \
+Please check the asset configuration and|or the action parameters."
 S3_BUCKET_LIMIT = 1000
 
 # Integer Validation Keys
