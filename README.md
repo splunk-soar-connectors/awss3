@@ -43,10 +43,10 @@ for more information.
 Region parameter provided in the asset configuration parameter and region of the bucket which is
 created in AWS console must match otherwise user will get InvalidLocationConstraint error.
 
-For the **Update bucket** action,
-API is unable to validate the KMS key. Hence, it is recommended to provide a
-valid KMS key in this action parameter otherwise it will affect the S3 bucket.
-e.g If we update the S3 bucket with the invalid KMS key and then run create object action on the bucket then the action will not work for encryption = NONE.
+For the **Update bucket** action,
+API is unable to validate the KMS key. Hence, it is recommended to provide a
+valid KMS key in this action parameter otherwise it will affect the S3 bucket.
+e.g If we update the S3 bucket with the invalid KMS key and then run create object action on the bucket then the action will not work for encryption = NONE.
 
 ## Assumed Role Credentials
 
