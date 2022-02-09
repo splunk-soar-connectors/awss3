@@ -20,7 +20,7 @@
     ],
     "app_wizard_version": "1.0.0",
     "python_version": "3",
-    "fips_compliant": true,
+    "fips_compliant": false,
     "pip_dependencies": {
         "wheel": [
             {
