@@ -2,15 +2,15 @@
 # AWS S3
 
 Publisher: Splunk  
-Connector Version: 2\.4\.12  
+Connector Version: 2\.4\.15  
 Product Vendor: AWS  
 Product Name: S3  
 Product Version Supported (regex): "\.\*"  
-Minimum Product Version: 4\.9\.39220  
+Minimum Product Version: 5\.1\.0  
 
 This app integrates with AWS S3 to perform investigative actions
 
-[comment]: # " File: readme.md"
+[comment]: # " File: README.md"
 [comment]: # "  Copyright (c) 2018-2022 Splunk Inc."
 [comment]: # ""
 [comment]: # "Licensed under the Apache License, Version 2.0 (the 'License');"
@@ -43,10 +43,10 @@ for more information.
 Region parameter provided in the asset configuration parameter and region of the bucket which is
 created in AWS console must match otherwise user will get InvalidLocationConstraint error.
 
-For the **Update bucket** action,
-API is unable to validate the KMS key. Hence, it is recommended to provide a
-valid KMS key in this action parameter otherwise it will affect the S3 bucket.
-e.g If we update the S3 bucket with the invalid KMS key and then run create object action on the bucket then the action will not work for encryption = NONE.
+For the **Update bucket** action,
+API is unable to validate the KMS key. Hence, it is recommended to provide a
+valid KMS key in this action parameter otherwise it will affect the S3 bucket.
+e.g If we update the S3 bucket with the invalid KMS key and then run create object action on the bucket then the action will not work for encryption = NONE.
 
 ## Assumed Role Credentials
 
