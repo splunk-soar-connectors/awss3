@@ -1,13 +1,17 @@
-# --
 # File: s3_consts.py
 #
-# Copyright (c) 2018-2021 Splunk Inc.
+# Copyright (c) 2018-2022 Splunk Inc.
 #
-# SPLUNK CONFIDENTIAL - Use or disclosure of this material in whole or in part
-# without a valid written license from Splunk Inc. is PROHIBITED.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
 #
-# --
-
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software distributed under
+# the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+# either express or implied. See the License for the specific language governing permissions
+# and limitations under the License.
 S3_JSON_ACCESS_KEY = "access_key"
 S3_JSON_SECRET_KEY = "secret_key"
 
@@ -56,7 +60,8 @@ S3_REGION_DICT = {
 S3_ERR_INVALID_PARAM = "Please provide non-zero positive integer in {param}"
 S3_ERR_CODE_UNAVAILABLE = "Error code unavailable"
 S3_ERR_MESSAGE_UNAVAILABLE = "Error message unavailable. Please check the asset configuration and|or action parameters."
-S3_UNICODE_DAMMIT_TYPE_ERROR_MESSAGE = "Error occurred while connecting to the AWS server. Please check the asset configuration and|or the action parameters."
+S3_UNICODE_DAMMIT_TYPE_ERROR_MESSAGE = "Error occurred while connecting to the AWS server. \
+Please check the asset configuration and|or the action parameters."
 S3_BUCKET_LIMIT = 1000
 
 # Integer Validation Keys
