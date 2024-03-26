@@ -9,8 +9,8 @@
     "product_name": "S3",
     "product_version_regex": ".*",
     "publisher": "Splunk",
-    "license": "Copyright (c) 2018-2022 Splunk Inc.",
-    "app_version": "2.4.15",
+    "license": "Copyright (c) 2018-2024 Splunk Inc.",
+    "app_version": "2.4.16",
     "utctime_updated": "2022-01-11T23:26:38.000000Z",
     "package_name": "phantom_awss3",
     "main_module": "s3_connector.py",
@@ -58,10 +58,6 @@
             {
                 "module": "soupsieve",
                 "input_file": "wheels/py3/soupsieve-2.3.1-py3-none-any.whl"
-            },
-            {
-                "module": "urllib3",
-                "input_file": "wheels/shared/urllib3-1.26.8-py2.py3-none-any.whl"
             }
         ]
     },
