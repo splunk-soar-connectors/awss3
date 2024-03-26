@@ -699,7 +699,8 @@ class AwsS3Connector(BaseConnector):
                 return action_result.set_status(phantom.APP_ERROR, "Could not find given vault ID in vault")
         except Exception as e:
             error_message = self._get_error_message_from_exception(e)
-            return action_result.set_status(phantom.APP_ERROR, "Could not find given vault ID.Error message from vault: {0}".format(error_message))
+            return action_result.set_status(phantom.APP_ERROR, 
+                "Could not find given vault ID.Error message from vault: {0}".format(error_message))
 
         upfile = open(file_path, 'rb')
         kwargs = {
@@ -715,7 +716,8 @@ class AwsS3Connector(BaseConnector):
                 meta_dict = json.loads(param.get('metadata'))
             except Exception as e:
                 error_message = self._get_error_message_from_exception(e)
-                return action_result.set_status(phantom.APP_ERROR, "Could not load JSON object from given metadata: {0}".format(error_message))
+                return action_result.set_status(phantom.APP_ERROR, 
+                    "Could not load JSON object from given metadata: {0}".format(error_message))
 
             kwargs['Metadata'] = meta_dict
 
