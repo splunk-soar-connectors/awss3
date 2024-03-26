@@ -6,7 +6,7 @@ Connector Version: 2.4.16
 Product Vendor: AWS  
 Product Name: S3  
 Product Version Supported (regex): ".\*"  
-Minimum Product Version: 5.1.0  
+Minimum Product Version: 6.1.1  
 
 This app integrates with AWS S3 to perform investigative actions
 
