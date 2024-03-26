@@ -373,7 +373,7 @@
                     "data_type": "string",
                     "example_values": [
                         "CanonicalUser"
-                    ]k
+                    ]
                 },
                 {
                     "data_path": "action_result.data.*.ACL.Grants.*.Grantee.URI",
