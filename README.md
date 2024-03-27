@@ -2,7 +2,7 @@
 # AWS S3
 
 Publisher: Splunk  
-Connector Version: 2.4.15  
+Connector Version: 2.4.16  
 Product Vendor: AWS  
 Product Name: S3  
 Product Version Supported (regex): ".\*"  
@@ -11,7 +11,7 @@ Minimum Product Version: 5.1.0
 This app integrates with AWS S3 to perform investigative actions
 
 [comment]: # " File: README.md"
-[comment]: # "  Copyright (c) 2018-2022 Splunk Inc."
+[comment]: # "  Copyright (c) 2018-2024 Splunk Inc."
 [comment]: # ""
 [comment]: # "Licensed under the Apache License, Version 2.0 (the 'License');"
 [comment]: # "you may not use this file except in compliance with the License."
