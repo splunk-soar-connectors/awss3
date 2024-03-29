@@ -13,7 +13,7 @@
 # either express or implied. See the License for the specific language governing permissions
 # and limitations under the License.
 S3_JSON_ACCESS_KEY = "access_key"
-S3_JSON_SECRET_KEY = "secret_key"
+S3_JSON_SECRET_KEY = "secret_key"   # pragma: allowlist secret
 
 S3_BAD_BUCKET_MESSAGE = "The specified bucket does not exist"
 
