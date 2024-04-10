@@ -9,8 +9,8 @@
     "product_name": "S3",
     "product_version_regex": ".*",
     "publisher": "Splunk",
-    "license": "Copyright (c) 2018-2022 Splunk Inc.",
-    "app_version": "2.4.15",
+    "license": "Copyright (c) 2018-2024 Splunk Inc.",
+    "app_version": "2.4.16",
     "utctime_updated": "2022-01-11T23:26:38.000000Z",
     "package_name": "phantom_awss3",
     "main_module": "s3_connector.py",
@@ -36,16 +36,12 @@
                 "input_file": "wheels/shared/botocore-1.20.30-py2.py3-none-any.whl"
             },
             {
-                "module": "docutils",
-                "input_file": "wheels/shared/docutils-0.16-py2.py3-none-any.whl"
-            },
-            {
                 "module": "jmespath",
                 "input_file": "wheels/shared/jmespath-0.9.3-py2.py3-none-any.whl"
             },
             {
                 "module": "python_dateutil",
-                "input_file": "wheels/shared/python_dateutil-2.8.2-py2.py3-none-any.whl"
+                "input_file": "wheels/shared/python_dateutil-2.9.0.post0-py2.py3-none-any.whl"
             },
             {
                 "module": "s3transfer",
@@ -57,11 +53,7 @@
             },
             {
                 "module": "soupsieve",
-                "input_file": "wheels/py3/soupsieve-2.3.1-py3-none-any.whl"
-            },
-            {
-                "module": "urllib3",
-                "input_file": "wheels/shared/urllib3-1.26.8-py2.py3-none-any.whl"
+                "input_file": "wheels/py3/soupsieve-2.3.2.post1-py3-none-any.whl"
             }
         ]
     },
@@ -3899,5 +3891,41 @@
             },
             "versions": "EQ(*)"
         }
-    ]
+    ],
+    "pip39_dependencies": {
+        "wheel": [
+            {
+                "module": "beautifulsoup4",
+                "input_file": "wheels/py3/beautifulsoup4-4.9.1-py3-none-any.whl"
+            },
+            {
+                "module": "boto3",
+                "input_file": "wheels/shared/boto3-1.17.30-py2.py3-none-any.whl"
+            },
+            {
+                "module": "botocore",
+                "input_file": "wheels/shared/botocore-1.20.30-py2.py3-none-any.whl"
+            },
+            {
+                "module": "jmespath",
+                "input_file": "wheels/shared/jmespath-0.9.3-py2.py3-none-any.whl"
+            },
+            {
+                "module": "python_dateutil",
+                "input_file": "wheels/shared/python_dateutil-2.9.0.post0-py2.py3-none-any.whl"
+            },
+            {
+                "module": "s3transfer",
+                "input_file": "wheels/shared/s3transfer-0.3.3-py2.py3-none-any.whl"
+            },
+            {
+                "module": "six",
+                "input_file": "wheels/shared/six-1.15.0-py2.py3-none-any.whl"
+            },
+            {
+                "module": "soupsieve",
+                "input_file": "wheels/py3/soupsieve-2.5-py3-none-any.whl"
+            }
+        ]
+    }
 }
