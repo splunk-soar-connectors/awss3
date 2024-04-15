@@ -2,7 +2,7 @@
 # AWS S3
 
 Publisher: Splunk  
-Connector Version: 2.4.16  
+Connector Version: 2.4.12  
 Product Vendor: AWS  
 Product Name: S3  
 Product Version Supported (regex): ".\*"  
