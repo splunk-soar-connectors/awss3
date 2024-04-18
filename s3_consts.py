@@ -1,15 +1,19 @@
-# --
 # File: s3_consts.py
 #
-# Copyright (c) 2018-2021 Splunk Inc.
+# Copyright (c) 2018-2024 Splunk Inc.
 #
-# SPLUNK CONFIDENTIAL - Use or disclosure of this material in whole or in part
-# without a valid written license from Splunk Inc. is PROHIBITED.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
 #
-# --
-
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software distributed under
+# the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+# either express or implied. See the License for the specific language governing permissions
+# and limitations under the License.
 S3_JSON_ACCESS_KEY = "access_key"
-S3_JSON_SECRET_KEY = "secret_key"
+S3_JSON_SECRET_KEY = "secret_key"   # pragma: allowlist secret
 
 S3_BAD_BUCKET_MESSAGE = "The specified bucket does not exist"
 
@@ -53,13 +57,14 @@ S3_REGION_DICT = {
     }
 
 # This value is set by trial and error by quering AWS
-S3_ERR_INVALID_PARAM = "Please provide non-zero positive integer in {param}"
-S3_ERR_CODE_UNAVAILABLE = "Error code unavailable"
-S3_ERR_MESSAGE_UNAVAILABLE = "Error message unavailable. Please check the asset configuration and|or action parameters."
-S3_UNICODE_DAMMIT_TYPE_ERROR_MESSAGE = "Error occurred while connecting to the AWS server. Please check the asset configuration and|or the action parameters."
+S3_ERROR_INVALID_PARAM = "Please provide non-zero positive integer in {param}"
+S3_ERROR_CODE_UNAVAILABLE = "Error code unavailable"
+S3_ERROR_MESSAGE_UNAVAILABLE = "Error message unavailable. Please check the asset configuration and|or action parameters."
+S3_UNICODE_DAMMIT_TYPE_ERROR_MESSAGE = "Error occurred while connecting to the AWS server. \
+Please check the asset configuration and|or the action parameters."
 S3_BUCKET_LIMIT = 1000
 
 # Integer Validation Keys
 S3_LIMIT = "'limit' action parameter"
 S3_VALIDATE_INTEGER = "Please provide a valid integer value in the {param}"
-S3_BAD_ASSET_CONFIG_MSG = "Please provide access keys or select assume role check box in asset configuration"
+S3_BAD_ASSET_CONFIG_MESSAGE = "Please provide access keys or select assume role check box in asset configuration"

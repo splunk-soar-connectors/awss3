@@ -1,33 +1,37 @@
-# --
 # File: s3_connector.py
 #
-# Copyright (c) 2018-2021 Splunk Inc.
+# Copyright (c) 2018-2024 Splunk Inc.
 #
-# SPLUNK CONFIDENTIAL - Use or disclosure of this material in whole or in part
-# without a valid written license from Splunk Inc. is PROHIBITED.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
 #
-# --
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software distributed under
+# the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+# either express or implied. See the License for the specific language governing permissions
+# and limitations under the License.
+#
+#
+import ast
+import json
+import os
+import sys
+import tempfile
+from datetime import datetime
 
-# Phantom App imports
 import phantom.app as phantom
 import phantom.rules as phantom_rules
-from phantom.base_connector import BaseConnector
-from phantom.action_result import ActionResult
-from phantom.vault import Vault
-
-# Usage of the consts file is recommended
-from s3_consts import *
-from boto3 import client, Session
-from datetime import datetime
+import six
+from boto3 import Session, client
 from botocore.config import Config
 from bs4 import UnicodeDammit
+from phantom.action_result import ActionResult
+from phantom.base_connector import BaseConnector
+from phantom.vault import Vault
 
-import os
-import json
-import tempfile
-import six
-import ast
-import sys
+from s3_consts import *
 
 
 class RetVal(tuple):
@@ -86,7 +90,7 @@ class AwsS3Connector(BaseConnector):
         self._secret_key = config.get(S3_JSON_SECRET_KEY)
 
         if not (self._access_key and self._secret_key):
-            return self.set_status(phantom.APP_ERROR, S3_BAD_ASSET_CONFIG_MSG)
+            return self.set_status(phantom.APP_ERROR, S3_BAD_ASSET_CONFIG_MESSAGE)
 
         return phantom.APP_SUCCESS
 
@@ -123,32 +127,32 @@ class AwsS3Connector(BaseConnector):
         :param e: Exception object
         :return: error message
         """
-        error_code = S3_ERR_CODE_UNAVAILABLE
-        error_msg = S3_ERR_MESSAGE_UNAVAILABLE
+        error_code = S3_ERROR_CODE_UNAVAILABLE
+        error_message = S3_ERROR_MESSAGE_UNAVAILABLE
 
         try:
             if e.args:
                 if len(e.args) > 1:
                     error_code = e.args[0]
-                    error_msg = e.args[1]
+                    error_message = e.args[1]
                 elif len(e.args) == 1:
-                    error_code = S3_ERR_CODE_UNAVAILABLE
-                    error_msg = e.args[0]
+                    error_code = S3_ERROR_CODE_UNAVAILABLE
+                    error_message = e.args[0]
             else:
-                error_code = S3_ERR_CODE_UNAVAILABLE
-                error_msg = S3_ERR_MESSAGE_UNAVAILABLE
+                error_code = S3_ERROR_CODE_UNAVAILABLE
+                error_message = S3_ERROR_MESSAGE_UNAVAILABLE
         except:
-            error_code = S3_ERR_CODE_UNAVAILABLE
-            error_msg = S3_ERR_MESSAGE_UNAVAILABLE
+            error_code = S3_ERROR_CODE_UNAVAILABLE
+            error_message = S3_ERROR_MESSAGE_UNAVAILABLE
 
         try:
-            error_msg = self._handle_py_ver_compat_for_input_str(error_msg)
+            error_message = self._handle_py_ver_compat_for_input_str(error_message)
         except TypeError:
-            error_msg = S3_UNICODE_DAMMIT_TYPE_ERROR_MESSAGE
+            error_message = S3_UNICODE_DAMMIT_TYPE_ERROR_MESSAGE
         except:
-            error_msg = S3_ERR_MESSAGE_UNAVAILABLE
+            error_message = S3_ERROR_MESSAGE_UNAVAILABLE
 
-        return "Error Code: {0}. Error Message: {1}".format(error_code, error_msg)
+        return "Error Code: {0}. Error Message: {1}".format(error_code, error_message)
 
     def _validate_integer(self, action_result, parameter, key, allow_zero=False):
         if parameter is not None:
@@ -161,9 +165,10 @@ class AwsS3Connector(BaseConnector):
                 return action_result.set_status(phantom.APP_ERROR, S3_VALIDATE_INTEGER.format(param=key)), None
 
             if parameter < 0:
-                return action_result.set_status(phantom.APP_ERROR, "Please provide a valid non-negative integer value in the {}".format(key)), None
+                return action_result.set_status(phantom.APP_ERROR, "Please provide a valid non-negative integer value in the {}".format(
+                    key)), None
             if not allow_zero and parameter == 0:
-                return action_result.set_status(phantom.APP_ERROR, S3_ERR_INVALID_PARAM.format(param=key)), None
+                return action_result.set_status(phantom.APP_ERROR, S3_ERROR_INVALID_PARAM.format(param=key)), None
 
         return phantom.APP_SUCCESS, parameter
 
@@ -211,8 +216,8 @@ class AwsS3Connector(BaseConnector):
                         config=boto_config)
 
         except Exception as e:
-            error_msg = self._get_error_message_from_exception(e)
-            return action_result.set_status(phantom.APP_ERROR, "Could not create boto3 client: {0}".format(error_msg))
+            error_message = self._get_error_message_from_exception(e)
+            return action_result.set_status(phantom.APP_ERROR, "Could not create boto3 client: {0}".format(error_message))
 
         return phantom.APP_SUCCESS
 
@@ -251,8 +256,8 @@ class AwsS3Connector(BaseConnector):
         try:
             resp_json = boto_func(**kwargs)
         except Exception as e:
-            error_msg = self._get_error_message_from_exception(e)
-            return RetVal(action_result.set_status(phantom.APP_ERROR, 'boto3 call to S3 failed', error_msg), None)
+            error_message = self._get_error_message_from_exception(e)
+            return RetVal(action_result.set_status(phantom.APP_ERROR, 'boto3 call to S3 failed', error_message), None)
 
         return phantom.APP_SUCCESS, self._sanatize_dates(resp_json)
 
@@ -261,8 +266,9 @@ class AwsS3Connector(BaseConnector):
         try:
             tag_dict = json.loads(tags)
         except Exception as e:
-            error_msg = self._get_error_message_from_exception(e)
-            return RetVal(action_result.set_status(phantom.APP_ERROR, "Could not decode JSON object from given tag dictionary: {0}".format(error_msg)))
+            error_message = self._get_error_message_from_exception(e)
+            return RetVal(action_result.set_status(phantom.APP_ERROR, "Could not decode JSON object from given tag dictionary: {0}".format(
+                error_message)))
 
         tag_dicts = []
         for k, v in six.iteritems(tag_dict):
@@ -275,8 +281,9 @@ class AwsS3Connector(BaseConnector):
         try:
             grants = json.loads(grants)
         except Exception as e:
-            error_msg = self._get_error_message_from_exception(e)
-            return RetVal(action_result.set_status(phantom.APP_ERROR, "Could not decode JSON object from given grant dictionary: {0}".format(error_msg)))
+            error_message = self._get_error_message_from_exception(e)
+            return RetVal(action_result.set_status(phantom.APP_ERROR, "Could not decode JSON object from given grant dictionary: {0}".format(
+                error_message)))
 
         grants_list = []
         for k, v in six.iteritems(grants):
@@ -407,7 +414,8 @@ class AwsS3Connector(BaseConnector):
             if phantom.is_fail(ret_val):
                 return ret_val
 
-            ret_val, resp_json = self._make_boto_call(action_result, 'put_bucket_tagging', Bucket=param.get('bucket'), Tagging={'TagSet': tag_dicts})
+            ret_val, resp_json = self._make_boto_call(action_result, 'put_bucket_tagging',
+                Bucket=param.get('bucket'), Tagging={'TagSet': tag_dicts})
 
             if phantom.is_fail(ret_val):
                 return ret_val
@@ -425,7 +433,8 @@ class AwsS3Connector(BaseConnector):
             if phantom.is_fail(ret_val):
                 return ret_val
 
-            ret_val, resp_json = self._make_boto_call(action_result, 'put_bucket_acl', Bucket=param.get('bucket'), AccessControlPolicy=grant_dict)
+            ret_val, resp_json = self._make_boto_call(action_result, 'put_bucket_acl', Bucket=param.get('bucket'),
+                AccessControlPolicy=grant_dict)
 
             if phantom.is_fail(ret_val):
                 return ret_val
@@ -451,8 +460,8 @@ class AwsS3Connector(BaseConnector):
                 else:
                     return action_result.set_status(phantom.APP_ERROR, "Invalid encryption parameter")
 
-                ret_val, resp_json = self._make_boto_call(action_result, 'put_bucket_encryption',
-                        Bucket=param.get('bucket'), ServerSideEncryptionConfiguration={"Rules": [{"ApplyServerSideEncryptionByDefault": encrypt_config}]})
+                ret_val, resp_json = self._make_boto_call(action_result, 'put_bucket_encryption', Bucket=param.get('bucket'),
+                    ServerSideEncryptionConfiguration={"Rules": [{"ApplyServerSideEncryptionByDefault": encrypt_config}]})
 
             if phantom.is_fail(ret_val):
                 return ret_val
@@ -590,11 +599,12 @@ class AwsS3Connector(BaseConnector):
             try:
                 vault_ret = Vault.add_attachment(file_path, self.get_container_id(), os.path.basename(param.get('key')))
             except Exception as e:
-                error_msg = self._get_error_message_from_exception(e)
-                return action_result.set_status(phantom.APP_ERROR, "Could not save file to vault: {0}".format(error_msg))
+                error_message = self._get_error_message_from_exception(e)
+                return action_result.set_status(phantom.APP_ERROR, "Could not save file to vault: {0}".format(error_message))
 
             if not vault_ret.get('succeeded'):
-                return action_result.set_status(phantom.APP_ERROR, "Could not save file to vault: {0}".format(vault_ret.get('message', "Unknown Error")))
+                return action_result.set_status(phantom.APP_ERROR, "Could not save file to vault: {0}".format(
+                    vault_ret.get('message', "Unknown Error")))
 
             vault_id = vault_ret[phantom.APP_JSON_HASH]
             resp_json['vault_id'] = vault_id
@@ -624,7 +634,8 @@ class AwsS3Connector(BaseConnector):
             if phantom.is_fail(ret_val):
                 return ret_val
 
-            ret_val, resp_json = self._make_boto_call(action_result, 'put_object_tagging', Bucket=param.get('bucket'), Key=param.get('key'), Tagging={'TagSet': tag_dicts})
+            ret_val, resp_json = self._make_boto_call(action_result, 'put_object_tagging', Bucket=param.get('bucket'),
+                Key=param.get('key'), Tagging={'TagSet': tag_dicts})
 
             if phantom.is_fail(ret_val):
                 return ret_val
@@ -642,7 +653,8 @@ class AwsS3Connector(BaseConnector):
             if phantom.is_fail(ret_val):
                 return ret_val
 
-            ret_val, resp_json = self._make_boto_call(action_result, 'put_object_acl', Bucket=param.get('bucket'), Key=param.get('key'), AccessControlPolicy=grant_dict)
+            ret_val, resp_json = self._make_boto_call(action_result, 'put_object_acl', Bucket=param.get('bucket'),
+                Key=param.get('key'), AccessControlPolicy=grant_dict)
 
             if phantom.is_fail(ret_val):
                 return ret_val
@@ -686,8 +698,9 @@ class AwsS3Connector(BaseConnector):
             if not file_path:
                 return action_result.set_status(phantom.APP_ERROR, "Could not find given vault ID in vault")
         except Exception as e:
-            error_msg = self._get_error_message_from_exception(e)
-            return action_result.set_status(phantom.APP_ERROR, "Could not find given vault ID.Error message from vault: {0}".format(error_msg))
+            error_message = self._get_error_message_from_exception(e)
+            return action_result.set_status(phantom.APP_ERROR,
+                "Could not find given vault ID.Error message from vault: {0}".format(error_message))
 
         upfile = open(file_path, 'rb')
         kwargs = {
@@ -702,8 +715,9 @@ class AwsS3Connector(BaseConnector):
             try:
                 meta_dict = json.loads(param.get('metadata'))
             except Exception as e:
-                error_msg = self._get_error_message_from_exception(e)
-                return action_result.set_status(phantom.APP_ERROR, "Could not load JSON object from given metadata: {0}".format(error_msg))
+                error_message = self._get_error_message_from_exception(e)
+                return action_result.set_status(phantom.APP_ERROR,
+                    "Could not load JSON object from given metadata: {0}".format(error_message))
 
             kwargs['Metadata'] = meta_dict
 
@@ -775,7 +789,7 @@ if __name__ == '__main__':
 
     if (len(sys.argv) < 2):
         print("No test json specified as input")
-        exit(0)
+        sys.exit(0)
 
     with open(sys.argv[1]) as f:
         in_json = f.read()
@@ -787,4 +801,4 @@ if __name__ == '__main__':
         ret_val = connector._handle_action(json.dumps(in_json), None)
         print(json.dumps(json.loads(ret_val), indent=4))
 
-    exit(0)
+    sys.exit(0)
