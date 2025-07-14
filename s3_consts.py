@@ -14,6 +14,7 @@
 # and limitations under the License.
 S3_JSON_ACCESS_KEY = "access_key"
 S3_JSON_SECRET_KEY = "secret_key"   # pragma: allowlist secret
+S3_JSON_BOTO_CONFIG = "boto_config"
 
 S3_BAD_BUCKET_MESSAGE = "The specified bucket does not exist"
 
@@ -37,8 +38,8 @@ S3_BUCKET_INFO_LIST = [
     ]
 
 S3_REGION_DICT = {
-        "US East (Ohio)": "us-east-1",
-        "US East (N. Virginia)": "us-east-2",
+        "US East (Ohio)": "us-east-2",
+        "US East (N. Virginia)": "us-east-1",
         "US West (N. California)": "us-west-1",
         "US West (Oregon)": "us-west-2",
         "Canada (Central)": "ca-central-1",

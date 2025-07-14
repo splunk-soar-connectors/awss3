@@ -7,11 +7,14 @@
     "logo": "logo_awss3.svg",
     "logo_dark": "logo_awss3_dark.svg",
     "product_name": "S3",
+    "contributors":[
+        {"name":"import-au"}
+    ],
     "product_version_regex": ".*",
     "publisher": "Splunk",
     "license": "Copyright (c) 2018-2024 Splunk Inc.",
-    "app_version": "2.4.12",
-    "utctime_updated": "2022-01-11T23:26:38.000000Z",
+    "app_version": "2.5.0",
+    "utctime_updated": "2025-07-14T00:00:00.000000Z",
     "package_name": "phantom_awss3",
     "main_module": "s3_connector.py",
     "min_phantom_version": "5.1.0",
@@ -101,6 +104,16 @@
                 "onprem"
             ],
             "order": 3
+        },
+        "boto_config": {
+            "description": "Dictionary of boto3 config options",
+            "data_type": "string",
+            "required": false,
+            "value_list": [],
+            "default": "",
+            "order": 4,
+            "name": "boto_config",
+            "id": 4
         }
     },
     "actions": [
@@ -3890,6 +3903,146 @@
                 "type": "table"
             },
             "versions": "EQ(*)"
+        },
+        {
+            "action": "generate presigned url",
+            "identifier": "generate_presigned_url",
+            "description": "Generate a Pre-Signed S3 URL",
+            "verbose": "Presigned URLs are a powerful feature in AWS S3 that allows users to grant temporary access to objects without sharing their AWS credentials. This can be particularly useful for sharing files securely or allowing uploads without exposing sensitive information.\n\nhttps://boto3.amazonaws.com/v1/documentation/api/latest/guide/s3-presigned-urls.html#generating-a-presigned-url-to-upload-a-file",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {
+                "client_method": {
+                    "description": "Currently supported options are put_object",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": false,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "put_object",
+                    "order": 0,
+                    "name": "client_method",
+                    "id": 1,
+                    "param_name": "client_method"
+                },
+                "bucket_name": {
+                    "description": "Name of the bucket",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": false,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 1,
+                    "name": "bucket_name",
+                    "id": 2,
+                    "param_name": "bucket_name"
+                },
+                "object_name": {
+                    "description": "Name of the Object",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": false,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 2,
+                    "name": "object_name",
+                    "id": 3,
+                    "param_name": "object_name"
+                },
+                "method_parameters": {
+                    "description": "Dictionary of parameters to send to the method",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": false,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 3,
+                    "name": "method_parameters",
+                    "id": 4,
+                    "param_name": "method_parameters"
+                },
+                "expiration": {
+                    "description": "Time in seconds for the presigned URL to remain valid",
+                    "data_type": "numeric",
+                    "required": false,
+                    "primary": false,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "3600",
+                    "order": 4,
+                    "name": "expiration",
+                    "id": 5,
+                    "param_name": "expiration"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.parameter.client_method",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "client_method",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.parameter.bucket_name",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "bucket_name",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.parameter.object_name",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "object_name",
+                    "column_order": 2
+                },
+                {
+                    "data_path": "action_result.parameter.method_parameters",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "method_parameters",
+                    "column_order": 3
+                },
+                {
+                    "data_path": "action_result.parameter.expiration",
+                    "data_type": "numeric",
+                    "contains": [],
+                    "column_name": "expiration",
+                    "column_order": 4
+                },
+                {
+                    "data_path": "action_result.data.0.url",
+                    "data_type": "string",
+                    "column_name": "Presigned URL",
+                    "column_order": 6
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 5
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
         }
     ],
     "pip39_dependencies": {
@@ -3929,3 +4082,4 @@
         ]
     }
 }
+

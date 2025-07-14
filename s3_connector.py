@@ -19,7 +19,9 @@ import json
 import os
 import sys
 import tempfile
+import urllib.parse
 from datetime import datetime
+
 
 import phantom.app as phantom
 import phantom.rules as phantom_rules
@@ -51,6 +53,7 @@ class AwsS3Connector(BaseConnector):
         self._access_key = None
         self._secret_key = None
         self._session_token = None
+        self._boto_config = None
         self._proxy = None
 
     def initialize(self):
@@ -88,6 +91,7 @@ class AwsS3Connector(BaseConnector):
 
         self._access_key = config.get(S3_JSON_ACCESS_KEY)
         self._secret_key = config.get(S3_JSON_SECRET_KEY)
+        self._boto_config = json.loads(config.get(S3_JSON_BOTO_CONFIG))
 
         if not (self._access_key and self._secret_key):
             return self.set_status(phantom.APP_ERROR, S3_BAD_ASSET_CONFIG_MESSAGE)
@@ -173,8 +177,11 @@ class AwsS3Connector(BaseConnector):
         return phantom.APP_SUCCESS, parameter
 
     def _create_client(self, action_result, param=None):
-
-        boto_config = None
+        
+        if self._boto_config:
+            boto_config=Config(**self._boto_config)
+        else:
+            boto_config = None
         if self._proxy:
             boto_config = Config(proxies=self._proxy)
 
@@ -747,6 +754,51 @@ class AwsS3Connector(BaseConnector):
 
         return action_result.set_status(phantom.APP_SUCCESS, "Object successfully created")
 
+    def _handle_generate_presigned_url(self, param):
+        # Implement the handler here
+        # use self.save_progress(...) to send progress messages back to the platform
+        self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
+
+        # Add an action result object to self (BaseConnector) to represent the action for this param
+        action_result = self.add_action_result(ActionResult(dict(param)))
+
+        # Access action parameters passed in the 'param' dictionary
+
+        # Required values can be accessed directly
+        client_method = param['client_method']
+        bucket_name = param['bucket_name']
+        object_name = param['object_name']
+
+        # Optional values should use the .get() function
+        method_parameters = param.get('method_parameters', '')
+        expiration = param.get('expiration', '')
+        
+        if not self._create_client(action_result, param):
+            return action_result.get_status()
+        
+        required_parameters={
+            "Bucket":bucket_name,
+            "Key":object_name
+        }
+        
+        if method_parameters:
+            method_parameters=json.loads(method_parameters) | required_parameters
+        else:
+            method_parameters = required_parameters
+        
+        ret_val, resp_json = self._make_boto_call(action_result, 
+                                                  'generate_presigned_url', 
+                                                  ClientMethod=client_method, 
+                                                  Params=method_parameters, 
+                                                  ExpiresIn=expiration)
+        
+        if phantom.is_fail(ret_val):
+            return ret_val
+        
+        action_result.add_data({"url": resp_json})
+
+        return action_result.set_status(phantom.APP_SUCCESS, "Successfully Generated Pre-Signed URL")
+
     def handle_action(self, param):
 
         ret_val = phantom.APP_SUCCESS
@@ -756,6 +808,8 @@ class AwsS3Connector(BaseConnector):
 
         self.debug_print("action_id", self.get_action_identifier())
 
+        if action_id == 'generate_presigned_url':
+            ret_val = self._handle_generate_presigned_url(param)
         if action_id == 'test_connectivity':
             ret_val = self._handle_test_connectivity(param)
         elif action_id == 'list_buckets':
