@@ -9,7 +9,7 @@
     "product_name": "S3",
     "product_version_regex": ".*",
     "publisher": "Splunk",
-    "license": "Copyright (c) 2018-2024 Splunk Inc.",
+    "license": "Copyright (c) 2018-2025 Splunk Inc.",
     "app_version": "2.4.12",
     "utctime_updated": "2022-01-11T23:26:38.000000Z",
     "package_name": "phantom_awss3",
@@ -29,11 +29,11 @@
             },
             {
                 "module": "boto3",
-                "input_file": "wheels/shared/boto3-1.17.30-py2.py3-none-any.whl"
+                "input_file": "wheels/shared/boto3-1.28.77-py2.py3-none-any.whl"
             },
             {
                 "module": "botocore",
-                "input_file": "wheels/shared/botocore-1.20.30-py2.py3-none-any.whl"
+                "input_file": "wheels/shared/botocore-1.39.11-py3-none-any.whl"
             },
             {
                 "module": "jmespath",
@@ -3900,11 +3900,11 @@
             },
             {
                 "module": "boto3",
-                "input_file": "wheels/shared/boto3-1.17.30-py2.py3-none-any.whl"
+                "input_file": "wheels/shared/boto3-1.28.77-py2.py3-none-any.whl"
             },
             {
                 "module": "botocore",
-                "input_file": "wheels/shared/botocore-1.20.30-py2.py3-none-any.whl"
+                "input_file": "wheels/shared/botocore-1.39.11-py3-none-any.whl"
             },
             {
                 "module": "jmespath",
