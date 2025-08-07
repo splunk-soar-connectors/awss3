@@ -1,7 +1,7 @@
 # AWS S3
 
 Publisher: Splunk <br>
-Connector Version: 2.4.12 <br>
+Connector Version: 2.5.0 <br>
 Product Vendor: AWS <br>
 Product Name: S3 <br>
 Minimum Product Version: 5.1.0
@@ -54,6 +54,7 @@ VARIABLE | REQUIRED | TYPE | DESCRIPTION
 **secret_key** | optional | password | Secret Key |
 **region** | required | string | Default Region |
 **use_role** | optional | boolean | Use attached role when running Phantom in EC2 |
+**boto_config** | optional | string | Dictionary of boto3 config options |
 
 ### Supported Actions
 
@@ -67,7 +68,8 @@ VARIABLE | REQUIRED | TYPE | DESCRIPTION
 [get object](#action-get-object) - Get information about an object <br>
 [update object](#action-update-object) - Update an object <br>
 [create object](#action-create-object) - Create an object <br>
-[delete object](#action-delete-object) - Delete an object inside a bucket
+[delete object](#action-delete-object) - Delete an object inside a bucket <br>
+[generate presigned url](#action-generate-presigned-url) - Generate a Pre-Signed S3 URL
 
 ## action: 'test connectivity'
 
@@ -760,6 +762,42 @@ action_result.summary | string | | |
 action_result.message | string | | Successfully deleted object |
 summary.total_objects | numeric | | 1 |
 summary.total_objects_successful | numeric | | 1 0 |
+
+## action: 'generate presigned url'
+
+Generate a Pre-Signed S3 URL
+
+Type: **generic** <br>
+Read only: **False**
+
+Presigned URLs are a powerful feature in AWS S3 that allows users to grant temporary access to objects without sharing their AWS credentials. This can be particularly useful for sharing files securely or allowing uploads without exposing sensitive information.
+
+https://boto3.amazonaws.com/v1/documentation/api/latest/guide/s3-presigned-urls.html#generating-a-presigned-url-to-upload-a-file
+
+#### Action Parameters
+
+PARAMETER | REQUIRED | DESCRIPTION | TYPE | CONTAINS
+--------- | -------- | ----------- | ---- | --------
+**client_method** | required | Currently supported options are put_object | string | |
+**bucket_name** | required | Name of the bucket | string | |
+**object_name** | required | Name of the Object | string | |
+**method_parameters** | optional | Dictionary of parameters to send to the method | string | |
+**expiration** | optional | Time in seconds for the presigned URL to remain valid | numeric | |
+
+#### Action Output
+
+DATA PATH | TYPE | CONTAINS | EXAMPLE VALUES
+--------- | ---- | -------- | --------------
+action_result.parameter.client_method | string | | |
+action_result.parameter.bucket_name | string | | |
+action_result.parameter.object_name | string | | |
+action_result.parameter.method_parameters | string | | |
+action_result.parameter.expiration | numeric | | |
+action_result.data.0.url | string | | |
+action_result.status | string | | |
+action_result.message | string | | |
+summary.total_objects | numeric | | |
+summary.total_objects_successful | numeric | | |
 
 ______________________________________________________________________
 
