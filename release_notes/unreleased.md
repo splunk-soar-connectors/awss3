@@ -1,4 +1,1 @@
 **Unreleased**
-* Added Generate Presigned Url Function. 
-* Added Support for additional client configs. 
-* Fixed issue in constants with AWS regions.
