@@ -86,7 +86,13 @@ class AwsS3Connector(BaseConnector):
 
         self._access_key = config.get(S3_JSON_ACCESS_KEY)
         self._secret_key = config.get(S3_JSON_SECRET_KEY)
-        self._boto_config = json.loads(config.get(S3_JSON_BOTO_CONFIG))
+
+        boto_config_str = config.get(S3_JSON_BOTO_CONFIG)
+        if boto_config_str:
+            try:
+                self._boto_config = json.loads(boto_config_str)
+            except (json.JSONDecodeError, TypeError) as e:
+                return self.set_status(phantom.APP_ERROR, f"Invalid boto_config JSON format: {e}")
 
         if not (self._access_key and self._secret_key):
             return self.set_status(phantom.APP_ERROR, S3_BAD_ASSET_CONFIG_MESSAGE)
