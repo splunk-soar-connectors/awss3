@@ -1,2 +1,1 @@
 **Unreleased**
-* add error handling around json load on potentially empty config value
