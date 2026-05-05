@@ -14,7 +14,7 @@
     ],
     "product_version_regex": ".*",
     "publisher": "Splunk",
-    "license": "Copyright (c) 2018-2025 Splunk Inc.",
+    "license": "Copyright (c) 2018-2026 Splunk Inc.",
     "app_version": "2.5.2",
     "utctime_updated": "2026-02-18T22:53:33.895562Z",
     "package_name": "phantom_awss3",
