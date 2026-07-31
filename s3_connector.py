@@ -182,35 +182,46 @@ class AwsS3Connector(BaseConnector):
         if self._proxy:
             boto_config = Config(proxies=self._proxy)
 
-        # Try getting and using temporary assume role credentials from parameters
-        temp_credentials = dict()
+        access_key = self._access_key
+        secret_key = self._secret_key
+        session_token = self._session_token
+
+        # Try getting and using temporary assume role credentials from parameters.
         if param and "credentials" in param:
             try:
-                temp_credentials = ast.literal_eval(param.get("credentials"))
-                self._access_key = temp_credentials.get("AccessKeyId", "")
-                self._secret_key = temp_credentials.get("SecretAccessKey", "")
-                self._session_token = temp_credentials.get("SessionToken", "")
-
-                self.save_progress("Using temporary assume role credentials for action")
+                raw_credentials = param["credentials"]
+                temp_credentials = raw_credentials if isinstance(raw_credentials, dict) else ast.literal_eval(raw_credentials)
             except Exception as e:
                 return action_result.set_status(phantom.APP_ERROR, f"Failed to get temporary credentials:{e}")
 
-        try:
-            if self._access_key and self._secret_key:
-                self.debug_print("Creating boto3 client with API keys")
+            if not isinstance(temp_credentials, dict):
+                return action_result.set_status(phantom.APP_ERROR, "Temporary credentials must be a dictionary")
 
+            access_key = temp_credentials.get("AccessKeyId")
+            secret_key = temp_credentials.get("SecretAccessKey")
+            session_token = temp_credentials.get("SessionToken")
+            if not isinstance(access_key, str) or not access_key.strip():
+                return action_result.set_status(phantom.APP_ERROR, "Temporary credentials must include a nonblank AccessKeyId")
+            if not isinstance(secret_key, str) or not secret_key.strip():
+                return action_result.set_status(phantom.APP_ERROR, "Temporary credentials must include a nonblank SecretAccessKey")
+
+            access_key = access_key.strip()
+            secret_key = secret_key.strip()
+            self.save_progress("Using temporary assume role credentials for action")
+
+        try:
+            if access_key and secret_key:
+                self.debug_print("Creating boto3 client with explicit credentials")
                 self._client = client(
                     "s3",
                     region_name=self._region,
-                    aws_access_key_id=self._access_key,
-                    aws_secret_access_key=self._secret_key,
-                    aws_session_token=self._session_token,
+                    aws_access_key_id=access_key,
+                    aws_secret_access_key=secret_key,
+                    aws_session_token=session_token,
                     config=boto_config,
                 )
-
             else:
                 self.debug_print("Creating boto3 client without API keys")
-
                 self._client = client("s3", region_name=self._region, config=boto_config)
 
         except Exception as e:
