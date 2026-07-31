@@ -209,20 +209,19 @@ class AwsS3Connector(BaseConnector):
             secret_key = secret_key.strip()
             self.save_progress("Using temporary assume role credentials for action")
 
+        if not (access_key and secret_key):
+            return action_result.set_status(phantom.APP_ERROR, S3_BAD_ASSET_CONFIG_MESSAGE)
+
         try:
-            if access_key and secret_key:
-                self.debug_print("Creating boto3 client with explicit credentials")
-                self._client = client(
-                    "s3",
-                    region_name=self._region,
-                    aws_access_key_id=access_key,
-                    aws_secret_access_key=secret_key,
-                    aws_session_token=session_token,
-                    config=boto_config,
-                )
-            else:
-                self.debug_print("Creating boto3 client without API keys")
-                self._client = client("s3", region_name=self._region, config=boto_config)
+            self.debug_print("Creating boto3 client with explicit credentials")
+            self._client = client(
+                "s3",
+                region_name=self._region,
+                aws_access_key_id=access_key,
+                aws_secret_access_key=secret_key,
+                aws_session_token=session_token,
+                config=boto_config,
+            )
 
         except Exception as e:
             error_message = self._get_error_message_from_exception(e)
