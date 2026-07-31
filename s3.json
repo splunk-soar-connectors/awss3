@@ -151,7 +151,7 @@
                     "data_path": "action_result.parameter.credentials",
                     "data_type": "string",
                     "example_values": [
-                        "{'AccessKeyId': 'AKIAIOSFODNN7EXAMPLE', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY', 'SessionToken': 'EXAMPLETESTzEN///////////wEaDFRU0s4AVrw0k0oYICK4ATAzOqzAkg9bHY29lYmP59UvVOHjLufOy4s7SnAzOxGqGIXnukLis4TWNhrJl5R5nYyimrm6K/9d0Cw2SW9gO0ZRjEXAMPLETEST2QpWctS2BGn4n+G8cD6zEweCCEXAMPLETESTYI4wOdvXvOsVMmjV6F09Ujqr1w+NwoKXlglznXGs/7Q1kNZOMiioEhGUyoiHbQb37GCKslDK+oqe0KNaUKQ96YCepaLgMbMquDgdAM8I0TTxUO0o5ILF/gUyLT04R7QlOfktkdh6Qt0atTS+xeKi1hirKRizpJ8jEXAMPLETESToL2v3ZZZZZZ=='}"
+                        "{'AccessKeyId': 'REDACTED', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'REDACTED', 'SessionToken': 'REDACTED'}"
                     ],
                     "contains": [
                         "aws credentials"
@@ -359,7 +359,7 @@
                     "data_path": "action_result.parameter.credentials",
                     "data_type": "string",
                     "example_values": [
-                        "{'AccessKeyId': 'ASIASJL6ZZZZZ3M7QC2J', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'ZZZZZAmvLPictcVBPvjJx0d7MRezOuxiLCMZZZZZ', 'SessionToken': 'ZZZZZXIvYXdzEN///////////wEaDFRU0s4AVrw0k0oYICK4ATAzOqzAkg9bHY29lYmP59UvVOHjLufOy4s7SnAzOxGqGIXnukLis4TWNhrJl5R5nYyimrm6K/9d0Cw2SW9gO0ZRjEJHWJ+yY5Qk2QpWctS2BGn4n+G8cD6zEweCCMj+ScI5p8n7YI4wOdvXvOsVMmjV6F09Ujqr1w+NwoKXlglznXGs/7Q1kNZOMiioEhGUyoiHbQb37GCKslDK+oqe0KNaUKQ96YCepaLgMbMquDgdAM8I0TTxUO0o5ILF/gUyLT04R7QlOfktkdh6Qt0atTS+xeKi1hirKRizpJ8jjnxGQIikPRToL2v3ZZZZZZ=='}"
+                        "{'AccessKeyId': 'REDACTED', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'REDACTED', 'SessionToken': 'REDACTED'}"
                     ],
                     "contains": [
                         "aws credentials"
@@ -1795,7 +1795,7 @@
                     "data_path": "action_result.parameter.credentials",
                     "data_type": "string",
                     "example_values": [
-                        "{'AccessKeyId': 'ASIASJL6ZZZZZ3M7QC2J', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'ZZZZZAmvLPictcVBPvjJx0d7MRezOuxiLCMZZZZZ', 'SessionToken': 'ZZZZZXIvYXdzEN///////////wEaDFRU0s4AVrw0k0oYICK4ATAzOqzAkg9bHY29lYmP59UvVOHjLufOy4s7SnAzOxGqGIXnukLis4TWNhrJl5R5nYyimrm6K/9d0Cw2SW9gO0ZRjEJHWJ+yY5Qk2QpWctS2BGn4n+G8cD6zEweCCMj+ScI5p8n7YI4wOdvXvOsVMmjV6F09Ujqr1w+NwoKXlglznXGs/7Q1kNZOMiioEhGUyoiHbQb37GCKslDK+oqe0KNaUKQ96YCepaLgMbMquDgdAM8I0TTxUO0o5ILF/gUyLT04R7QlOfktkdh6Qt0atTS+xeKi1hirKRizpJ8jjnxGQIikPRToL2v3ZZZZZZ=='}"
+                        "{'AccessKeyId': 'REDACTED', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'REDACTED', 'SessionToken': 'REDACTED'}"
                     ],
                     "contains": [
                         "aws credentials"
@@ -2056,7 +2056,7 @@
                     "data_path": "action_result.parameter.credentials",
                     "data_type": "string",
                     "example_values": [
-                        "{'AccessKeyId': 'ASIASJL6ZZZZZ3M7QC2J', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'ZZZZZAmvLPictcVBPvjJx0d7MRezOuxiLCMZZZZZ', 'SessionToken': 'ZZZZZXIvYXdzEN///////////wEaDFRU0s4AVrw0k0oYICK4ATAzOqzAkg9bHY29lYmP59UvVOHjLufOy4s7SnAzOxGqGIXnukLis4TWNhrJl5R5nYyimrm6K/9d0Cw2SW9gO0ZRjEJHWJ+yY5Qk2QpWctS2BGn4n+G8cD6zEweCCMj+ScI5p8n7YI4wOdvXvOsVMmjV6F09Ujqr1w+NwoKXlglznXGs/7Q1kNZOMiioEhGUyoiHbQb37GCKslDK+oqe0KNaUKQ96YCepaLgMbMquDgdAM8I0TTxUO0o5ILF/gUyLT04R7QlOfktkdh6Qt0atTS+xeKi1hirKRizpJ8jjnxGQIikPRToL2v3ZZZZZZ=='}"
+                        "{'AccessKeyId': 'REDACTED', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'REDACTED', 'SessionToken': 'REDACTED'}"
                     ],
                     "contains": [
                         "aws credentials"
@@ -2204,7 +2204,7 @@
                     "data_path": "action_result.parameter.credentials",
                     "data_type": "string",
                     "example_values": [
-                        "{'AccessKeyId': 'ASIASJL6ZZZZZ3M7QC2J', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'ZZZZZAmvLPictcVBPvjJx0d7MRezOuxiLCMZZZZZ', 'SessionToken': 'ZZZZZXIvYXdzEN///////////wEaDFRU0s4AVrw0k0oYICK4ATAzOqzAkg9bHY29lYmP59UvVOHjLufOy4s7SnAzOxGqGIXnukLis4TWNhrJl5R5nYyimrm6K/9d0Cw2SW9gO0ZRjEJHWJ+yY5Qk2QpWctS2BGn4n+G8cD6zEweCCMj+ScI5p8n7YI4wOdvXvOsVMmjV6F09Ujqr1w+NwoKXlglznXGs/7Q1kNZOMiioEhGUyoiHbQb37GCKslDK+oqe0KNaUKQ96YCepaLgMbMquDgdAM8I0TTxUO0o5ILF/gUyLT04R7QlOfktkdh6Qt0atTS+xeKi1hirKRizpJ8jjnxGQIikPRToL2v3ZZZZZZ=='}"
+                        "{'AccessKeyId': 'REDACTED', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'REDACTED', 'SessionToken': 'REDACTED'}"
                     ],
                     "contains": [
                         "aws credentials"
@@ -2411,7 +2411,7 @@
                     "data_path": "action_result.parameter.credentials",
                     "data_type": "string",
                     "example_values": [
-                        "{'AccessKeyId': 'ASIASJL6ZZZZZ3M7QC2J', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'ZZZZZAmvLPictcVBPvjJx0d7MRezOuxiLCMZZZZZ', 'SessionToken': 'ZZZZZXIvYXdzEN///////////wEaDFRU0s4AVrw0k0oYICK4ATAzOqzAkg9bHY29lYmP59UvVOHjLufOy4s7SnAzOxGqGIXnukLis4TWNhrJl5R5nYyimrm6K/9d0Cw2SW9gO0ZRjEJHWJ+yY5Qk2QpWctS2BGn4n+G8cD6zEweCCMj+ScI5p8n7YI4wOdvXvOsVMmjV6F09Ujqr1w+NwoKXlglznXGs/7Q1kNZOMiioEhGUyoiHbQb37GCKslDK+oqe0KNaUKQ96YCepaLgMbMquDgdAM8I0TTxUO0o5ILF/gUyLT04R7QlOfktkdh6Qt0atTS+xeKi1hirKRizpJ8jjnxGQIikPRToL2v3ZZZZZZ=='}"
+                        "{'AccessKeyId': 'REDACTED', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'REDACTED', 'SessionToken': 'REDACTED'}"
                     ],
                     "contains": [
                         "aws credentials"
@@ -2748,7 +2748,7 @@
                     "data_path": "action_result.parameter.credentials",
                     "data_type": "string",
                     "example_values": [
-                        "{'AccessKeyId': 'ASIASJL6ZZZZZ3M7QC2J', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'ZZZZZAmvLPictcVBPvjJx0d7MRezOuxiLCMZZZZZ', 'SessionToken': 'ZZZZZXIvYXdzEN///////////wEaDFRU0s4AVrw0k0oYICK4ATAzOqzAkg9bHY29lYmP59UvVOHjLufOy4s7SnAzOxGqGIXnukLis4TWNhrJl5R5nYyimrm6K/9d0Cw2SW9gO0ZRjEJHWJ+yY5Qk2QpWctS2BGn4n+G8cD6zEweCCMj+ScI5p8n7YI4wOdvXvOsVMmjV6F09Ujqr1w+NwoKXlglznXGs/7Q1kNZOMiioEhGUyoiHbQb37GCKslDK+oqe0KNaUKQ96YCepaLgMbMquDgdAM8I0TTxUO0o5ILF/gUyLT04R7QlOfktkdh6Qt0atTS+xeKi1hirKRizpJ8jjnxGQIikPRToL2v3ZZZZZZ=='}"
+                        "{'AccessKeyId': 'REDACTED', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'REDACTED', 'SessionToken': 'REDACTED'}"
                     ],
                     "contains": [
                         "aws credentials"
@@ -3313,7 +3313,7 @@
                     "data_path": "action_result.parameter.credentials",
                     "data_type": "string",
                     "example_values": [
-                        "{'AccessKeyId': 'ASIASJL6ZZZZZ3M7QC2J', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'ZZZZZAmvLPictcVBPvjJx0d7MRezOuxiLCMZZZZZ', 'SessionToken': 'ZZZZZXIvYXdzEN///////////wEaDFRU0s4AVrw0k0oYICK4ATAzOqzAkg9bHY29lYmP59UvVOHjLufOy4s7SnAzOxGqGIXnukLis4TWNhrJl5R5nYyimrm6K/9d0Cw2SW9gO0ZRjEJHWJ+yY5Qk2QpWctS2BGn4n+G8cD6zEweCCMj+ScI5p8n7YI4wOdvXvOsVMmjV6F09Ujqr1w+NwoKXlglznXGs/7Q1kNZOMiioEhGUyoiHbQb37GCKslDK+oqe0KNaUKQ96YCepaLgMbMquDgdAM8I0TTxUO0o5ILF/gUyLT04R7QlOfktkdh6Qt0atTS+xeKi1hirKRizpJ8jjnxGQIikPRToL2v3ZZZZZZ=='}"
+                        "{'AccessKeyId': 'REDACTED', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'REDACTED', 'SessionToken': 'REDACTED'}"
                     ],
                     "contains": [
                         "aws credentials"
@@ -3575,7 +3575,7 @@
                     "data_path": "action_result.parameter.credentials",
                     "data_type": "string",
                     "example_values": [
-                        "{'AccessKeyId': 'ASIASJL6ZZZZZ3M7QC2J', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'ZZZZZAmvLPictcVBPvjJx0d7MRezOuxiLCMZZZZZ', 'SessionToken': 'ZZZZZXIvYXdzEN///////////wEaDFRU0s4AVrw0k0oYICK4ATAzOqzAkg9bHY29lYmP59UvVOHjLufOy4s7SnAzOxGqGIXnukLis4TWNhrJl5R5nYyimrm6K/9d0Cw2SW9gO0ZRjEJHWJ+yY5Qk2QpWctS2BGn4n+G8cD6zEweCCMj+ScI5p8n7YI4wOdvXvOsVMmjV6F09Ujqr1w+NwoKXlglznXGs/7Q1kNZOMiioEhGUyoiHbQb37GCKslDK+oqe0KNaUKQ96YCepaLgMbMquDgdAM8I0TTxUO0o5ILF/gUyLT04R7QlOfktkdh6Qt0atTS+xeKi1hirKRizpJ8jjnxGQIikPRToL2v3ZZZZZZ=='}"
+                        "{'AccessKeyId': 'REDACTED', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'REDACTED', 'SessionToken': 'REDACTED'}"
                     ],
                     "contains": [
                         "aws credentials"
@@ -3803,7 +3803,7 @@
                     "data_path": "action_result.parameter.credentials",
                     "data_type": "string",
                     "example_values": [
-                        "{'AccessKeyId': 'ASIASJL6ZZZZZ3M7QC2J', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'ZZZZZAmvLPictcVBPvjJx0d7MRezOuxiLCMZZZZZ', 'SessionToken': 'ZZZZZXIvYXdzEN///////////wEaDFRU0s4AVrw0k0oYICK4ATAzOqzAkg9bHY29lYmP59UvVOHjLufOy4s7SnAzOxGqGIXnukLis4TWNhrJl5R5nYyimrm6K/9d0Cw2SW9gO0ZRjEJHWJ+yY5Qk2QpWctS2BGn4n+G8cD6zEweCCMj+ScI5p8n7YI4wOdvXvOsVMmjV6F09Ujqr1w+NwoKXlglznXGs/7Q1kNZOMiioEhGUyoiHbQb37GCKslDK+oqe0KNaUKQ96YCepaLgMbMquDgdAM8I0TTxUO0o5ILF/gUyLT04R7QlOfktkdh6Qt0atTS+xeKi1hirKRizpJ8jjnxGQIikPRToL2v3ZZZZZZ=='}"
+                        "{'AccessKeyId': 'REDACTED', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'REDACTED', 'SessionToken': 'REDACTED'}"
                     ],
                     "contains": [
                         "aws credentials"
@@ -3915,12 +3915,14 @@
             "read_only": false,
             "parameters": {
                 "client_method": {
-                    "description": "Currently supported options are put_object",
+                    "description": "Supported option: put_object",
                     "data_type": "string",
                     "required": true,
                     "primary": false,
                     "contains": [],
-                    "value_list": [],
+                    "value_list": [
+                        "put_object"
+                    ],
                     "default": "put_object",
                     "order": 0,
                     "name": "client_method",
@@ -3954,7 +3956,7 @@
                     "param_name": "object_name"
                 },
                 "method_parameters": {
-                    "description": "Dictionary of parameters to send to the method",
+                    "description": "Optional JSON object containing only ContentType",
                     "data_type": "string",
                     "required": false,
                     "primary": false,
@@ -3967,7 +3969,7 @@
                     "param_name": "method_parameters"
                 },
                 "expiration": {
-                    "description": "Time in seconds for the presigned URL to remain valid",
+                    "description": "Time in seconds for the presigned URL to remain valid (1-3600)",
                     "data_type": "numeric",
                     "required": false,
                     "primary": false,

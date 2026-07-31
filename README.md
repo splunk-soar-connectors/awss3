@@ -103,7 +103,7 @@ PARAMETER | REQUIRED | DESCRIPTION | TYPE | CONTAINS
 
 DATA PATH | TYPE | CONTAINS | EXAMPLE VALUES
 --------- | ---- | -------- | --------------
-action_result.parameter.credentials | string | `aws credentials` | {'AccessKeyId': 'AKIAIOSFODNN7EXAMPLE', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY', 'SessionToken': 'EXAMPLETESTzEN///////////wEaDFRU0s4AVrw0k0oYICK4ATAzOqzAkg9bHY29lYmP59UvVOHjLufOy4s7SnAzOxGqGIXnukLis4TWNhrJl5R5nYyimrm6K/9d0Cw2SW9gO0ZRjEXAMPLETEST2QpWctS2BGn4n+G8cD6zEweCCEXAMPLETESTYI4wOdvXvOsVMmjV6F09Ujqr1w+NwoKXlglznXGs/7Q1kNZOMiioEhGUyoiHbQb37GCKslDK+oqe0KNaUKQ96YCepaLgMbMquDgdAM8I0TTxUO0o5ILF/gUyLT04R7QlOfktkdh6Qt0atTS+xeKi1hirKRizpJ8jEXAMPLETESToL2v3ZZZZZZ=='} |
+action_result.parameter.credentials | string | `aws credentials` | {'AccessKeyId': 'REDACTED', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'REDACTED', 'SessionToken': 'REDACTED'} |
 action_result.status | string | | success failed |
 action_result.data.\*.Buckets.\*.Name | string | | aws-athena-query-results-157568067690-us-west-2 |
 action_result.data.\*.Buckets.\*.CreationDate | string | | 2017-09-13 21:33:57 |
@@ -144,7 +144,7 @@ DATA PATH | TYPE | CONTAINS | EXAMPLE VALUES
 --------- | ---- | -------- | --------------
 action_result.status | string | | success failed |
 action_result.parameter.bucket | string | `aws s3 bucket` | bucket-test-s3-app |
-action_result.parameter.credentials | string | `aws credentials` | {'AccessKeyId': 'ASIASJL6ZZZZZ3M7QC2J', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'ZZZZZAmvLPictcVBPvjJx0d7MRezOuxiLCMZZZZZ', 'SessionToken': 'ZZZZZXIvYXdzEN///////////wEaDFRU0s4AVrw0k0oYICK4ATAzOqzAkg9bHY29lYmP59UvVOHjLufOy4s7SnAzOxGqGIXnukLis4TWNhrJl5R5nYyimrm6K/9d0Cw2SW9gO0ZRjEJHWJ+yY5Qk2QpWctS2BGn4n+G8cD6zEweCCMj+ScI5p8n7YI4wOdvXvOsVMmjV6F09Ujqr1w+NwoKXlglznXGs/7Q1kNZOMiioEhGUyoiHbQb37GCKslDK+oqe0KNaUKQ96YCepaLgMbMquDgdAM8I0TTxUO0o5ILF/gUyLT04R7QlOfktkdh6Qt0atTS+xeKi1hirKRizpJ8jjnxGQIikPRToL2v3ZZZZZZ=='} |
+action_result.parameter.credentials | string | `aws credentials` | {'AccessKeyId': 'REDACTED', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'REDACTED', 'SessionToken': 'REDACTED'} |
 action_result.data.\*.ACL.Grants.\*.Grantee.DisplayName | string | | Display Name |
 action_result.data.\*.ACL.Grants.\*.Grantee.ID | string | | 042b3oe6d5faa5cfe9d016645ce14be41295ed6j94c988c6af6550f439e3f444 |
 action_result.data.\*.ACL.Grants.\*.Grantee.Type | string | | CanonicalUser |
@@ -366,7 +366,7 @@ DATA PATH | TYPE | CONTAINS | EXAMPLE VALUES
 --------- | ---- | -------- | --------------
 action_result.parameter.bucket | string | `aws s3 bucket` | automated-bucket |
 action_result.status | string | | success failed |
-action_result.parameter.credentials | string | `aws credentials` | {'AccessKeyId': 'ASIASJL6ZZZZZ3M7QC2J', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'ZZZZZAmvLPictcVBPvjJx0d7MRezOuxiLCMZZZZZ', 'SessionToken': 'ZZZZZXIvYXdzEN///////////wEaDFRU0s4AVrw0k0oYICK4ATAzOqzAkg9bHY29lYmP59UvVOHjLufOy4s7SnAzOxGqGIXnukLis4TWNhrJl5R5nYyimrm6K/9d0Cw2SW9gO0ZRjEJHWJ+yY5Qk2QpWctS2BGn4n+G8cD6zEweCCMj+ScI5p8n7YI4wOdvXvOsVMmjV6F09Ujqr1w+NwoKXlglznXGs/7Q1kNZOMiioEhGUyoiHbQb37GCKslDK+oqe0KNaUKQ96YCepaLgMbMquDgdAM8I0TTxUO0o5ILF/gUyLT04R7QlOfktkdh6Qt0atTS+xeKi1hirKRizpJ8jjnxGQIikPRToL2v3ZZZZZZ=='} |
+action_result.parameter.credentials | string | `aws credentials` | {'AccessKeyId': 'REDACTED', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'REDACTED', 'SessionToken': 'REDACTED'} |
 action_result.data.\*.Location | string | `url` | http://automated-bucket.s3.amazonaws.com/ |
 action_result.data.\*.ResponseMetadata.HTTPHeaders.content-length | numeric | | 72 |
 action_result.data.\*.ResponseMetadata.HTTPHeaders.date | string | | Thu, 04 Jan 2018 01:14:36 GMT |
@@ -416,7 +416,7 @@ action_result.parameter.kms_key | string | | 28dc6a18-f1ac-11e7-8c3f-9a214cf093a
 action_result.message | string | | Successfully retrieved bucket info |
 action_result.parameter.owner | string | `aws canonical id` | 042b3oe6d5faa5cfe9d016645ce14be41295ed6j94c988c6af6550f439e3f444 |
 action_result.parameter.tags | string | | {"key1": "value1", "key2": "value2"} |
-action_result.parameter.credentials | string | `aws credentials` | {'AccessKeyId': 'ASIASJL6ZZZZZ3M7QC2J', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'ZZZZZAmvLPictcVBPvjJx0d7MRezOuxiLCMZZZZZ', 'SessionToken': 'ZZZZZXIvYXdzEN///////////wEaDFRU0s4AVrw0k0oYICK4ATAzOqzAkg9bHY29lYmP59UvVOHjLufOy4s7SnAzOxGqGIXnukLis4TWNhrJl5R5nYyimrm6K/9d0Cw2SW9gO0ZRjEJHWJ+yY5Qk2QpWctS2BGn4n+G8cD6zEweCCMj+ScI5p8n7YI4wOdvXvOsVMmjV6F09Ujqr1w+NwoKXlglznXGs/7Q1kNZOMiioEhGUyoiHbQb37GCKslDK+oqe0KNaUKQ96YCepaLgMbMquDgdAM8I0TTxUO0o5ILF/gUyLT04R7QlOfktkdh6Qt0atTS+xeKi1hirKRizpJ8jjnxGQIikPRToL2v3ZZZZZZ=='} |
+action_result.parameter.credentials | string | `aws credentials` | {'AccessKeyId': 'REDACTED', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'REDACTED', 'SessionToken': 'REDACTED'} |
 action_result.data.\*.ResponseMetadata.HTTPHeaders.content-length | numeric | | 72 |
 action_result.data.\*.ResponseMetadata.HTTPHeaders.date | string | | Fri, 05 Jan 2018 00:10:55 GMT |
 action_result.data.\*.ResponseMetadata.HTTPHeaders.server | string | | AmazonS3 |
@@ -452,7 +452,7 @@ DATA PATH | TYPE | CONTAINS | EXAMPLE VALUES
 --------- | ---- | -------- | --------------
 action_result.parameter.bucket | string | `aws s3 bucket` | automated-bucket |
 action_result.status | string | | success failed |
-action_result.parameter.credentials | string | `aws credentials` | {'AccessKeyId': 'ASIASJL6ZZZZZ3M7QC2J', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'ZZZZZAmvLPictcVBPvjJx0d7MRezOuxiLCMZZZZZ', 'SessionToken': 'ZZZZZXIvYXdzEN///////////wEaDFRU0s4AVrw0k0oYICK4ATAzOqzAkg9bHY29lYmP59UvVOHjLufOy4s7SnAzOxGqGIXnukLis4TWNhrJl5R5nYyimrm6K/9d0Cw2SW9gO0ZRjEJHWJ+yY5Qk2QpWctS2BGn4n+G8cD6zEweCCMj+ScI5p8n7YI4wOdvXvOsVMmjV6F09Ujqr1w+NwoKXlglznXGs/7Q1kNZOMiioEhGUyoiHbQb37GCKslDK+oqe0KNaUKQ96YCepaLgMbMquDgdAM8I0TTxUO0o5ILF/gUyLT04R7QlOfktkdh6Qt0atTS+xeKi1hirKRizpJ8jjnxGQIikPRToL2v3ZZZZZZ=='} |
+action_result.parameter.credentials | string | `aws credentials` | {'AccessKeyId': 'REDACTED', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'REDACTED', 'SessionToken': 'REDACTED'} |
 action_result.data.\*.ResponseMetadata.HTTPHeaders.content-length | numeric | | 72 |
 action_result.data.\*.ResponseMetadata.HTTPHeaders.date | string | | Thu, 04 Jan 2018 01:14:36 GMT |
 action_result.data.\*.ResponseMetadata.HTTPHeaders.server | string | | AmazonS3 |
@@ -495,7 +495,7 @@ action_result.parameter.bucket | string | `aws s3 bucket` | bucket-test-s3-app |
 action_result.parameter.continuation_token | string | `aws s3 continuation token` | 1gpyNT6V4At5pjvBmQhRU2D2ehqyGrZJaHJ4VLYm5udxQTTi+8xMyUg== |
 action_result.parameter.key | string | `aws s3 key` | test_folder/deeper_test_folder |
 action_result.parameter.limit | numeric | | 3 |
-action_result.parameter.credentials | string | `aws credentials` | {'AccessKeyId': 'ASIASJL6ZZZZZ3M7QC2J', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'ZZZZZAmvLPictcVBPvjJx0d7MRezOuxiLCMZZZZZ', 'SessionToken': 'ZZZZZXIvYXdzEN///////////wEaDFRU0s4AVrw0k0oYICK4ATAzOqzAkg9bHY29lYmP59UvVOHjLufOy4s7SnAzOxGqGIXnukLis4TWNhrJl5R5nYyimrm6K/9d0Cw2SW9gO0ZRjEJHWJ+yY5Qk2QpWctS2BGn4n+G8cD6zEweCCMj+ScI5p8n7YI4wOdvXvOsVMmjV6F09Ujqr1w+NwoKXlglznXGs/7Q1kNZOMiioEhGUyoiHbQb37GCKslDK+oqe0KNaUKQ96YCepaLgMbMquDgdAM8I0TTxUO0o5ILF/gUyLT04R7QlOfktkdh6Qt0atTS+xeKi1hirKRizpJ8jjnxGQIikPRToL2v3ZZZZZZ=='} |
+action_result.parameter.credentials | string | `aws credentials` | {'AccessKeyId': 'REDACTED', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'REDACTED', 'SessionToken': 'REDACTED'} |
 action_result.data.\*.\*.Contents.\*.ETag | string | | "d41d8cd98f00b204e9800998ecf8427e" |
 action_result.data.\*.\*.Contents.\*.StorageClass | string | | STANDARD |
 action_result.data.\*.\*.Contents.\*.Owner.DisplayName | string | | Display Name |
@@ -555,7 +555,7 @@ action_result.message | string | | File successfully added to vault |
 action_result.parameter.bucket | string | `aws s3 bucket` | bucket-test-s3-app |
 action_result.parameter.download_file | boolean | | True False |
 action_result.parameter.key | string | `aws s3 key` | test_folder/image.jpg |
-action_result.parameter.credentials | string | `aws credentials` | {'AccessKeyId': 'ASIASJL6ZZZZZ3M7QC2J', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'ZZZZZAmvLPictcVBPvjJx0d7MRezOuxiLCMZZZZZ', 'SessionToken': 'ZZZZZXIvYXdzEN///////////wEaDFRU0s4AVrw0k0oYICK4ATAzOqzAkg9bHY29lYmP59UvVOHjLufOy4s7SnAzOxGqGIXnukLis4TWNhrJl5R5nYyimrm6K/9d0Cw2SW9gO0ZRjEJHWJ+yY5Qk2QpWctS2BGn4n+G8cD6zEweCCMj+ScI5p8n7YI4wOdvXvOsVMmjV6F09Ujqr1w+NwoKXlglznXGs/7Q1kNZOMiioEhGUyoiHbQb37GCKslDK+oqe0KNaUKQ96YCepaLgMbMquDgdAM8I0TTxUO0o5ILF/gUyLT04R7QlOfktkdh6Qt0atTS+xeKi1hirKRizpJ8jjnxGQIikPRToL2v3ZZZZZZ=='} |
+action_result.parameter.credentials | string | `aws credentials` | {'AccessKeyId': 'REDACTED', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'REDACTED', 'SessionToken': 'REDACTED'} |
 action_result.data.\*.ACL.Grants.\*.Grantee.DisplayName | string | | Display Name |
 action_result.data.\*.ACL.Grants.\*.Grantee.ID | string | `sha256` | 042b3oe6d5faa5cfe9d016645ce14be41295ed6j94c988c6af6550f439e3f444 |
 action_result.data.\*.ACL.Grants.\*.Grantee.Type | string | | CanonicalUser |
@@ -650,7 +650,7 @@ action_result.parameter.grants | string | | {"153b1da9d5faa5cfe9d016645ce14be412
 action_result.parameter.key | string | `aws s3 key` | test_folder/deeper_test_folder/abc.jpg |
 action_result.parameter.owner | string | `aws canonical id` | 042b3oe6d5faa5cfe9d016645ce14be41295ed6j94c988c6af6550f439e3f444 |
 action_result.parameter.tags | string | | {"Adrian Gonzalez": "Braves Legend", "Chipper": "HoFer"} |
-action_result.parameter.credentials | string | `aws credentials` | {'AccessKeyId': 'ASIASJL6ZZZZZ3M7QC2J', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'ZZZZZAmvLPictcVBPvjJx0d7MRezOuxiLCMZZZZZ', 'SessionToken': 'ZZZZZXIvYXdzEN///////////wEaDFRU0s4AVrw0k0oYICK4ATAzOqzAkg9bHY29lYmP59UvVOHjLufOy4s7SnAzOxGqGIXnukLis4TWNhrJl5R5nYyimrm6K/9d0Cw2SW9gO0ZRjEJHWJ+yY5Qk2QpWctS2BGn4n+G8cD6zEweCCMj+ScI5p8n7YI4wOdvXvOsVMmjV6F09Ujqr1w+NwoKXlglznXGs/7Q1kNZOMiioEhGUyoiHbQb37GCKslDK+oqe0KNaUKQ96YCepaLgMbMquDgdAM8I0TTxUO0o5ILF/gUyLT04R7QlOfktkdh6Qt0atTS+xeKi1hirKRizpJ8jjnxGQIikPRToL2v3ZZZZZZ=='} |
+action_result.parameter.credentials | string | `aws credentials` | {'AccessKeyId': 'REDACTED', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'REDACTED', 'SessionToken': 'REDACTED'} |
 action_result.data.\*.ResponseMetadata.HTTPHeaders.content-length | numeric | | 72 |
 action_result.data.\*.ResponseMetadata.HTTPHeaders.date | string | | Mon, 18 Dec 2017 21:49:25 GMT |
 action_result.data.\*.ResponseMetadata.HTTPHeaders.server | string | | AmazonS3 |
@@ -700,7 +700,7 @@ action_result.parameter.kms_key | string | | 234b9f7cd382ca2affe10176bf2c04aba67
 action_result.parameter.metadata | string | | {"Content-Language": "English"} |
 action_result.parameter.storage_class | string | | STANDARD_IA |
 action_result.parameter.vault_id | string | `vault id` | 306b9e7cd363cb2fdfc11176bc2f04ede7358f00 |
-action_result.parameter.credentials | string | `aws credentials` | {'AccessKeyId': 'ASIASJL6ZZZZZ3M7QC2J', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'ZZZZZAmvLPictcVBPvjJx0d7MRezOuxiLCMZZZZZ', 'SessionToken': 'ZZZZZXIvYXdzEN///////////wEaDFRU0s4AVrw0k0oYICK4ATAzOqzAkg9bHY29lYmP59UvVOHjLufOy4s7SnAzOxGqGIXnukLis4TWNhrJl5R5nYyimrm6K/9d0Cw2SW9gO0ZRjEJHWJ+yY5Qk2QpWctS2BGn4n+G8cD6zEweCCMj+ScI5p8n7YI4wOdvXvOsVMmjV6F09Ujqr1w+NwoKXlglznXGs/7Q1kNZOMiioEhGUyoiHbQb37GCKslDK+oqe0KNaUKQ96YCepaLgMbMquDgdAM8I0TTxUO0o5ILF/gUyLT04R7QlOfktkdh6Qt0atTS+xeKi1hirKRizpJ8jjnxGQIikPRToL2v3ZZZZZZ=='} |
+action_result.parameter.credentials | string | `aws credentials` | {'AccessKeyId': 'REDACTED', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'REDACTED', 'SessionToken': 'REDACTED'} |
 action_result.data.\*.ETag | string | | "1dcdb3d256476fe8e2887c146960e580" |
 action_result.data.\*.ResponseMetadata.HTTPHeaders.content-length | numeric | | 72 |
 action_result.data.\*.ResponseMetadata.HTTPHeaders.date | string | | Mon, 18 Dec 2017 23:05:11 GMT |
@@ -748,7 +748,7 @@ DATA PATH | TYPE | CONTAINS | EXAMPLE VALUES
 action_result.parameter.bucket | string | `aws s3 bucket` | automated-bucket |
 action_result.status | string | | success failed |
 action_result.parameter.key | string | `aws s3 key` | test_folder/deeper_test_folder/abc.jpg |
-action_result.parameter.credentials | string | `aws credentials` | {'AccessKeyId': 'ASIASJL6ZZZZZ3M7QC2J', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'ZZZZZAmvLPictcVBPvjJx0d7MRezOuxiLCMZZZZZ', 'SessionToken': 'ZZZZZXIvYXdzEN///////////wEaDFRU0s4AVrw0k0oYICK4ATAzOqzAkg9bHY29lYmP59UvVOHjLufOy4s7SnAzOxGqGIXnukLis4TWNhrJl5R5nYyimrm6K/9d0Cw2SW9gO0ZRjEJHWJ+yY5Qk2QpWctS2BGn4n+G8cD6zEweCCMj+ScI5p8n7YI4wOdvXvOsVMmjV6F09Ujqr1w+NwoKXlglznXGs/7Q1kNZOMiioEhGUyoiHbQb37GCKslDK+oqe0KNaUKQ96YCepaLgMbMquDgdAM8I0TTxUO0o5ILF/gUyLT04R7QlOfktkdh6Qt0atTS+xeKi1hirKRizpJ8jjnxGQIikPRToL2v3ZZZZZZ=='} |
+action_result.parameter.credentials | string | `aws credentials` | {'AccessKeyId': 'REDACTED', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'REDACTED', 'SessionToken': 'REDACTED'} |
 action_result.data.\*.ResponseMetadata.HTTPHeaders.content-length | numeric | | 72 |
 action_result.data.\*.ResponseMetadata.HTTPHeaders.date | string | | Thu, 04 Jan 2018 01:14:36 GMT |
 action_result.data.\*.ResponseMetadata.HTTPHeaders.server | string | | AmazonS3 |
@@ -778,11 +778,11 @@ https://boto3.amazonaws.com/v1/documentation/api/latest/guide/s3-presigned-urls.
 
 PARAMETER | REQUIRED | DESCRIPTION | TYPE | CONTAINS
 --------- | -------- | ----------- | ---- | --------
-**client_method** | required | Currently supported options are put_object | string | |
+**client_method** | required | Supported option: put_object | string | |
 **bucket_name** | required | Name of the bucket | string | |
 **object_name** | required | Name of the Object | string | |
-**method_parameters** | optional | Dictionary of parameters to send to the method | string | |
-**expiration** | optional | Time in seconds for the presigned URL to remain valid | numeric | |
+**method_parameters** | optional | Optional JSON object containing only ContentType | string | |
+**expiration** | optional | Time in seconds for the presigned URL to remain valid (1-3600) | numeric | |
 
 #### Action Output
 

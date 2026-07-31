@@ -739,9 +739,20 @@ class AwsS3Connector(BaseConnector):
         bucket_name = param["bucket_name"]
         object_name = param["object_name"]
 
+        if client_method != "put_object":
+            return action_result.set_status(phantom.APP_ERROR, "Only put_object presigned URLs are supported")
+
         # Optional values should use the .get() function
         method_parameters = param.get("method_parameters", "")
-        expiration = param.get("expiration", "")
+        expiration = param.get("expiration", 3600)
+
+        try:
+            expiration = int(expiration)
+        except (TypeError, ValueError):
+            return action_result.set_status(phantom.APP_ERROR, "Expiration must be an integer between 1 and 3600 seconds")
+
+        if not 1 <= expiration <= 3600:
+            return action_result.set_status(phantom.APP_ERROR, "Expiration must be an integer between 1 and 3600 seconds")
 
         if not self._create_client(action_result, param):
             return action_result.get_status()
@@ -749,7 +760,21 @@ class AwsS3Connector(BaseConnector):
         required_parameters = {"Bucket": bucket_name, "Key": object_name}
 
         if method_parameters:
-            method_parameters = json.loads(method_parameters) | required_parameters
+            try:
+                method_parameters = json.loads(method_parameters)
+            except (TypeError, ValueError):
+                return action_result.set_status(phantom.APP_ERROR, "Method parameters must be a JSON object")
+
+            if not isinstance(method_parameters, dict):
+                return action_result.set_status(phantom.APP_ERROR, "Method parameters must be a JSON object")
+
+            unsupported_parameters = set(method_parameters) - {"ContentType"}
+            if unsupported_parameters:
+                return action_result.set_status(
+                    phantom.APP_ERROR,
+                    f"Unsupported method parameters: {', '.join(sorted(unsupported_parameters))}",
+                )
+            method_parameters.update(required_parameters)
         else:
             method_parameters = required_parameters
 
