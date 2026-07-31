@@ -1,7 +1,7 @@
 # AWS S3
 
 Publisher: Splunk <br>
-Connector Version: 2.5.3 <br>
+Connector Version: 3.0.0 <br>
 Product Vendor: AWS <br>
 Product Name: S3 <br>
 Minimum Product Version: 5.1.0
