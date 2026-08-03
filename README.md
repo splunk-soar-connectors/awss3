@@ -122,7 +122,6 @@ action_result.summary.num_buckets | numeric | | 4 |
 action_result.message | string | | Num buckets: 4 |
 summary.total_objects | numeric | | 1 |
 summary.total_objects_successful | numeric | | 1 |
-action_result.parameter.credentials | password | `aws credentials` | |
 
 ## action: 'get bucket'
 
@@ -342,7 +341,6 @@ action_result.summary.website_found | boolean | | True False |
 action_result.message | string | | Successfully retrieved bucket info |
 summary.total_objects | numeric | | 1 |
 summary.total_objects_successful | numeric | | 1 |
-action_result.parameter.credentials | password | `aws credentials` | |
 
 ## action: 'create bucket'
 
@@ -381,7 +379,6 @@ action_result.summary | string | | |
 action_result.message | string | | Successfully created a bucket |
 summary.total_objects | numeric | | 1 |
 summary.total_objects_successful | numeric | | 1 0 |
-action_result.parameter.credentials | password | `aws credentials` | |
 
 ## action: 'update bucket'
 
@@ -428,7 +425,6 @@ action_result.data.\*.ResponseMetadata.RetryAttempts | numeric | | 0 |
 action_result.summary | string | | |
 summary.total_objects | numeric | | 1 |
 summary.total_objects_successful | numeric | | 1 |
-action_result.parameter.credentials | password | `aws credentials` | |
 
 ## action: 'delete bucket'
 
@@ -465,7 +461,6 @@ action_result.summary | string | | |
 action_result.message | string | | Successfully deleted bucket |
 summary.total_objects | numeric | | 1 |
 summary.total_objects_successful | numeric | | 1 0 |
-action_result.parameter.credentials | password | `aws credentials` | |
 
 ## action: 'list objects'
 
@@ -526,7 +521,6 @@ action_result.summary.num_objects | numeric | | 2 |
 action_result.message | string | | Num objects: 2 |
 summary.total_objects | numeric | | 1 |
 summary.total_objects_successful | numeric | | 1 |
-action_result.parameter.credentials | password | `aws credentials` | |
 
 ## action: 'get object'
 
@@ -617,7 +611,6 @@ action_result.data.\*.Tagging.VersionId | string | | |
 action_result.summary.created_vault_id | string | `sha1` | cde6248b8367f3a87bb6cc3dfc46fb9786200f88 |
 summary.total_objects | numeric | | 1 |
 summary.total_objects_successful | numeric | | 1 |
-action_result.parameter.credentials | password | `aws credentials` | |
 
 ## action: 'update object'
 
@@ -664,7 +657,6 @@ action_result.data.\*.VersionId | string | | |
 action_result.summary | string | | |
 summary.total_objects | numeric | | 1 |
 summary.total_objects_successful | numeric | | 1 |
-action_result.parameter.credentials | password | `aws credentials` | |
 
 ## action: 'create object'
 
@@ -722,7 +714,6 @@ action_result.summary | string | | |
 action_result.message | string | | Object successfully updated |
 summary.total_objects | numeric | | 1 |
 summary.total_objects_successful | numeric | | 1 |
-action_result.parameter.credentials | password | `aws credentials` | |
 
 ## action: 'delete object'
 
@@ -761,7 +752,6 @@ action_result.summary | string | | |
 action_result.message | string | | Successfully deleted object |
 summary.total_objects | numeric | | 1 |
 summary.total_objects_successful | numeric | | 1 0 |
-action_result.parameter.credentials | password | `aws credentials` | |
 
 ## action: 'generate presigned url'
 
