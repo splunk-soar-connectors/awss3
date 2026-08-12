@@ -4,7 +4,7 @@ Publisher: Splunk <br>
 Connector Version: 3.0.0 <br>
 Product Vendor: AWS <br>
 Product Name: S3 <br>
-Minimum Product Version: 5.1.0
+Minimum Product Version: 6.3.0
 
 This app integrates with AWS S3 to perform investigative actions
 
@@ -97,13 +97,12 @@ Read only: **True**
 
 PARAMETER | REQUIRED | DESCRIPTION | TYPE | CONTAINS
 --------- | -------- | ----------- | ---- | --------
-**credentials** | optional | Assumed role credentials | string | `aws credentials` |
+**credentials** | optional | Assumed role credentials | password | `aws credentials` |
 
 #### Action Output
 
 DATA PATH | TYPE | CONTAINS | EXAMPLE VALUES
 --------- | ---- | -------- | --------------
-action_result.parameter.credentials | string | `aws credentials` | {'AccessKeyId': 'REDACTED', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'REDACTED', 'SessionToken': 'REDACTED'} |
 action_result.status | string | | success failed |
 action_result.data.\*.Buckets.\*.Name | string | | aws-athena-query-results-157568067690-us-west-2 |
 action_result.data.\*.Buckets.\*.CreationDate | string | | 2017-09-13 21:33:57 |
@@ -136,7 +135,7 @@ Read only: **True**
 PARAMETER | REQUIRED | DESCRIPTION | TYPE | CONTAINS
 --------- | -------- | ----------- | ---- | --------
 **bucket** | required | Bucket to get | string | `aws s3 bucket` |
-**credentials** | optional | Assumed role credentials | string | `aws credentials` |
+**credentials** | optional | Assumed role credentials | password | `aws credentials` |
 
 #### Action Output
 
@@ -144,7 +143,6 @@ DATA PATH | TYPE | CONTAINS | EXAMPLE VALUES
 --------- | ---- | -------- | --------------
 action_result.status | string | | success failed |
 action_result.parameter.bucket | string | `aws s3 bucket` | bucket-test-s3-app |
-action_result.parameter.credentials | string | `aws credentials` | {'AccessKeyId': 'REDACTED', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'REDACTED', 'SessionToken': 'REDACTED'} |
 action_result.data.\*.ACL.Grants.\*.Grantee.DisplayName | string | | Display Name |
 action_result.data.\*.ACL.Grants.\*.Grantee.ID | string | | 042b3oe6d5faa5cfe9d016645ce14be41295ed6j94c988c6af6550f439e3f444 |
 action_result.data.\*.ACL.Grants.\*.Grantee.Type | string | | CanonicalUser |
@@ -358,7 +356,7 @@ The bucket will be created in the region specified in the asset configuration. T
 PARAMETER | REQUIRED | DESCRIPTION | TYPE | CONTAINS
 --------- | -------- | ----------- | ---- | --------
 **bucket** | required | Name of bucket to create | string | `aws s3 bucket` |
-**credentials** | optional | Assumed role credentials | string | `aws credentials` |
+**credentials** | optional | Assumed role credentials | password | `aws credentials` |
 
 #### Action Output
 
@@ -366,7 +364,6 @@ DATA PATH | TYPE | CONTAINS | EXAMPLE VALUES
 --------- | ---- | -------- | --------------
 action_result.parameter.bucket | string | `aws s3 bucket` | automated-bucket |
 action_result.status | string | | success failed |
-action_result.parameter.credentials | string | `aws credentials` | {'AccessKeyId': 'REDACTED', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'REDACTED', 'SessionToken': 'REDACTED'} |
 action_result.data.\*.Location | string | `url` | http://automated-bucket.s3.amazonaws.com/ |
 action_result.data.\*.ResponseMetadata.HTTPHeaders.content-length | numeric | | 72 |
 action_result.data.\*.ResponseMetadata.HTTPHeaders.date | string | | Thu, 04 Jan 2018 01:14:36 GMT |
@@ -402,7 +399,7 @@ PARAMETER | REQUIRED | DESCRIPTION | TYPE | CONTAINS
 **kms_key** | optional | KMS Key (Only if encryption is AWS:KMS) | string | |
 **grants** | optional | JSON dictionary of users and the permissions to grant them | string | |
 **owner** | optional | Canonical ID of new owner | string | `aws canonical id` |
-**credentials** | optional | Assumed role credentials | string | `aws credentials` |
+**credentials** | optional | Assumed role credentials | password | `aws credentials` |
 
 #### Action Output
 
@@ -416,7 +413,6 @@ action_result.parameter.kms_key | string | | 28dc6a18-f1ac-11e7-8c3f-9a214cf093a
 action_result.message | string | | Successfully retrieved bucket info |
 action_result.parameter.owner | string | `aws canonical id` | 042b3oe6d5faa5cfe9d016645ce14be41295ed6j94c988c6af6550f439e3f444 |
 action_result.parameter.tags | string | | {"key1": "value1", "key2": "value2"} |
-action_result.parameter.credentials | string | `aws credentials` | {'AccessKeyId': 'REDACTED', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'REDACTED', 'SessionToken': 'REDACTED'} |
 action_result.data.\*.ResponseMetadata.HTTPHeaders.content-length | numeric | | 72 |
 action_result.data.\*.ResponseMetadata.HTTPHeaders.date | string | | Fri, 05 Jan 2018 00:10:55 GMT |
 action_result.data.\*.ResponseMetadata.HTTPHeaders.server | string | | AmazonS3 |
@@ -444,7 +440,7 @@ The bucket will be deleted. All objects (including all object versions and delet
 PARAMETER | REQUIRED | DESCRIPTION | TYPE | CONTAINS
 --------- | -------- | ----------- | ---- | --------
 **bucket** | required | Name of bucket to delete | string | `aws s3 bucket` |
-**credentials** | optional | Assumed role credentials | string | `aws credentials` |
+**credentials** | optional | Assumed role credentials | password | `aws credentials` |
 
 #### Action Output
 
@@ -452,7 +448,6 @@ DATA PATH | TYPE | CONTAINS | EXAMPLE VALUES
 --------- | ---- | -------- | --------------
 action_result.parameter.bucket | string | `aws s3 bucket` | automated-bucket |
 action_result.status | string | | success failed |
-action_result.parameter.credentials | string | `aws credentials` | {'AccessKeyId': 'REDACTED', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'REDACTED', 'SessionToken': 'REDACTED'} |
 action_result.data.\*.ResponseMetadata.HTTPHeaders.content-length | numeric | | 72 |
 action_result.data.\*.ResponseMetadata.HTTPHeaders.date | string | | Thu, 04 Jan 2018 01:14:36 GMT |
 action_result.data.\*.ResponseMetadata.HTTPHeaders.server | string | | AmazonS3 |
@@ -484,7 +479,7 @@ PARAMETER | REQUIRED | DESCRIPTION | TYPE | CONTAINS
 **key** | optional | List objects under this key | string | `aws s3 key` |
 **limit** | optional | Max number of objects to list | numeric | |
 **continuation_token** | optional | Use this parameter to get the next set of objects from a previous action | string | `aws s3 continuation token` |
-**credentials** | optional | Assumed role credentials | string | `aws credentials` |
+**credentials** | optional | Assumed role credentials | password | `aws credentials` |
 
 #### Action Output
 
@@ -495,7 +490,6 @@ action_result.parameter.bucket | string | `aws s3 bucket` | bucket-test-s3-app |
 action_result.parameter.continuation_token | string | `aws s3 continuation token` | 1gpyNT6V4At5pjvBmQhRU2D2ehqyGrZJaHJ4VLYm5udxQTTi+8xMyUg== |
 action_result.parameter.key | string | `aws s3 key` | test_folder/deeper_test_folder |
 action_result.parameter.limit | numeric | | 3 |
-action_result.parameter.credentials | string | `aws credentials` | {'AccessKeyId': 'REDACTED', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'REDACTED', 'SessionToken': 'REDACTED'} |
 action_result.data.\*.\*.Contents.\*.ETag | string | | "d41d8cd98f00b204e9800998ecf8427e" |
 action_result.data.\*.\*.Contents.\*.StorageClass | string | | STANDARD |
 action_result.data.\*.\*.Contents.\*.Owner.DisplayName | string | | Display Name |
@@ -544,7 +538,7 @@ PARAMETER | REQUIRED | DESCRIPTION | TYPE | CONTAINS
 **bucket** | required | Object bucket | string | `aws s3 bucket` |
 **key** | required | Object Key | string | `aws s3 key` |
 **download_file** | optional | Download File | boolean | |
-**credentials** | optional | Assumed role credentials | string | `aws credentials` |
+**credentials** | optional | Assumed role credentials | password | `aws credentials` |
 
 #### Action Output
 
@@ -555,7 +549,6 @@ action_result.message | string | | File successfully added to vault |
 action_result.parameter.bucket | string | `aws s3 bucket` | bucket-test-s3-app |
 action_result.parameter.download_file | boolean | | True False |
 action_result.parameter.key | string | `aws s3 key` | test_folder/image.jpg |
-action_result.parameter.credentials | string | `aws credentials` | {'AccessKeyId': 'REDACTED', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'REDACTED', 'SessionToken': 'REDACTED'} |
 action_result.data.\*.ACL.Grants.\*.Grantee.DisplayName | string | | Display Name |
 action_result.data.\*.ACL.Grants.\*.Grantee.ID | string | `sha256` | 042b3oe6d5faa5cfe9d016645ce14be41295ed6j94c988c6af6550f439e3f444 |
 action_result.data.\*.ACL.Grants.\*.Grantee.Type | string | | CanonicalUser |
@@ -637,7 +630,7 @@ PARAMETER | REQUIRED | DESCRIPTION | TYPE | CONTAINS
 **grants** | optional | JSON dictionary of users and the permissions to grant them | string | |
 **owner** | optional | Canonical ID of new owner | string | `aws canonical id` |
 **tags** | optional | JSON dictionary containing tags to give object | string | |
-**credentials** | optional | Assumed role credentials | string | `aws credentials` |
+**credentials** | optional | Assumed role credentials | password | `aws credentials` |
 
 #### Action Output
 
@@ -650,7 +643,6 @@ action_result.parameter.grants | string | | {"153b1da9d5faa5cfe9d016645ce14be412
 action_result.parameter.key | string | `aws s3 key` | test_folder/deeper_test_folder/abc.jpg |
 action_result.parameter.owner | string | `aws canonical id` | 042b3oe6d5faa5cfe9d016645ce14be41295ed6j94c988c6af6550f439e3f444 |
 action_result.parameter.tags | string | | {"Adrian Gonzalez": "Braves Legend", "Chipper": "HoFer"} |
-action_result.parameter.credentials | string | `aws credentials` | {'AccessKeyId': 'REDACTED', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'REDACTED', 'SessionToken': 'REDACTED'} |
 action_result.data.\*.ResponseMetadata.HTTPHeaders.content-length | numeric | | 72 |
 action_result.data.\*.ResponseMetadata.HTTPHeaders.date | string | | Mon, 18 Dec 2017 21:49:25 GMT |
 action_result.data.\*.ResponseMetadata.HTTPHeaders.server | string | | AmazonS3 |
@@ -686,7 +678,7 @@ PARAMETER | REQUIRED | DESCRIPTION | TYPE | CONTAINS
 **encryption** | required | Encryption to apply to object | string | |
 **kms_key** | optional | KMS Key (Only if encryption is AWS:KMS) | string | |
 **metadata** | optional | JSON dictionary containing metadata to give object | string | |
-**credentials** | optional | Assumed role credentials | string | `aws credentials` |
+**credentials** | optional | Assumed role credentials | password | `aws credentials` |
 
 #### Action Output
 
@@ -700,7 +692,6 @@ action_result.parameter.kms_key | string | | 234b9f7cd382ca2affe10176bf2c04aba67
 action_result.parameter.metadata | string | | {"Content-Language": "English"} |
 action_result.parameter.storage_class | string | | STANDARD_IA |
 action_result.parameter.vault_id | string | `vault id` | 306b9e7cd363cb2fdfc11176bc2f04ede7358f00 |
-action_result.parameter.credentials | string | `aws credentials` | {'AccessKeyId': 'REDACTED', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'REDACTED', 'SessionToken': 'REDACTED'} |
 action_result.data.\*.ETag | string | | "1dcdb3d256476fe8e2887c146960e580" |
 action_result.data.\*.ResponseMetadata.HTTPHeaders.content-length | numeric | | 72 |
 action_result.data.\*.ResponseMetadata.HTTPHeaders.date | string | | Mon, 18 Dec 2017 23:05:11 GMT |
@@ -739,7 +730,7 @@ PARAMETER | REQUIRED | DESCRIPTION | TYPE | CONTAINS
 --------- | -------- | ----------- | ---- | --------
 **bucket** | required | Name of the bucket | string | `aws s3 bucket` |
 **key** | required | File include path to be deleted | string | `aws s3 key` |
-**credentials** | optional | Assumed role credentials | string | `aws credentials` |
+**credentials** | optional | Assumed role credentials | password | `aws credentials` |
 
 #### Action Output
 
@@ -748,7 +739,6 @@ DATA PATH | TYPE | CONTAINS | EXAMPLE VALUES
 action_result.parameter.bucket | string | `aws s3 bucket` | automated-bucket |
 action_result.status | string | | success failed |
 action_result.parameter.key | string | `aws s3 key` | test_folder/deeper_test_folder/abc.jpg |
-action_result.parameter.credentials | string | `aws credentials` | {'AccessKeyId': 'REDACTED', 'Expiration': '2020-12-09 22:28:04', 'SecretAccessKey': 'REDACTED', 'SessionToken': 'REDACTED'} |
 action_result.data.\*.ResponseMetadata.HTTPHeaders.content-length | numeric | | 72 |
 action_result.data.\*.ResponseMetadata.HTTPHeaders.date | string | | Thu, 04 Jan 2018 01:14:36 GMT |
 action_result.data.\*.ResponseMetadata.HTTPHeaders.server | string | | AmazonS3 |

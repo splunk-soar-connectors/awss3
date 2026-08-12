@@ -52,6 +52,10 @@ class AwsS3Connector(BaseConnector):
         self._boto_config = None
         self._proxy = None
 
+    @staticmethod
+    def _sanitize_action_parameters(param):
+        return {key: value for key, value in param.items() if key != "credentials"}
+
     def initialize(self):
         # Fetching the Python major version
         try:
@@ -182,36 +186,46 @@ class AwsS3Connector(BaseConnector):
         if self._proxy:
             boto_config = Config(proxies=self._proxy)
 
-        # Try getting and using temporary assume role credentials from parameters
-        temp_credentials = dict()
+        access_key = self._access_key
+        secret_key = self._secret_key
+        session_token = self._session_token
+
+        # Try getting and using temporary assume role credentials from parameters.
         if param and "credentials" in param:
             try:
-                temp_credentials = ast.literal_eval(param.get("credentials"))
-                self._access_key = temp_credentials.get("AccessKeyId", "")
-                self._secret_key = temp_credentials.get("SecretAccessKey", "")
-                self._session_token = temp_credentials.get("SessionToken", "")
-
-                self.save_progress("Using temporary assume role credentials for action")
+                raw_credentials = param["credentials"]
+                temp_credentials = raw_credentials if isinstance(raw_credentials, dict) else ast.literal_eval(raw_credentials)
             except Exception as e:
                 return action_result.set_status(phantom.APP_ERROR, f"Failed to get temporary credentials:{e}")
 
+            if not isinstance(temp_credentials, dict):
+                return action_result.set_status(phantom.APP_ERROR, "Temporary credentials must be a dictionary")
+
+            access_key = temp_credentials.get("AccessKeyId")
+            secret_key = temp_credentials.get("SecretAccessKey")
+            session_token = temp_credentials.get("SessionToken")
+            if not isinstance(access_key, str) or not access_key.strip():
+                return action_result.set_status(phantom.APP_ERROR, "Temporary credentials must include a nonblank AccessKeyId")
+            if not isinstance(secret_key, str) or not secret_key.strip():
+                return action_result.set_status(phantom.APP_ERROR, "Temporary credentials must include a nonblank SecretAccessKey")
+
+            access_key = access_key.strip()
+            secret_key = secret_key.strip()
+            self.save_progress("Using temporary assume role credentials for action")
+
+        if not (access_key and secret_key):
+            return action_result.set_status(phantom.APP_ERROR, S3_BAD_ASSET_CONFIG_MESSAGE)
+
         try:
-            if self._access_key and self._secret_key:
-                self.debug_print("Creating boto3 client with API keys")
-
-                self._client = client(
-                    "s3",
-                    region_name=self._region,
-                    aws_access_key_id=self._access_key,
-                    aws_secret_access_key=self._secret_key,
-                    aws_session_token=self._session_token,
-                    config=boto_config,
-                )
-
-            else:
-                self.debug_print("Creating boto3 client without API keys")
-
-                self._client = client("s3", region_name=self._region, config=boto_config)
+            self.debug_print("Creating boto3 client with explicit credentials")
+            self._client = client(
+                "s3",
+                region_name=self._region,
+                aws_access_key_id=access_key,
+                aws_secret_access_key=secret_key,
+                aws_session_token=session_token,
+                config=boto_config,
+            )
 
         except Exception as e:
             error_message = self._get_error_message_from_exception(e)
@@ -293,7 +307,7 @@ class AwsS3Connector(BaseConnector):
 
     def _handle_test_connectivity(self, param):
         self.save_progress("Querying S3 to check credentials")
-        action_result = self.add_action_result(ActionResult(dict(param)))
+        action_result = self.add_action_result(ActionResult(self._sanitize_action_parameters(param)))
 
         if not self._create_client(action_result, param):
             return action_result.get_status()
@@ -309,7 +323,7 @@ class AwsS3Connector(BaseConnector):
 
     def _handle_list_buckets(self, param):
         self.save_progress(f"In action handler for: {self.get_action_identifier()}")
-        action_result = self.add_action_result(ActionResult(dict(param)))
+        action_result = self.add_action_result(ActionResult(self._sanitize_action_parameters(param)))
 
         if not self._create_client(action_result, param):
             return action_result.get_status()
@@ -326,7 +340,7 @@ class AwsS3Connector(BaseConnector):
 
     def _handle_get_bucket(self, param):
         self.save_progress(f"In action handler for: {self.get_action_identifier()}")
-        action_result = self.add_action_result(ActionResult(dict(param)))
+        action_result = self.add_action_result(ActionResult(self._sanitize_action_parameters(param)))
 
         if not self._create_client(action_result, param):
             return action_result.get_status()
@@ -367,7 +381,7 @@ class AwsS3Connector(BaseConnector):
 
     def _handle_create_bucket(self, param):
         self.save_progress(f"In action handler for: {self.get_action_identifier()}")
-        action_result = self.add_action_result(ActionResult(dict(param)))
+        action_result = self.add_action_result(ActionResult(self._sanitize_action_parameters(param)))
 
         if not self._create_client(action_result, param):
             return action_result.get_status()
@@ -385,7 +399,7 @@ class AwsS3Connector(BaseConnector):
 
     def _handle_update_bucket(self, param):
         self.save_progress(f"In action handler for: {self.get_action_identifier()}")
-        action_result = self.add_action_result(ActionResult(dict(param)))
+        action_result = self.add_action_result(ActionResult(self._sanitize_action_parameters(param)))
 
         if not self._create_client(action_result, param):
             return action_result.get_status()
@@ -463,7 +477,7 @@ class AwsS3Connector(BaseConnector):
 
     def _handle_delete_bucket(self, param):
         self.save_progress(f"In action handler for: {self.get_action_identifier()}")
-        action_result = self.add_action_result(ActionResult(dict(param)))
+        action_result = self.add_action_result(ActionResult(self._sanitize_action_parameters(param)))
 
         if not self._create_client(action_result, param):
             return action_result.get_status()
@@ -479,7 +493,7 @@ class AwsS3Connector(BaseConnector):
 
     def _handle_list_objects(self, param):
         self.save_progress(f"In action handler for: {self.get_action_identifier()}")
-        action_result = self.add_action_result(ActionResult(dict(param)))
+        action_result = self.add_action_result(ActionResult(self._sanitize_action_parameters(param)))
 
         limit = param.get("limit", 1000)
         ret_val, limit = self._validate_integer(action_result, limit, S3_LIMIT)
@@ -542,7 +556,7 @@ class AwsS3Connector(BaseConnector):
 
     def _handle_get_object(self, param):
         self.save_progress(f"In action handler for: {self.get_action_identifier()}")
-        action_result = self.add_action_result(ActionResult(dict(param)))
+        action_result = self.add_action_result(ActionResult(self._sanitize_action_parameters(param)))
 
         if not self._create_client(action_result, param):
             return action_result.get_status()
@@ -606,7 +620,7 @@ class AwsS3Connector(BaseConnector):
 
     def _handle_update_object(self, param):
         self.save_progress(f"In action handler for: {self.get_action_identifier()}")
-        action_result = self.add_action_result(ActionResult(dict(param)))
+        action_result = self.add_action_result(ActionResult(self._sanitize_action_parameters(param)))
 
         if not self._create_client(action_result, param):
             return action_result.get_status()
@@ -654,7 +668,7 @@ class AwsS3Connector(BaseConnector):
 
     def _handle_delete_object(self, param):
         self.save_progress(f"In action handler for: {self.get_action_identifier()}")
-        action_result = self.add_action_result(ActionResult(dict(param)))
+        action_result = self.add_action_result(ActionResult(self._sanitize_action_parameters(param)))
 
         if not self._create_client(action_result, param):
             return action_result.get_status()
@@ -670,7 +684,7 @@ class AwsS3Connector(BaseConnector):
 
     def _handle_post_data(self, param):
         self.save_progress(f"In action handler for: {self.get_action_identifier()}")
-        action_result = self.add_action_result(ActionResult(dict(param)))
+        action_result = self.add_action_result(ActionResult(self._sanitize_action_parameters(param)))
 
         if not self._create_client(action_result, param):
             return action_result.get_status()
@@ -730,7 +744,7 @@ class AwsS3Connector(BaseConnector):
         self.save_progress(f"In action handler for: {self.get_action_identifier()}")
 
         # Add an action result object to self (BaseConnector) to represent the action for this param
-        action_result = self.add_action_result(ActionResult(dict(param)))
+        action_result = self.add_action_result(ActionResult(self._sanitize_action_parameters(param)))
 
         # Access action parameters passed in the 'param' dictionary
 
